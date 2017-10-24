@@ -3,9 +3,8 @@
 <div class="container">
   <div class="row col-xs-12">
       <%= simple_form_for [current_user, @skill] do |f| %>
-        <%= f.input :title, placeholder: "Title" %>
-        <%= f.input :description, placeholder: "Description" %>
         <%= f.input :skill_category, placeholder: "Skill category" %>
+        <%= f.input :description, placeholder: "Description" %>
         <%= f.submit "Post", class: "btn btn-primary" %>
       <% end %>
   </div>

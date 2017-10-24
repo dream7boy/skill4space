@@ -23,7 +23,7 @@
           <ul>
             <% @user.skills.each do |skill| %>
               <div>
-                <li><%= skill.title %> | <%= skill.description %> | <%= skill.skill_category %>
+                <li><%= skill.skill_category %> | <%= skill.description %>
                 </li>
               </div>
             <% end %>
