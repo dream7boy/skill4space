@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>show for a space</h1>
+    <ul>
+      <li>title: <%= @space.title %></li>
+      <li>id: <%= @space.id %></li>
+      <li>category: <%= @space.category %></li>
+      <li>name: <%= @space.name %></li>
+      <li>address: <%= @space.address %></li>
+      <li>description: <%= @space.description %></li>
+      <li>facility: <%= @space.facility %></li>
+      <li>daily_price: <%= @space.daily_price %></li>
+      <li>required_skill: <%= @space.required_skill %></li>
+      <li>start_date: <%= @space.start_date %></li>
+      <li>end_date: <%= @space.end_date %></li>
+      <li>floor_area: <%= @space.floor_area %></li>
+      <li>people_capacity: <%= @space.people_capacity %></li>
+      <li>opening_hours: <%= @space.opening_hours.strftime('%H:%M') %></li>
+      <li>closing_hours: <%= @space.closing_hours.strftime('%H:%M') %></li>
+      <li>is_barter: <%= @space.is_barter %></li>
+    </ul>
+</div>
