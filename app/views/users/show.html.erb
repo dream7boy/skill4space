@@ -2,23 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-        <h1>Edit your profile</h1>
-        <%= simple_form_for(@user) do |f| %>
-          <%= f.input :name %>
-          <%= f.input :email %>
-          <%= f.input :address %>
-          <%# profile_pic = current_user.facebook_picture_url || current_user.photo %>
-          <%# if profile_pic.present? %>
-            <%#= image_tag profile_pic, class: "show-image text-center" %>
-          <%# end %>
-          <%#= f.input :photo %>
-          <%#= f.input :photo_cache, as: :hidden %>
-          <%= f.submit "Edit", class: "btn btn-success" %>
-          <div class="btn">
-            <%= link_to "Add skill", new_user_skill_path(@user) %>
-          </div>
-        <% end %>
-        <br>
+        <h1>Profile page</h1>
+        <p>Name: <%= @user.name %></p>
+        <p>Email: <%= @user.email %></p>
+        <p>Address: <%= @user.address %></p>
+        <p>Skills:</p>
         <div class="row">
           <ul>
             <% @user.skills.each do |skill| %>
@@ -28,6 +16,12 @@
               </div>
             <% end %>
           </ul>
+        </div>
+        <div class="btn">
+          <%= link_to "Edit profile", edit_user_path(@user) %>
+        </div>
+        <div class="btn">
+          <%= link_to "Add skill", new_user_skill_path(@user) %>
         </div>
       </div>
     </div>
