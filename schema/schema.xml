@@ -53,15 +53,18 @@
 <row name="photo" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="is_owner?" null="1" autoincrement="0">
+<row name="is_owner" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="781" y="242" name="spaces">
+<table x="984" y="296" name="spaces">
 <row name="id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="title" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="category" null="1" autoincrement="0">
@@ -70,26 +73,26 @@
 <row name="name" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="description" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
 <row name="address" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="description" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
 <row name="facility" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="price" null="1" autoincrement="0">
+<row name="daily_price" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="required_skill" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="start_date" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>DATE</datatype>
 <default>NULL</default></row>
 <row name="end_date" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>DATE</datatype>
 <default>NULL</default></row>
 <row name="floor_area" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -98,12 +101,12 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="opening_hours" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>TIME</datatype>
 <default>NULL</default></row>
 <row name="closing_hours" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>TIME</datatype>
 <default>NULL</default></row>
-<row name="is_barter?" null="1" autoincrement="0">
+<row name="is_barter" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="photos" null="1" autoincrement="0">
@@ -113,19 +116,19 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
-<row name="booking_capacity?" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<row name="booking_capacity" null="1" autoincrement="0">
+<datatype>SET</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="436" y="509" name="skills">
+<table x="416" y="447" name="skills">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="name" null="1" autoincrement="0">
-<datatype>CHAR(15)</datatype>
+<row name="title" null="1" autoincrement="0">
+<datatype>INTEGER(15)</datatype>
 <default>NULL</default></row>
 <row name="description" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
@@ -141,7 +144,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="593.8000030517578" y="283.79999923706055" name="bookings">
+<table x="589" y="222" name="bookings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -169,7 +172,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="738.3333282470703" y="50.66667175292969" name="user_reviews">
+<table x="741" y="24" name="user_reviews">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -191,7 +194,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="380.33333587646484" y="49" name="space_reviews">
+<table x="344" y="12" name="space_reviews">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
