@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :skills, foreign_key: "user_id", dependent: :destroy
   has_many :spaces, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 end
