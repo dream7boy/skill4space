@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   protect_from_forgery
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :bookings, :listings]
+  before_action :set_user, only: [:edit, :update, :dashboard, :bookings, :listings]
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -13,6 +14,9 @@ class UsersController < ApplicationController
     @user.update(users_params)
     redirect_to profile_path
     flash[:notice] = "Your profile was edited"
+  end
+
+  def dashboard
   end
 
   def listings

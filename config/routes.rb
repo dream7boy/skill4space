@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :skills, only: [:new, :create, :destroy]
   end
 
-  get "profile", to: 'users#show'
+  get "dashboard", to: 'users#dashboard'
   get "bookings", to: 'users#bookings'
   get "listings", to: 'users#listings'
 
