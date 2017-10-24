@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   end
 
   get "profile", to: 'users#show'
+  get "bookings", to: 'users#bookings'
+  get "listings", to: 'users#listings'
 
   resources :spaces, only: [:index, :show, :new, :create]
 end
