@@ -25,6 +25,28 @@ ActiveRecord::Schema.define(version: 20171024092549) do
     t.index ["user_id"], name: "index_skills_on_user_id"
   end
 
+  create_table "spaces", force: :cascade do |t|
+    t.string "category"
+    t.string "name"
+    t.string "address"
+    t.text "description"
+    t.string "facility"
+    t.integer "daily_price"
+    t.string "required_skill"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "floor_area"
+    t.integer "people_capacity"
+    t.time "opening_hours"
+    t.time "closing_hours"
+    t.boolean "is_barter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "title"
+    t.index ["user_id"], name: "index_spaces_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -46,4 +68,5 @@ ActiveRecord::Schema.define(version: 20171024092549) do
   end
 
   add_foreign_key "skills", "users"
+  add_foreign_key "spaces", "users"
 end

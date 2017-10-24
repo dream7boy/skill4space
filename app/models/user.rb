@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :skills, foreign_key: "user_id", dependent: :destroy
+  has_many :spaces, dependent: :destroy
 end
