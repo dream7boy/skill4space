@@ -12,6 +12,9 @@
             <% @user.skills.each do |skill| %>
               <div>
                 <li><%= skill.skill_category %> | <%= skill.description %>
+                  <%= link_to "delete", [current_user, skill], class: "btn",
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
                 </li>
               </div>
             <% end %>
