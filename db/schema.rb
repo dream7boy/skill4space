@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20171024102540) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_skills_on_user_id"
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "total_price"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "status"
+    t.bigint "user_id"
+    t.bigint "space_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["space_id"], name: "index_bookings_on_space_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "spaces", force: :cascade do |t|
@@ -67,5 +79,7 @@ ActiveRecord::Schema.define(version: 20171024102540) do
   end
 
   add_foreign_key "skills", "users"
+  add_foreign_key "bookings", "spaces"
+  add_foreign_key "bookings", "users"
   add_foreign_key "spaces", "users"
 end
