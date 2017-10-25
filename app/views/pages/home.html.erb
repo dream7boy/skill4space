@@ -1,2 +1,28 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="form-wrapper">
+      <%= form_tag(spaces_path, method: :get) do %>
+        <%#= text_field_tag :species, params[:species] %>
+        <%= select_tag "address",
+          raw("<option>Select a city</option>
+          <option>Tokyo</option>
+          <option>Osaka</option>
+          <option>Fukuoka</option>"),
+           class: "input-lg form-top" %>
+        <%= select_tag "category",
+          raw("<option>Select workspace</option>
+          <option>Office</option>
+          <option>Coworking</option>
+          <option>Design studio</option>
+          <option>Music studio</option>
+          <option>Dance studio</option>
+          <option>Classroom</option>
+          <option>Laboratory</option>
+          <option>Kitchen</option>
+          <option>Garage</option>"),
+           class: "input-lg form-top" %>
+
+        <%= submit_tag 'Search', name: nil, class: "btn btn-success btn-lg" %>
+      <% end %>
+    </div>
