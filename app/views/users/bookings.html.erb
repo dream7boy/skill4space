@@ -23,7 +23,7 @@
                   </div>
                   <div class="col-xs-12 col-sm-2">
                     <ul class="list-inline product-controls hidden-sm hidden-xs">
-                      <li class="icons"><a href="" title="Cancel booking" data-toggle="tooltip"><i class="fa fa-ban"></i></a></li>
+                      <li class="icons"> <%= link_to booking, class: "btn", method: :delete, data: { confirm: "Are you sure?" } do  %><i class="fa fa-ban"></i><% end %></li>
                       <li class="icons"><a href="" title="Contact owner" data-toggle="tooltip"><i class="fa fa-envelope-o"></i></a></li>
                       <li class="booking-status"><a href=""><%= booking.status %></i></a></li>
                     </ul>
