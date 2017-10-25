@@ -14,9 +14,10 @@
         <li>category: <%= booking.space.category %></li>
         <li>name: <%= booking.space.name %></li>
         <li>address: <%= booking.space.address %></li>
-        <li>description: <%= booking.space.description %></li>
         <li>daily_price: <%= booking.space.daily_price %></li>
       </ul>
+      <%= link_to "Delete", booking, class: "btn btn-primary",
+        method: :delete, data: { confirm: "Are you sure?" } %>
       <p>-------------------------------</p>
     <% end %>
 </div>

@@ -10,10 +10,10 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+      <%= link_to listings_path, class: "navbar-wagon-item navbar-wagon-link" do %>
         <i class="fa fa-list-alt"></i> My listing
       <% end %>
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+      <%= link_to bookings_path, class: "navbar-wagon-item navbar-wagon-link" do %>
         <i class="fa fa-book"></i> My booking
       <% end %>
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>

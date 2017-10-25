@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_space, only: [:show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_space, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:city] == "Select city" || params[:category] == "Select workspace"
@@ -36,13 +36,28 @@ class SpacesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @space.update(space_params)
+    redirect_to listings_path
+    flash[:notice] = "Your space has been edited"
+  end
+
+  def destroy
+    @space.destroy
+    redirect_to listings_path
+    flash[:notice] = "Your space has been deleted"
+  end
+
   private
 
   def space_params
     params.require(:space).permit(:title, :category, :name,
       :address, :description, :facility, :daily_price, :required_skill,
       :start_date, :end_date, :floor_area, :people_capacity, :opening_hours,
-      :closing_hours, :is_barter)
+      :closing_hours, :is_barter, :city)
   end
 
   def set_space

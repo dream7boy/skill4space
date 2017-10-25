@@ -1,8 +1,19 @@
+// _show.scss
 // Specific CSS for your home-page
-.banner {
+
+.slider-nav .space-show-banner {
+  height: 100px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.space-show-banner {
   text-align: center;
-  height: calc(100vh - 170px);
-  background-size: cover !important;
+  height: calc(100vh - 70px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;

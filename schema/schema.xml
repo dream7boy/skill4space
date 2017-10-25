@@ -73,6 +73,9 @@
 <row name="name" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="city" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <row name="address" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -152,10 +155,10 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="start_date" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>DATE</datatype>
 <default>NULL</default></row>
 <row name="end_date" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>DATE</datatype>
 <default>NULL</default></row>
 <row name="status" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>

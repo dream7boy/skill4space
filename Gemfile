@@ -20,6 +20,7 @@ gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
+gem "jquery-slick-rails"
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
