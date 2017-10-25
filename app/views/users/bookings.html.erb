@@ -1,22 +1,39 @@
-<div class="container">
-  <h1>My bookings</h1>
-    <% @user.bookings.each do |booking| %>
-      <ul>
-        <li>booking_id: <%= booking.id %></li>
-        <li>total_price: <%= booking.total_price %></li>
-        <li>start_date: <%= booking.start_date %></li>
-        <li>end_date: <%= booking.end_date %></li>
-        <li>status: <%= booking.status %></li>
-      </ul>
-
-      <ul>
-        <li>space_id: <%= booking.space.id %></li>
-        <li>category: <%= booking.space.category %></li>
-        <li>name: <%= booking.space.name %></li>
-        <li>address: <%= booking.space.address %></li>
-        <li>description: <%= booking.space.description %></li>
-        <li>daily_price: <%= booking.space.daily_price %></li>
-      </ul>
-      <p>-------------------------------</p>
-    <% end %>
+<div class="dashboard-container container">
+    <div class="tabs">
+        <h2>MY BOOKINGS</h2>
+    </div>
+    <div id="my-items">
+      <div id="my-bookings">
+        <ul>
+          <% @user.bookings.reverse.each do |booking| %>
+            <li>
+            <div class="product">
+<!--               < cl_image_tag booking.photo, height: 200, width: 300, crop: :fill, class: "booking-photo" > -->
+                <div class='product-body'>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-3 booking-path">
+                      <%= Space.find_by_id(booking.space_id).name %>
+<!--                       <h3>< link_to booking.name, pet_path(booking)></h3> -->
+                    </div>
+                  <div class="col-xs-12 col-sm-2 col-sm-offset-0.5">
+                    <%= "¥#{booking.total_price}" %>
+                  </div>
+                  <div class="col-xs-12 col-sm-2 col-sm-offset-0.5 text-center">
+<!--                     < "#{booking.start_date.month}/#{booking.start_date.day}/#{booking.start_date.year} to #{booking.end_date.month}/#{booking.end_date.day}/#{booking.end_date.year}" > -->
+                  </div>
+                  <div class="col-xs-12 col-sm-2">
+                    <ul class="list-inline product-controls hidden-sm hidden-xs">
+                      <li class="icons"><a href="" title="Cancel booking" data-toggle="tooltip"><i class="fa fa-ban"></i></a></li>
+                      <li class="icons"><a href="" title="Contact owner" data-toggle="tooltip"><i class="fa fa-envelope-o"></i></a></li>
+                      <li class="booking-status"><a href=""><%= booking.status %></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 </div>
+

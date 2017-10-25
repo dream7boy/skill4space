@@ -1,0 +1,133 @@
+// _booking.scss
+.dashboard-container {
+  margin-bottom: 100px;
+}
+.tabs {
+  background: white;
+  display: flex;
+  padding: 10px 10px 0 0px;
+  border-bottom: solid 2px $green;
+  margin-left: 30px;
+}
+.tabs a {
+  color: $green;
+  text-decoration: none;
+}
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.7;
+}
+.tabs h2 {
+  padding: 20px 10px 10px 10px;
+}
+.tabs p {
+  opacity: 0.5;
+  margin-bottom: 0;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+
+/* Body design */
+.product-body {
+  flex: 1 1 auto;
+  padding: 30px;
+}
+.product-body h2 {
+  font-weight: bold;
+  font-size: 23px;
+  margin-top: 0;
+}
+.product-body p {
+  font-weight: lighter;
+  color: #999999;
+  margin-bottom: 0;
+}
+
+/* Product image */
+.product-image {
+  border-radius: 10px;
+  margin-right: 20px;
+  width: 175px;
+}
+
+/* Controls design */
+.product-controls {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0px;
+}
+.product-controls a {
+  padding: 0 20px;
+  font-size: 17px;
+  color: black;
+}
+.product-controls a:hover {
+  text-decoration: none;
+  color: $green !important
+}
+.product-controls-hidden a {
+  color: transparent;
+  font-size: 15px;
+  transition: all 0.15s ease;
+  border-color: transparent;
+}
+
+/* Hover effects */
+.product:hover {
+  background: #f7f7fa;
+  cursor: pointer;
+}
+
+// .product:hover .product-upvote {
+//   transform: scale(1.2)
+// }
+.product:hover .product-controls-hidden a {
+  color: #E6E6E6;
+}
+  .booking-path a {
+    color: $green;
+    text-decoration: none;
+  }
+.dashboard-container {
+  ul {
+  list-style-type: none;
+  margin-left: 0px;
+}
+  // .icons {
+  //   padding: 0px;
+  // }
+  .booking-photo{
+    margin: 10px 30px 0px 0px;
+    border-radius: 10px;
+  }
+  h1 {
+    margin: 40px 0px 40px 60px;
+  }
+  // .fa {
+  //   color: black;
+  // }
+  .green-text {
+    color: $green;
+  }
+  .gray-text {
+    color: gray;
+  }
+  #dashboard-title {
+    margin-bottom: 20px;
+  }
+  .dashboard-labels {
+    padding-top: 10px;
+    padding-bottom: 0px;
+  }
+  .booking-status {
+    margin-left: 50px;
+  }
+}
