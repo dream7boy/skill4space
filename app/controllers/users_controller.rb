@@ -23,9 +23,6 @@ class UsersController < ApplicationController
   end
 
   def bookings
-    @spaces = @user.bookings.map do |booking|
-      Space.find(booking.space_id)
-    end
   end
 
   private

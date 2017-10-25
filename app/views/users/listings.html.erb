@@ -2,7 +2,10 @@
   <h1>My listings</h1>
   <% @user.spaces.each do |space| %>
     <ul>
-      <li><%= space.name %></li>
+      <li>id: <%= space.id %></li>
+      <li>name: <%= space.name %></li>
+      <li>address: <%= space.address %></li>
+      <li>description: <%= space.description %></li>
     </ul>
   <% end %>
 </div>
