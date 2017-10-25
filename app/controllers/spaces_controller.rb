@@ -1,5 +1,5 @@
 class SpacesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_space, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,11 +10,13 @@ class SpacesController < ApplicationController
       @spaces = Space.where('city LIKE ? AND category LIKE ?',
       "%#{params[:city]}%", "%#{params[:category]}%")
     end
-    # @hash = Gmaps4rails.build_markers(@pets) do |pet, marker|
-    #   marker.lat pet.latitude
-    #   marker.lng pet.longitude
-    #   marker.infowindow render_to_string(partial: "/pets/map_box", locals: { pet: pet })
-    # end
+
+    @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
+      marker.lat space.latitude
+      marker.lng space.longitude
+      marker.infowindow render_to_string(partial: "/spaces/map_box", locals: { space: space })
+    end
+
   end
 
   def show
