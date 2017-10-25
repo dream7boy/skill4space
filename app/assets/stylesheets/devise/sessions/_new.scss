@@ -4,7 +4,7 @@
   margin-top: 70px;
   color: $green;
   h2 {
-    margin-bottom: 24px;
+    margin-bottom: 42px;
   }
   p {
     margin: 0;
@@ -14,7 +14,7 @@
   }
   .new-form {
     border: $green solid 1px;
-    border-radius: 50px;
+    border-radius: 20px;
     padding: 30px 50px 50px  50px;
   }
   .links {
@@ -31,9 +31,13 @@
   }
   #user_remember_me {
     margin-top: 8px;
+    // margin-bottom: 50px;
   }
   .btn {
     width: 100%;
+    margin-top: 10px;
     margin-bottom: 10px;
+  }
+  .form-inputs {
   }
 }

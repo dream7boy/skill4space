@@ -18,11 +18,11 @@
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <div class="new-form">
-          <h2 class="text-center">Log in</h2>
+          <h2 class="text-center">LOGIN</h2>
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-inputs">
-              <%= f.input :email, required: false, autofocus: true, placeholder: 'user@skills4space.com' %>
-              <%= f.input :password, required: false, placeholder: '*******' %>
+              <%= f.input :email, label: false, required: false, autofocus: true, placeholder: 'Enter email' %>
+              <%= f.input :password, label: false, required: false, placeholder: 'Enter password' %>
               <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
             </div>
             <div class="form-actions">
