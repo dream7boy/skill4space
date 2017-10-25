@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "listings", to: 'users#listings'
 
   resources :spaces, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :bookings, only: [:new, :create, :destroy]
+    resources :bookings, only: [:new, :create]
   end
+  resources :bookings, only: [:destroy]
 end
