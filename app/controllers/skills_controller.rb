@@ -10,7 +10,7 @@ class SkillsController < ApplicationController
     @skill = Skill.new(skill_params)
     @skill.user = current_user
     if @skill.save
-      redirect_to user_path(current_user)
+      redirect_to profile_path
     else
       render :new
     end
@@ -19,7 +19,7 @@ class SkillsController < ApplicationController
   def destroy
     @skill = Skill.find(params[:id])
     @skill.destroy
-    redirect_to @skill.user
+    redirect_to profile_path
   end
 
   private
