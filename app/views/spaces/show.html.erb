@@ -14,8 +14,8 @@
       <li>end_date: <%= @space.end_date %></li>
       <li>floor_area: <%= @space.floor_area %></li>
       <li>people_capacity: <%= @space.people_capacity %></li>
-      <li>opening_hours: <%= @space.opening_hours.strftime('%H:%M') %></li>
-      <li>closing_hours: <%= @space.closing_hours.strftime('%H:%M') %></li>
+      <li>opening_hours: <%= @space.opening_hours ? @space.opening_hours.strftime('%H:%M') : "" %></li>
+      <li>closing_hours: <%= @space.closing_hours ? @space.closing_hours.strftime('%H:%M') : "" %></li>
       <li>is_barter: <%= @space.is_barter %></li>
     </ul>
 </div>
