@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get "bookings", to: 'users#bookings'
   get "listings", to: 'users#listings'
 
-  resources :spaces, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :spaces, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :bookings, only: [:new, :create, :destroy]
+  end
 end
