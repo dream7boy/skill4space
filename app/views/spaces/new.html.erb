@@ -27,6 +27,11 @@
           <%= f.input :people_capacity, placeholder: "eg,) 100 people" %>
           <%= f.input :start_date %>
           <%= f.input :end_date %>
+          <%= f.input :opening_hours %>
+          <%= f.input :closing_hours %>
+          <%= f.input :is_barter %>
+          <%= f.input :required_skill, collection: ["Cooking", "Cleaning"], prompt: "Choose your skill" %>
+          <%= f.input :daily_price, placeholder: "eg,) 100 USD" %>
 
           <br>
           <%= f.submit "Create", class: "btn btn-success btn-lg" %>
