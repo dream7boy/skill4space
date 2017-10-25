@@ -1,3 +1,7 @@
+<% content_for(:title_tag) do %>
+  My listings | skill4.space: Match your skills with a space that needs it
+<% end %>
+
 <div class="container">
   <h1>My listings</h1>
   <% @user.spaces.each do |space| %>

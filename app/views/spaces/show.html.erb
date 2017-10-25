@@ -1,3 +1,7 @@
+<% content_for(:title_tag) do %>
+  <%= @space.title %> | skill4.space: Match your skills with a space that needs it
+<% end %>
+
 <div class="slider-for">
   <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "airbnb1.jpg" %>');"></div>
   <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "airbnb2.jpg" %>');"></div>
@@ -23,6 +27,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-11">
+        <!-- Need to be modified, Tag should be h1 -->
         <h2><%= @space.category %> Opportunity at <%= @space.name %> in <%= @space.address.split(",").last %></h2>
         <p><i class="fa fa-map-marker"></i> <%= @space.address %></p>
         <p><%= @space.description %></p>
