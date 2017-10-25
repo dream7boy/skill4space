@@ -1,23 +1,21 @@
 <div class="container">
   <h1>My bookings</h1>
-    <% @user.bookings.each_with_index do |booking, i| %>
+    <% @user.bookings.each do |booking| %>
       <ul>
         <li>booking_id: <%= booking.id %></li>
         <li>total_price: <%= booking.total_price %></li>
         <li>start_date: <%= booking.start_date %></li>
         <li>end_date: <%= booking.end_date %></li>
         <li>status: <%= booking.status %></li>
-        <li>user_id: <%= booking.user_id %></li>
-        <li>space_id: <%= booking.space_id %></li>
       </ul>
 
       <ul>
-        <li>space_id(should be same as above): <%= @spaces[i].id %></li>
-        <li>category: <%= @spaces[i].category %></li>
-        <li>name: <%= @spaces[i].name %></li>
-        <li>address: <%= @spaces[i].address %></li>
-        <li>description: <%= @spaces[i].description %></li>
-        <li>daily_price: <%= @spaces[i].daily_price %></li>
+        <li>space_id: <%= booking.space.id %></li>
+        <li>category: <%= booking.space.category %></li>
+        <li>name: <%= booking.space.name %></li>
+        <li>address: <%= booking.space.address %></li>
+        <li>description: <%= booking.space.description %></li>
+        <li>daily_price: <%= booking.space.daily_price %></li>
       </ul>
       <p>-------------------------------</p>
     <% end %>
