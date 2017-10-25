@@ -20,6 +20,10 @@ class SpacesController < ApplicationController
   end
 
   def show
+    @hash = Gmaps4rails.build_markers(@space) do |space, marker|
+      marker.lat space.latitude
+      marker.lng space.longitude
+    end
   end
 
   def new
