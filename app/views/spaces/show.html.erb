@@ -18,4 +18,5 @@
       <li>closing_hours: <%= @space.closing_hours ? @space.closing_hours.strftime('%H:%M') : "" %></li>
       <li>is_barter: <%= @space.is_barter %></li>
     </ul>
+    <%= link_to "Make a booking", new_space_booking_path(@space) %>
 </div>
