@@ -1,0 +1,44 @@
+// _new.scss
+
+.auth-form {
+  margin-top: 70px;
+  color: $blue;
+  h2 {
+    margin-bottom: 42px;
+  }
+  p {
+    margin: 0;
+  }
+  .form-actions input {
+    margin: 0;
+  }
+  .new-form {
+    border: $blue solid 1px;
+    border-radius: 20px;
+    padding: 30px 50px 50px  50px;
+  }
+  .links {
+    margin-top: 20px;
+    color: $green;
+    a.btn {
+      color: white;
+      font-size: 23px;
+      background-color: $blue;
+      &:hover {
+        // background-color: #214E7E;
+        text-decoration: none;
+      }
+    }
+  }
+  #user_remember_me {
+    margin-top: 8px;
+    // margin-bottom: 50px;
+  }
+  .btn {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: $blue;
+    border: $blue;
+  }
+}
