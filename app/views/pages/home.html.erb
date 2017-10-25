@@ -4,8 +4,8 @@
 <div class="form-wrapper">
       <%= form_tag(spaces_path, method: :get) do %>
         <%#= text_field_tag :species, params[:species] %>
-        <%= select_tag "address",
-          raw("<option>Select a city</option>
+        <%= select_tag "city",
+          raw("<option>Select city</option>
           <option>Tokyo</option>
           <option>Osaka</option>
           <option>Fukuoka</option>"),
@@ -23,6 +23,6 @@
           <option>Garage</option>"),
            class: "input-lg form-top" %>
 
-        <%= submit_tag 'Search', name: nil, class: "btn btn-success btn-lg" %>
+        <%= submit_tag 'Search', name: nil, class: "btn btn-success" %>
       <% end %>
     </div>

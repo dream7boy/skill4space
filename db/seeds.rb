@@ -33,6 +33,7 @@ puts 'Creating database...'
         daily_price: rand(5000..20000).round(-3),
         is_barter: [true, false].sample,
         user_id: user.id,
+        city: "Tokyo",
         address: user.address
         )
     end

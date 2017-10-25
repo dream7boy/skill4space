@@ -3,7 +3,18 @@ class SpacesController < ApplicationController
   before_action :set_space, only: [:show]
 
   def index
-    @spaces = Space.all
+    if params[:city] == "Select city" || params[:category] == "Select workspace"
+      @spaces = Space.all
+      flash[:alert] = "No specific city or workspace chosen"
+    else
+      @spaces = Space.where('city LIKE ? AND category LIKE ?',
+      "%#{params[:city]}%", "%#{params[:category]}%")
+    end
+    # @hash = Gmaps4rails.build_markers(@pets) do |pet, marker|
+    #   marker.lat pet.latitude
+    #   marker.lng pet.longitude
+    #   marker.infowindow render_to_string(partial: "/pets/map_box", locals: { pet: pet })
+    # end
   end
 
   def show
