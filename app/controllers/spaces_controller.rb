@@ -10,17 +10,25 @@ class SpacesController < ApplicationController
   end
 
   def new
-
+    @space = Space.new
   end
 
   def create
-
+    @space = Space.new(space_params)
+    if @space.save
+      redirect_to space_path(@space)
+    else
+      render :new
+    end
   end
 
   private
 
   def space_params
-    params.require(:space).permit(:title)
+    params.require(:space).permit(:title, :category, :name,
+      :address, :description, :facility, :daily_price, :required_skill,
+      :start_date, :end_date, :floor_area, :people_capacity, :opening_hours,
+      :closing_hours, :is_barter)
   end
 
   def set_space
