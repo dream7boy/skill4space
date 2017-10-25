@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_space, only: [:show]
+  before_action :set_space, only: [:show, :edit, :update, :destroy]
 
   def index
     @spaces = Space.all
@@ -21,6 +21,21 @@ class SpacesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @space.update(space_params)
+    redirect_to listings_path
+    flash[:notice] = "Your space has been edited"
+  end
+
+  def destroy
+    @space.destroy
+    redirect_to listings_path
+    flash[:notice] = "Your space has been deleted"
   end
 
   private
