@@ -1,22 +1,49 @@
+<div class="slider-for">
+  <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "airbnb1.jpg" %>');"></div>
+  <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "airbnb2.jpg" %>');"></div>
+  <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "airbnb3.jpg" %>');"></div>
+  <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "airbnb4.jpg" %>');"></div>
+</div>
 <div class="container">
-  <h1>show for a space</h1>
-    <ul>
-      <li>title: <%= @space.title %></li>
-      <li>id: <%= @space.id %></li>
-      <li>category: <%= @space.category %></li>
-      <li>name: <%= @space.name %></li>
-      <li>address: <%= @space.address %></li>
-      <li>description: <%= @space.description %></li>
-      <li>facility: <%= @space.facility %></li>
-      <li>daily_price: <%= @space.daily_price %></li>
-      <li>required_skill: <%= @space.required_skill %></li>
-      <li>start_date: <%= @space.start_date %></li>
-      <li>end_date: <%= @space.end_date %></li>
-      <li>floor_area: <%= @space.floor_area %></li>
-      <li>people_capacity: <%= @space.people_capacity %></li>
-      <li>opening_hours: <%= @space.opening_hours ? @space.opening_hours.strftime('%H:%M') : "" %></li>
-      <li>closing_hours: <%= @space.closing_hours ? @space.closing_hours.strftime('%H:%M') : "" %></li>
-      <li>is_barter: <%= @space.is_barter %></li>
-    </ul>
-    <%= link_to "Make a booking", new_space_booking_path(@space) %>
+  <div class="slider-nav">
+    <div>
+      <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "airbnb1.jpg" %>');"></div>
+    </div>
+    <div>
+      <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "airbnb2.jpg" %>');"></div>
+    </div>
+    <div>
+      <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "airbnb3.jpg" %>');"></div>
+    </div>
+    <div>
+      <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "airbnb4.jpg" %>');"></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-11">
+        <h2><%= @space.category %> Opportunity at <%= @space.name %> in <%= @space.address.split(",").last %></h2>
+        <p><i class="fa fa-map-marker"></i> <%= @space.address %></p>
+        <p><%= @space.description %></p>
+        <br>
+        <h3>Desired Skills</h3>
+        <p><i class="fa fa-key"></i> <%= @space.required_skill %> Skill</p>
+        <br>
+        <h3>Space Details</h3>
+        <h5><i class="fa fa-wrench"></i> Facilities</h5>
+        <h5><i class="fa fa-users"></i> Maximum Capacity</h5>
+        <h5><i class="fa fa-building-o"></i> Floor Area</h5>
+        <h5><i class="fa fa-clock-o"></i> Opening & Closing Hours</h5>
+        <br>
+        <h3>Reviews</h3>
+        <br>
+    </div>
+    <div class="col-sm-1">
+      <br>
+<!--       Add sidebar here to contact, pay, and see/change calendar dates -->
+    </div>
+  </div>
+
+  <%= link_to "Make a booking", new_space_booking_path(@space) %>
 </div>
