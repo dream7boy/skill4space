@@ -17,6 +17,18 @@
             <% end %>
           </ul>
         </div>
+        <br>
+        <p>Reviews:</p>
+        <div class="row">
+          <ul>
+            <% @user.user_reviews.each do |review| %>
+              <div>
+                <li><%= review.content %> | <%= review.rating %>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
