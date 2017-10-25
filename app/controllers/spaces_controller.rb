@@ -1,9 +1,20 @@
 class SpacesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_space, only: [:show]
+  before_action :set_space, only: [:show, :edit, :update, :destroy]
 
   def index
-    @spaces = Space.all
+    if params[:city] == "Select city" || params[:category] == "Select workspace"
+      @spaces = Space.all
+      flash[:alert] = "No specific city or workspace chosen"
+    else
+      @spaces = Space.where('city LIKE ? AND category LIKE ?',
+      "%#{params[:city]}%", "%#{params[:category]}%")
+    end
+    # @hash = Gmaps4rails.build_markers(@pets) do |pet, marker|
+    #   marker.lat pet.latitude
+    #   marker.lng pet.longitude
+    #   marker.infowindow render_to_string(partial: "/pets/map_box", locals: { pet: pet })
+    # end
   end
 
   def show
@@ -21,6 +32,21 @@ class SpacesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @space.update(space_params)
+    redirect_to listings_path
+    flash[:notice] = "Your space has been edited"
+  end
+
+  def destroy
+    @space.destroy
+    redirect_to listings_path
+    flash[:notice] = "Your space has been deleted"
   end
 
   private

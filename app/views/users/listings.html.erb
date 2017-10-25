@@ -6,6 +6,10 @@
       <li>name: <%= space.name %></li>
       <li>address: <%= space.address %></li>
       <li>description: <%= space.description %></li>
+      <%= link_to "Detail", space, class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_space_path(space), class: "btn btn-primary" %>
+      <%= link_to "Delete", space, class: "btn btn-primary",
+        method: :delete, data: { confirm: "Are you sure?" } %>
     </ul>
   <% end %>
 </div>

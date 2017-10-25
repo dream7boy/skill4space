@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def update
     @user.update(users_params)
     redirect_to profile_path
-    flash[:notice] = "Your profile was edited"
+    flash[:notice] = "Your profile has been edited"
   end
 
   def profile

@@ -1,0 +1,28 @@
+<div class="new-space-container">
+  <div class="container">
+    <div class="row col-xs-12 col-sm-8 col-sm-offset-2">
+        <h1>Edit the space</h1>
+        <%= simple_form_for(@space) do |f| %>
+
+          <%= f.input :title %>
+          <%= f.input :name %>
+          <%= f.input :category, collection: ["Kitchen", "Garage"], prompt: "Choose the category of your space" %>
+          <%= f.input :description %>
+          <%= f.input :address %>
+          <%= f.input :floor_area %>
+          <%= f.input :facility %>
+          <%= f.input :people_capacity %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.input :opening_hours %>
+          <%= f.input :closing_hours %>
+          <%= f.input :is_barter %>
+          <%= f.input :required_skill, collection: ["Cooking", "Cleaning"], prompt: "Choose your skill" %>
+          <%= f.input :daily_price %>
+
+          <br>
+          <%= f.submit "Edit", class: "btn btn-success btn-lg" %>
+      <% end %>
+    </div>
+  </div>
+</div>
