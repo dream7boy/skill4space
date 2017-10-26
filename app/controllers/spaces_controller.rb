@@ -55,6 +55,11 @@ class SpacesController < ApplicationController
     flash[:notice] = "Your space has been deleted"
   end
 
+  def check_availability
+
+    render json: {available: true}
+  end
+
   private
 
   def space_params

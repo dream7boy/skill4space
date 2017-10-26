@@ -32,3 +32,37 @@ $('.slider-nav').slick({
   centerMode: true,
   focusOnSelect: true
 });
+
+$('#book-start-date, #book-end-date').change(function(event) {
+  const id = $(event.target).closest('form').attr('data-id');
+  const end_date = $('#book-end-date').val();
+  const start_date = $('#book-start-date').val();
+  console.log(start_date, end_date);
+  if (!start_date || !end_date) {
+    return;
+  }
+  const start_date_arr = start_date.split('-');
+  const start = new Date(start_date_arr[0], parseInt(start_date_arr[1]) - 1, start_date_arr[2]);
+  const end_date_arr = end_date.split('-');
+  const end = new Date(end_date_arr[0], parseInt(end_date_arr[1]) - 1, end_date_arr[2]);
+  const days = (end - start) / (1000*60*60*24) + 1;
+  const daily_price = $('#total-cost').data('price');
+  if (days < 1) {
+    event.preventDefault();
+    alert('Error! Please make sure your end date is after your start date.');
+    $('#total-cost').text('ERROR: Please make sure your end date is after your start date.');
+    return;
+  }
+
+  fetch(`/spaces/${id}/check_availability?start_date=${start_date}&end_date=${end_date}`, {
+    credentials: 'include'
+  }).then(res => res.json()).then(body => {
+    $('#booking-button').prop("disabled", !body.available);
+    if (body.available) {
+      console.log('Book it now!');
+
+    } else {
+      console.log('Dates taken!')
+    }
+  });
+});

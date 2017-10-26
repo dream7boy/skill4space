@@ -58,15 +58,30 @@
         <h5><i class="fa fa-clock-o"></i> Opening & Closing Hours</h5>
         <br>
         <h3>Reviews</h3>
+        <div class="row">
+          <ul>
+            <% @space.user.user_reviews.each do |review| %>
+              <div>
+                <li><%= review.title %> | <%= review.content %> | <%= review.rating %>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        </div>
         <br>
     </div>
     <div class="col-sm-1">
       <br>
 <!--       Add sidebar here to contact, pay, and see/change calendar dates -->
+      <%= form_tag(space_path, method: :get, 'data-id': @space.id) do %>
+        <%#= text_field_tag :species, params[:species] %>
+        <%= date_field_tag :start_date, params[:start_date], class: "input-lg form-top", id: "book-start-date" %>
+        <%= date_field_tag :end_date, params[:end_date], class: "input-lg form-top", id: "book-end-date" %>
+        <p></p>
+        <%= submit_tag 'BOOK', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
+      <% end %>
     </div>
   </div>
-
-  <%= link_to "Make a booking", new_space_booking_path(@space) %>
 </div>
 
 <div id="map" style="width: 100%; height: 300px;"></div>
