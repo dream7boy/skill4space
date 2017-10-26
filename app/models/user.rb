@@ -7,7 +7,7 @@ class User < ApplicationRecord
   #mailboxer
   acts_as_messageable
   def mailboxer_email(object)
-      return "define_email@on_your.model"
+      return nil
   end
   #attachinary
   has_attachment :photo
@@ -17,11 +17,11 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :user_reviews, dependent: :destroy
 
-  # after_create :send_welcome_email
+  after_create :send_welcome_email
 
-  # private
+  private
 
-  # def send_welcome_email
-  #   UserMailer.welcome(self).deliver_now
-  # end
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
 end
