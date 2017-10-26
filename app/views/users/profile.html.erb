@@ -57,32 +57,29 @@
                 </ul>
               </div>
               <h3><i class="fa fa-users"></i> Your reviews</h3>
-              <div class="profile-review">
-                <div class="review-left">
-                  <!-- Dynamic Reviewer's photo here -->
-                  <%= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
-                  <p>Junggun Lee <!-- Dynamic Name here --> </p>
-                  <div class="stars">
-                    <ul>
-                      <!-- Dynamic Reviews here -->
-                      <li><i class="fa fa-star starred"></i></li>
-                      <li><i class="fa fa-star starred"></i></li>
-                      <li><i class="fa fa-star starred"></i></li>
-                      <li><i class="fa fa-star starred"></i></li>
-                      <li><i class="fa fa-star"></i></li>
-                    </ul>
+              <% @user.user_reviews.each do |review| %>
+                  <div class="profile-review">
+                    <div class="review-left">
+                      <!-- Dynamic Reviewer's photo here -->
+                      <%= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
+                      <p>(Static)Junggun Lee <!-- Dynamic Name here --> </p>
+                      <div class="stars">
+                        <ul>
+                          <% review.rating.to_i.times do  %>
+                            <li><i class="fa fa-star starred"></i></li>
+                          <% end %>
+                          <% (5 - review.rating.to_i).times do  %>
+                            <li><i class="fa fa-star"></i></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="review-right">
+                      <h4>(Static)Review title here <!-- Dynamic Review title here --></h4>
+                      <p><%= review.content %></p>
+                    </div>
                   </div>
-                </div>
-                <div class="review-right">
-                  <h4>Review title here <!-- Dynamic Review title here --></h4>
-                  <p>Review content here <!-- Dynamic Review content here --></p>
-                </div>
-                <% @user.user_reviews.each do |review| %>
-              <div>
-                <li><%= review.content %> | <%= review.rating %>
-                </li>
-              </div>
-            <% end %>
+                <% end %>
               </div>
             </div>
           </div>

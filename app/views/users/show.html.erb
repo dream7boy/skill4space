@@ -34,15 +34,12 @@
                       <li>
                         <p>
                           <%= skill.skill_category %>
-                        <%= link_to [current_user, skill], class: "btn", method: :delete, data: { confirm: "Are you sure?" } do %>
-                          <i class="fa fa-times"></i>
-                        <% end %>
                         </p>
                       </li>
                     </div>
                   <% end %>
                 </ul>
-                <h3><i class="fa fa-users"></i> Your reviews</h3>
+                <h3><i class="fa fa-users"></i> <%= @user.name %>'s reviews</h3>
                 <% @user.user_reviews.each do |review| %>
                   <div class="profile-review">
                     <div class="review-left">
