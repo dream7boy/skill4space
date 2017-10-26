@@ -6,9 +6,14 @@ class SpacesController < ApplicationController
     if params[:city] == "Select city" || params[:category] == "Select workspace"
       @spaces = Space.all
       flash[:alert] = "No specific city or workspace chosen"
-    else
+    elsif params[:start_date] == "" || params[:end_date] == ""
       @spaces = Space.where('city LIKE ? AND category LIKE ?',
       "%#{params[:city]}%", "%#{params[:category]}%")
+      flash[:alert] = "No specific dates chosen"
+    else
+      @spaces = Space.where('city LIKE ? AND category LIKE ?
+        AND start_date =? AND end_date = ?',
+      "%#{params[:city]}%", "%#{params[:category]}%", "%#{params[:start_date]}%", "%#{params[:end_date]}%")
     end
 
     @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|

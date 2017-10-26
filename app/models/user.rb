@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :user_reviews, dependent: :destroy
 
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
 
   private
 
