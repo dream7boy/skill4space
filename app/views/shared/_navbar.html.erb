@@ -23,7 +23,7 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% if @user.photo.nil? %>
+          <% if current_user.photo.nil? %>
             <%= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
             <%= cl_image_tag @user.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"  %>
