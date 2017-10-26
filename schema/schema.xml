@@ -147,7 +147,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="589" y="222" name="bookings">
+<table x="611" y="222" name="bookings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -175,8 +175,11 @@
 <part>id</part>
 </key>
 </table>
-<table x="741" y="24" name="user_reviews">
+<table x="584" y="23" name="user_reviews">
 <row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="title" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="content" null="1" autoincrement="0">
@@ -189,15 +192,15 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
-<row name="space_id" null="1" autoincrement="0">
+<row name="booking_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="spaces" row="id" />
+<default>NULL</default><relation table="bookings" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="344" y="12" name="space_reviews">
+<table x="237" y="68" name="space_reviews">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -209,12 +212,10 @@
 <default>NULL</default></row>
 <row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
+<default>NULL</default></row>
 <row name="space_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="spaces" row="id" />
-</row>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>

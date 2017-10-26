@@ -58,6 +58,16 @@
         <h5><i class="fa fa-clock-o"></i> Opening & Closing Hours</h5>
         <br>
         <h3>Reviews</h3>
+        <div class="row">
+          <ul>
+            <% @space.user.user_reviews.each do |review| %>
+              <div>
+                <li><%= review.title %> | <%= review.content %> | <%= review.rating %>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        </div>
         <br>
     </div>
     <div class="col-sm-1">
