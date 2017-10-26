@@ -11,10 +11,10 @@
             <div class="left-profile">
               <%= image_tag "logo.png", class: "profile-avatar" %>
               <p><i class="fa fa-map-marker"></i> : <%= @user.address %></p>
-              <%= link_to edit_user_path(@user), class: "btn btn-primary" do%>
+              <%= link_to bookings_path(@user), class: "btn btn-primary" do%>
                 <i class="fa fa-book"></i> Your bookings
               <% end %>
-              <%= link_to edit_user_path(@user), class: "btn btn-primary" do%>
+              <%= link_to listings_path(@user), class: "btn btn-primary" do%>
                 <i class="fa fa-list-alt"></i> Your listings
               <%= link_to edit_user_path(@user), class: "btn" do%>
                 <i class="fa fa-user"></i> Edit profile
