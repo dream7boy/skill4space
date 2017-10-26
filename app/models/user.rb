@@ -7,7 +7,7 @@ class User < ApplicationRecord
   #mailboxer
   acts_as_messageable
   def mailboxer_email(object)
-    return email
+      return "define_email@on_your.model"
   end
   #attachinary
   has_attachment :photo
