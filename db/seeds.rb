@@ -23,13 +23,15 @@ puts 'Creating database...'
 
   if user.is_owner
     3.times do
-      start_random_date = DateTime.new(2017, 11, rand(6..8))
+      # start_random_date = DateTime.new(2017, 11, rand(6..8))
       space = Space.create!(
         name: Faker::Company.name,
         category: ["Garage", "Kitchen", "Office", "Design studio", "Coworking", "Classroom", "Laboratory"].sample,
         # category: ["Chincilla", "Crocodile", "Wallaby", "Chameleon", "Capybara", "Fennec", "Hedgehog"].sample,
-        start_date: start_random_date,
-        end_date: start_random_date + rand(1..2),
+        start_date: DateTime.new(2017, 11, 6),
+        end_date: DateTime.new(2017, 11, 8),
+        # start_date: start_random_date,
+        # end_date: start_random_date + rand(1..2),
         daily_price: rand(5000..20000).round(-3),
         is_barter: [true, false].sample,
         user_id: user.id,
