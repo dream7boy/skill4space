@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>make a review on owner <%=@user.name %> </h1>
+  <h1>make a review on <%=@user.name %> </h1>
   <%= simple_form_for [@user, @user_review] do |f| %>
 
   <% if @user_review.errors.any? %>
