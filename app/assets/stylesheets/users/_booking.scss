@@ -83,7 +83,7 @@
 /* Hover effects */
 .product:hover {
   background: #f7f7fa;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 // .product:hover .product-upvote {
@@ -129,5 +129,18 @@
   }
   .booking-status {
     margin-left: 50px;
+  }
+}
+
+.green-status {
+  color: green;
+}
+.red-status {
+  color: red;
+}
+.headings-row {
+  h5 {
+    font-weight: bold;
+    margin-top: 30px;
   }
 }
