@@ -62,7 +62,7 @@
           <ul>
             <% @space.user.user_reviews.each do |review| %>
               <div>
-                <li><%= review.title %> | <%= review.content %> | <%= review.rating %>
+                <li><%= review.title %> by <%= review.reviewer_name %> | <%= review.content %> | <%= review.rating %>
                 </li>
               </div>
             <% end %>
