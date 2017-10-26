@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>make a review on owner <%=@user.name %> </h1>
+  <%= simple_form_for [@user, @user_review] do |f| %>
+
+  <% if @user_review.errors.any? %>
+    <div>
+      <p>Errors</p>
+      <ul>
+        <% @user_review.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.input :content %>
+    <%= f.input :rating %>
+    <br>
+    <%= f.submit "Post review", class: "btn btn-success" %>
+  <% end %>
+</div>

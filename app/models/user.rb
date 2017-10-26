@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :skills, dependent: :destroy
   has_many :spaces, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_many :user_reviews, dependent: :destroy
 end

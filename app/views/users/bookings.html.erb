@@ -12,8 +12,10 @@
                 <div class='product-body'>
                   <div class="row">
                     <div class="col-xs-12 col-sm-3 booking-path">
-                      <h5><%= Space.find_by_id(booking.space_id).name %></h5>
-<!--                       <h3>< link_to booking.name, pet_path(booking)></h3> -->
+                      <h5><%= booking.space.name %></h5>
+                      <p><%= booking.space.user.name %></p>
+                      <p><%= link_to "Review on owner", new_user_user_review_path(booking.space.user) %>
+                      </p>
                     </div>
                   <div class="col-xs-12 col-sm-2 col-sm-offset-0.5">
                     <h5><%= "¥#{booking.total_price}" %></h5>
