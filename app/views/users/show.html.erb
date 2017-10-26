@@ -30,13 +30,9 @@
                 </div>
                 <ul>
                   <% @user.skills.each do |skill| %>
-                    <div class="profile-skill">
-                      <li>
-                        <p>
-                          <%= skill.skill_category %>
-                        </p>
-                      </li>
-                    </div>
+                    <li class="profile-skill">
+                      <%= skill.skill_category %>
+                    </li>
                   <% end %>
                 </ul>
                 <h3><i class="fa fa-users"></i> <%= @user.name %>'s reviews</h3>
