@@ -6,13 +6,36 @@
     <div class="tabs">
         <h2>MY LISTINGS</h2>
     </div>
+              <div class="row text-center headings-row">
+            <div class="col-sm-2 col-sm-offset-1">
+              <h5>PHOTO</h5>
+            </div>
+            <div class="col-sm-2 col-sm-offset-1">
+              <h5>NAME</h5>
+            </div>
+            <div class="col-sm-1">
+              <h5>PRICE</h5>
+            </div>
+<!--             <div class="col-sm-2">
+              <h5>DATES</h5>
+            </div> -->
+            <div class="col-sm-1 col-sm-offset-2">
+              <h5>ACTIONS</h5>
+            </div>
+ <!--            <div class="col-sm-1">
+              <h5>Cancel</h5>
+            </div> -->
+   <!--          <div class="col-sm-2">
+              <h5>STATUS</h5>
+            </div> -->
+          </div>
     <div id="my-items">
       <div id="my-bookings">
         <ul>
           <% @user.spaces.reverse.each do |space| %>
             <li>
             <div class="product">
-<!--               < cl_image_tag booking.photo, height: 200, width: 300, crop: :fill, class: "booking-photo" > -->
+              <%= image_tag 'airbnb3.jpg', height: 200, width: 300, crop: :fill, class: "booking-photo" %>
                 <div class='product-body'>
                   <div class="row">
                     <div class="col-xs-12 col-sm-3 booking-path">
@@ -20,6 +43,7 @@
 <!--                       <h3>< link_to booking.name, pet_path(booking)></h3> -->
                     </div>
                   <div class="col-xs-12 col-sm-2 col-sm-offset-0.5">
+                    <h5><%= space.daily_price %></h5>
                   </div>
                   <div class="col-xs-12 col-sm-2 col-sm-offset-0.5 text-center">
 <!--                     < "#{booking.start_date.month}/#{booking.start_date.day}/#{booking.start_date.year} to #{booking.end_date.month}/#{booking.end_date.day}/#{booking.end_date.year}" > -->
