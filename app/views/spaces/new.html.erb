@@ -37,6 +37,7 @@
           <%= f.input :is_barter %>
           <%= f.input :required_skill, collection: ["Cooking", "Cleaning"], prompt: "Choose your skill" %>
           <%= f.input :daily_price, placeholder: "eg,) 100 USD" %>
+          <%= f.input :photos, as: :attachinary %>
 
           <br>
           <%= f.submit "Create", class: "btn btn-success btn-lg" %>
