@@ -1,0 +1,19 @@
+<div class="container">
+  <h1><%= @conversation.subject %></h1>
+  <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
+    <div>
+      <p><%= receipt.message.sender.email %> commented:</p>
+      <p><%= receipt.message.body %></p>
+      <br>
+    </div>
+  <% end %>
+
+  <%= form_tag conversation_messages_path(@conversation), method: :post do %>
+    <div>
+      <%= text_area_tag :body %>
+    </div>
+
+    <%= submit_tag %>
+  <% end %>
+</div>
+

@@ -16,4 +16,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:destroy]
+
+  resources :conversations do
+    resources :messages
+  end
 end
