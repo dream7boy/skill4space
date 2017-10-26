@@ -12,9 +12,12 @@ class SpacesController < ApplicationController
       flash[:alert] = "No specific dates chosen"
     else
       @spaces = Space.where('city LIKE ? AND category LIKE ?
-        AND start_date =? AND end_date = ?',
+        AND start_date <= ? AND end_date >= ?',
       "%#{params[:city]}%", "%#{params[:category]}%", "%#{params[:start_date]}%", "%#{params[:end_date]}%")
     end
+
+    # availability = (astart..aend).map{ |date| date.strftime("%d %b %y") }
+    # booking = (start_date..end_date).map{ |date| date.strftime("%d %b %y") }
 
     @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
       marker.lat space.latitude
