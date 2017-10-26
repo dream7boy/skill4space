@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  #mailboxer
+  acts_as_messageable
+  def mailboxer_email(object)
+    return email
+  end
+  #attachinary
   has_attachment :photo
 
   has_many :skills, dependent: :destroy
