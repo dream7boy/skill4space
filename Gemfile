@@ -26,6 +26,8 @@ gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
 
+gem "letter_opener", group: :development
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
