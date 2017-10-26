@@ -58,6 +58,7 @@ $('#book-start-date, #book-end-date').change(function(event) {
     credentials: 'include'
   }).then(res => res.json()).then(body => {
     $('#booking-button').prop("disabled", !body.available);
+    $('#booking-cash-button').prop("disabled", !body.available);
     if (body.available) {
       console.log('Book it now!');
 

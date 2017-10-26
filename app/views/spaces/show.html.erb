@@ -42,7 +42,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-11">
+    <div class="col-sm-9 col-md-9 col-lg-9">
         <!-- Need to be modified, Tag should be h1 -->
         <h2><%= @space.category %> Opportunity at <%= @space.name %> in <%= @space.address.split(",").last %></h2>
         <p><i class="fa fa-map-marker"></i> <%= @space.address %></p>
@@ -70,15 +70,20 @@
         </div>
         <br>
     </div>
-    <div class="col-sm-1">
-      <br>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
 <!--       Add sidebar here to contact, pay, and see/change calendar dates -->
+      <br>
+      <h4>SELECT DATES</h4>
       <%= form_tag(space_path, method: :get, 'data-id': @space.id) do %>
         <%#= text_field_tag :species, params[:species] %>
+        <h5>FROM</h5>
         <%= date_field_tag :start_date, params[:start_date], class: "input-lg form-top", id: "book-start-date" %>
+        <h5>TO</h5>
         <%= date_field_tag :end_date, params[:end_date], class: "input-lg form-top", id: "book-end-date" %>
         <p></p>
-        <%= submit_tag 'BOOK', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
+        <%= submit_tag 'PAY WITH SKILLS', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
+        <h5>OR</h5>
+        <%= submit_tag 'PAY WITH CASH', disabled: true, class: "btn btn-success btn-lg", id: "booking-cash-button" %>
       <% end %>
     </div>
   </div>
