@@ -12,22 +12,21 @@
                 <div class='product-body'>
                   <div class="row">
                     <div class="col-xs-12 col-sm-3 booking-path">
-                      <%= booking.space.name %>
+                      <h5><%= booking.space.name %></h5>
                       <p><%= booking.space.user.name %></p>
                       <p><%= link_to "Review on owner", new_user_user_review_path(booking.space.user) %>
                       </p>
-<!--                       <h3>< link_to booking.name, pet_path(booking)></h3> -->
                     </div>
                   <div class="col-xs-12 col-sm-2 col-sm-offset-0.5">
-                    <%= "¥#{booking.total_price}" %>
+                    <h5><%= "¥#{booking.total_price}" %></h5>
                   </div>
                   <div class="col-xs-12 col-sm-2 col-sm-offset-0.5 text-center">
 <!--                     < "#{booking.start_date.month}/#{booking.start_date.day}/#{booking.start_date.year} to #{booking.end_date.month}/#{booking.end_date.day}/#{booking.end_date.year}" > -->
                   </div>
                   <div class="col-xs-12 col-sm-2">
                     <ul class="list-inline product-controls hidden-sm hidden-xs">
-                      <li class="icons"><a href="" title="Cancel booking" data-toggle="tooltip"><i class="fa fa-ban"></i></a></li>
                       <li class="icons"><a href="" title="Contact owner" data-toggle="tooltip"><i class="fa fa-envelope-o"></i></a></li>
+                     <li class="icons"> <%= link_to booking, class: "btn", method: :delete, data: { confirm: "Are you sure you want to delete this booking?" } do  %><i class="fa fa-lg fa-trash-o"></i><% end %></li>
                       <li class="booking-status"><a href=""><%= booking.status %></i></a></li>
                     </ul>
                   </div>
