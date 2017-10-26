@@ -86,7 +86,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "#" do %>
+            <%= link_to conversations_path do %>
               <i class="fa fa-envelope"></i> Mailbox
             <% end %>
           </li>
@@ -105,12 +105,12 @@
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to root_path do %>
+            <%= link_to new_user_session_path do %>
               <i class="fa fa-sign-in"></i> Login
             <% end %>
           </li>
           <li>
-            <%= link_to profile_path do %>
+            <%= link_to new_user_registration_path do %>
               <i class="fa fa-user-plus"></i> Signup
             <% end %>
           </li>
