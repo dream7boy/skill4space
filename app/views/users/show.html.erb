@@ -52,7 +52,7 @@
           <ul>
             <% @user.user_reviews.each do |review| %>
               <div>
-                <li><%= review.content %> | <%= review.rating %>
+                <li><%= review.title %> | <%= review.content %> | <%= review.rating %>
                 </li>
               </div>
             <% end %>
