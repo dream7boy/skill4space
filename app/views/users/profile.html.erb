@@ -13,10 +13,10 @@
                 <%= cl_image_tag @user.photo.path, width: 200, height: 300, crop: :fill, class: "profile-avatar" %>
               <% end %>
               <p><i class="fa fa-map-marker"></i> : <%= @user.address %></p>
-              <%= link_to edit_user_path(@user), class: "btn btn-primary" do%>
+              <%= link_to bookings_path(@user), class: "btn btn-primary" do%>
                 <i class="fa fa-book"></i> Your bookings
               <% end %>
-              <%= link_to edit_user_path(@user), class: "btn btn-primary" do%>
+              <%= link_to listings_path(@user), class: "btn btn-primary" do%>
                 <i class="fa fa-list-alt"></i> Your listings
               <%= link_to edit_user_path(@user), class: "btn" do%>
                 <i class="fa fa-user"></i> Edit profile
@@ -52,6 +52,28 @@
                     </div>
                   <% end %>
                 </ul>
+              </div>
+              <h3><i class="fa fa-users"></i> Your reviews</h3>
+              <div class="profile-review">
+                <div class="review-left">
+                  <!-- Dynamic Reviewer's photo here -->
+                  <%= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
+                  <p>Junggun Lee <!-- Dynamic Name here --> </p>
+                  <div class="stars">
+                    <ul>
+                      <!-- Dynamic Reviews here -->
+                      <li><i class="fa fa-star starred"></i></li>
+                      <li><i class="fa fa-star starred"></i></li>
+                      <li><i class="fa fa-star starred"></i></li>
+                      <li><i class="fa fa-star starred"></i></li>
+                      <li><i class="fa fa-star"></i></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="review-right">
+                  <h4>Review title here <!-- Dynamic Review title here --></h4>
+                  <p>Review content here <!-- Dynamic Review content here --></p>
+                </div>
               </div>
             </div>
           </div>

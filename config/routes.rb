@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :users, only: [:show, :edit, :update] do
     resources :skills, only: [:new, :create, :destroy]
+    resources :user_reviews, only: [:new, :create]
   end
 
   get "profile", to: 'users#profile'
