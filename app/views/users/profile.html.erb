@@ -77,6 +77,12 @@
                   <h4>Review title here <!-- Dynamic Review title here --></h4>
                   <p>Review content here <!-- Dynamic Review content here --></p>
                 </div>
+                <% @user.user_reviews.each do |review| %>
+              <div>
+                <li><%= review.content %> | <%= review.rating %>
+                </li>
+              </div>
+            <% end %>
               </div>
             </div>
           </div>
