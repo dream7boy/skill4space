@@ -66,3 +66,44 @@
   border: 1px solid #C4C4C4;
   border-radius: 50%;
 }
+
+.profile-review {
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-start;
+  .review-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .review-right {
+    margin-left: 30px;
+  }
+  h3 {
+    margin-top: 40px;
+  }
+  h4 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
+  li {
+    display: inline-block;
+    font-size: 12px;
+  }
+  .fa-star {
+    color: #767676;
+  }
+  .starred {
+    color: #F4BC2B;
+  }
+}
+
+.reviewer-avatar {
+  width: 60px;
+  height: 60px;
+}
