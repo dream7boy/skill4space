@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "listings", to: 'users#listings'
 
   resources :spaces, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    get "check_availability", to: 'spaces#check_availability'
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:destroy]
