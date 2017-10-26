@@ -51,13 +51,12 @@
                       <p>(Static)Junggun Lee <!-- Dynamic Name here --> </p>
                       <div class="stars">
                         <ul>
-                          <!-- Dynamic Reviews here -->
-                          <%= review.rating %>
-                          <li><i class="fa fa-star starred"></i></li>
-                          <li><i class="fa fa-star starred"></i></li>
-                          <li><i class="fa fa-star starred"></i></li>
-                          <li><i class="fa fa-star starred"></i></li>
-                          <li><i class="fa fa-star"></i></li>
+                          <% review.rating.to_i.times do  %>
+                            <li><i class="fa fa-star starred"></i></li>
+                          <% end %>
+                          <% (5 - review.rating.to_i).times do  %>
+                            <li><i class="fa fa-star"></i></li>
+                          <% end %>
                         </ul>
                       </div>
                     </div>
