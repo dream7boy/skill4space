@@ -10,4 +10,12 @@ class User < ApplicationRecord
   has_many :spaces, dependent: :destroy
   has_many :bookings, dependent: :destroy
   has_many :user_reviews, dependent: :destroy
+
+  after_create :send_welcome_email
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
 end
