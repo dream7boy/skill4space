@@ -18,9 +18,12 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 gem "geocoder"
-gem "coffee-rails"
 gem "gmaps4rails"
 gem "jquery-slick-rails"
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

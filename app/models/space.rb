@@ -5,6 +5,8 @@ class Space < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  has_attachments :photos, maximum: 5
+
   has_many :bookings, dependent: :destroy
   belongs_to :user
 end
