@@ -9,9 +9,12 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4">
             <div class="left-profile">
-              <% if @user.photo? %>
+              <% if @user.photo.nil? %>
+                <%= image_tag "logo.png", class: "profile-avatar" %>
+              <% else %>
                 <%= cl_image_tag @user.photo.path, width: 200, height: 300, crop: :fill, class: "profile-avatar" %>
               <% end %>
+
               <p><i class="fa fa-map-marker"></i> : <%= @user.address %></p>
               <%= link_to bookings_path(@user), class: "btn btn-primary" do%>
                 <i class="fa fa-book"></i> Your bookings
