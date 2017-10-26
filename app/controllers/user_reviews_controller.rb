@@ -1,7 +1,6 @@
 class UserReviewsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
-    @booking = Booking.where
     @user_review = @user.user_reviews.build
   end
 
