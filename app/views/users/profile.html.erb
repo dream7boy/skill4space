@@ -57,7 +57,8 @@
                   <div class="profile-review">
                     <div class="review-left">
                       <!-- Dynamic Reviewer's photo here -->
-                      <%= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
+                      <%#= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
+                      <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
                       <p><%= review.reviewer_name %></p>
                       <div class="stars">
                         <ul>
