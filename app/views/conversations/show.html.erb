@@ -1,7 +1,7 @@
 <div class="conversation-container">
   <div class="container">
     <div class="row">
-      <h1>Messages</h1>
+      <h1><%= @conversation.subject %></h1>
       <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
         <div class="message-wrapper">
           <div class="sender-profile">
