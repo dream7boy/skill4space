@@ -41,7 +41,7 @@
                     <div class="review-left">
                       <!-- Dynamic Reviewer's photo here -->
                       <%= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
-                      <p>(Static)Junggun Lee <!-- Dynamic Name here --> </p>
+                      <p><%= review.reviewer_name %></p>
                       <div class="stars">
                         <ul>
                           <% review.rating.to_i.times do  %>
@@ -54,8 +54,7 @@
                       </div>
                     </div>
                     <div class="review-right">
-                      <h4><%= review.title %> by <%= review.reviewer_name %>
-                      </h4>
+                      <h4><%= review.title %></h4>
                       <p><%= review.content %></p>
                     </div>
                   </div>

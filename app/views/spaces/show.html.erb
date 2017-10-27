@@ -59,14 +59,37 @@
         <br>
         <h3>Reviews</h3>
         <div class="row">
-          <ul>
-            <% @space.user.user_reviews.each do |review| %>
-              <div>
-                <li><%= review.title %> by <%= review.reviewer_name %> | <%= review.content %> | <%= review.rating %>
-                </li>
+          <% @space.user.user_reviews.each do |review| %>
+            <div class="profile-review">
+              <div class="review-left">
+                <!-- Dynamic Reviewer's photo here -->
+                <%= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
+                <p><%= review.reviewer_name %></p>
+                <div class="stars">
+                  <ul>
+                    <% review.rating.to_i.times do  %>
+                      <li><i class="fa fa-star starred"></i></li>
+                    <% end %>
+                    <% (5 - review.rating.to_i).times do  %>
+                      <li><i class="fa fa-star"></i></li>
+                    <% end %>
+                  </ul>
+                </div>
               </div>
-            <% end %>
-          </ul>
+              <div class="review-right">
+                <h4><%= review.title %></h4>
+                <p><%= review.content %></p>
+              </div>
+            </div>
+          <% end %>
+          <!-- <ul> -->
+            <%# @space.user.user_reviews.each do |review| %>
+              <!-- <div> -->
+                <!-- <li><%#= review.title %> by <%#= review.reviewer_name %> | <%#= review.content %> | <%#= review.rating %> -->
+                <!-- </li> -->
+              <!-- </div> -->
+            <%# end %>
+          <!-- </ul> -->
         </div>
         <br>
     </div>
