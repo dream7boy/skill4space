@@ -1,8 +1,8 @@
 <div class="conversation-container">
   <div class="container">
     <div class="row">
-      <h1><%= @conversation.subject %></h1>
-      <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
+      <h1>Messages</h1>
+      <% @conversation.receipts_for(current_user).sort_by(&:created_at).each do |receipt| %>
         <div class="message-wrapper">
           <div class="sender-profile">
             <!-- Need to modify condition -->
@@ -11,11 +11,11 @@
             <% else %>
               <%= cl_image_tag receipt.message.sender.photo.path, class: "message-avatar" %>
             <% end %>
-          </div>        
+          </div>
           <div class="message-body">
             <p>FROM: <%= receipt.message.sender.name %> <span>on <%= receipt.message.created_at.strftime("%Y/%m/%d %H:%M%p") %></span></p>
-            <p><%= receipt.message.body %></p>      
-          </div>        
+            <p><%= receipt.message.body %></p>
+          </div>
         </div>
       <% end %>
       <p class="lead">Type your message here:</p>
