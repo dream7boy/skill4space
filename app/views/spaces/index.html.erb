@@ -17,7 +17,7 @@
             <div class="card-wrapper">
               <%= link_to space_path(space) do %>
                 <% if space.photos.empty? %>
-                  <div class="card" style="background-image: url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+                  <div class="card" style="background-image: url(http://via.placeholder.com/350x150);">
                   </div>
                 <% else %>
                   <div class="card" style="background-image: url('<%= cl_image_path space.photos.first.path %>');">
