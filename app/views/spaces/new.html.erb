@@ -19,25 +19,25 @@
               </ul>
             </div>
           <% end %>
-          <%= f.input :title, placeholder: "eg,) Please come to use our fully equipped kitchen" %>
-          <%= f.input :name, placeholder: "eg,) Cosy Kitchen Tokyo" %>
+          <%= f.input :title, placeholder: "eg.) Please come to use our fully equipped kitchen" %>
+          <%= f.input :name, placeholder: "eg.) Cosy Kitchen Tokyo" %>
           <%= f.input :category, collection: ["Office", "Coworking", "Design Studio", "Music Studio", "Dance Studio", "Classroom", "Laboratory", "Kitchen", "Garage", ], prompt: "Choose the category of your space" %>
-          <%= f.input :description, placeholder: "eg,) We have a beautiful, clean, and commercial share kitchen located in Tokyo... "%>
-          <%= f.input :city, placeholder: "eg,) Tokyo" %>
-          <%= f.input :address, placeholder: "eg,) Tokyo, Japan" %>
-          <%= f.input :floor_area, placeholder: "eg,) 20m2" %>
-          <%= f.input :facility, placeholder: "eg,) Wi-Fi, Large Mixer, Oven..." %>
-          <%= f.input :people_capacity, placeholder: "eg,) 100 people" %>
-          <%= f.input :start_date %>
-          <%= f.input :end_date %>
-          <%= f.input :opening_hours %>
-          <%= f.input :closing_hours %>
+          <%= f.input :description, placeholder: "eg.) We have a beautiful, clean, and commercial share kitchen located in Tokyo... "%>
+          <%= f.input :city, placeholder: "eg.) Tokyo" %>
+          <%= f.input :address, placeholder: "eg.) Tokyo, Japan" %>
+          <%= f.input :floor_area, placeholder: "eg.) 20m2" %>
+          <%= f.input :facility, placeholder: "eg.) Wi-Fi, Large Mixer, Oven..." %>
+          <%= f.input :people_capacity, placeholder: "eg.) 100 people" %>
+          <%= f.input :start_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'} %>
+          <%= f.input :end_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'} %>
+          <%= f.input :opening_hours, selected: 00, wrapper_html: { class: 'form-inline'}, label_html: { class: 'form-inline-label'} %>
+          <%= f.input :closing_hours, selected: 00, wrapper_html: { class: 'form-inline'}, label_html: { class: 'form-inline-label'} %>
           <%= f.input :is_barter %>
-          <%= f.input :required_skill, collection: ["Cooking", "Cleaning"], prompt: "Choose your skill" %>
-          <%= f.input :daily_price, placeholder: "eg,) 100 USD" %>
+          <%= f.input :required_skill, collection: ["Cooking", "Cleaning", "Design", "Music", "Dance", "Teaching", "Coding"], prompt: "Choose your desired skill" %>
+          <%= f.input :daily_price, placeholder: "eg.) 100 USD" %>
           <%= f.input :photos, as: :attachinary %>
           <br>
-          <%= f.submit "Create", class: "btn btn-success btn-lg" %>
+          <%= f.submit "CREATE LISTING", class: "btn btn-success btn-lg" %>
         <% end %>
     </div>
     </div>
