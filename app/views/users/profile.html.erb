@@ -53,7 +53,8 @@
                 </ul>
               </div>
               <h3><i class="fa fa-users"></i> Your reviews</h3>
-              <% @user.user_reviews.each do |review| %>
+              <% unless @user.user_reviews %>
+                <% @user.user_reviews.each do |review| %>
                   <div class="profile-review">
                     <div class="review-left">
                       <!-- Dynamic Reviewer's photo here -->
@@ -77,6 +78,8 @@
                     </div>
                   </div>
                 <% end %>
+              <% end %>
+
               </div>
             </div>
           </div>
