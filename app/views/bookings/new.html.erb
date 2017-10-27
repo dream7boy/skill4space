@@ -16,7 +16,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-7">
       <div class id="payment-info">
-        <h2 class="text-center">Payment Information</h2>
+        <h2 class="text-center">PAYMENT INFORMATION</h2>
           <%= simple_form_for :user, url: user_session_path do |f| %>
             <%= f.input :name, as: :string, label: "Name on card", placeholder: "eg,) Input your name on card" %>
             <%= f.input :country, as: :string, placeholder: "eg,) Japan" %>
@@ -30,7 +30,7 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-5">
           <div id="booking-details">
-          <h2 class="text-center">Booking Details</h2>
+          <h2 class="text-center">BOOKING DETAILS</h2>
             <%= simple_form_for [@space, @booking] do |f| %>
               <%= f.hidden_field :start_date, value: @space.start_date %>
               <%= f.hidden_field :end_date, value: @space.end_date %>
