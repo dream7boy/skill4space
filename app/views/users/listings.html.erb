@@ -3,10 +3,19 @@
 <% end %>
 
 <div class="dashboard-container container">
-    <div class="tabs">
-        <h2>MY LISTINGS</h2>
-    </div>
-              <div class="row text-center headings-row">
+<!--     <%#= link_to "CREATE A NEW LISTING", new_space_path, class: "btn btn-success btn-lg", id: "new-listing-button" %>
+      <div class="tabs">
+        <h2 id="listings-heading">MY LISTINGS</h2>
+      </div> -->
+      <div class="row tabs">
+        <div class="col-sm-8">
+          <h2>MY LISTINGS</h2>
+        </div>
+        <div class="col-sm-3 col-sm-offset-3">
+            <%= link_to "CREATE A NEW LISTING", new_space_path, class: "btn btn-success btn-lg", id: "new-listing-button" %>
+        </div>
+      </div>
+        <div class="row text-center headings-row">
             <div class="col-sm-2 col-sm-offset-1">
               <h5>PHOTO</h5>
             </div>
@@ -28,7 +37,7 @@
    <!--          <div class="col-sm-2">
               <h5>STATUS</h5>
             </div> -->
-          </div>
+        </div>
     <div id="my-items">
       <div id="my-bookings">
         <ul>
@@ -39,7 +48,7 @@
                 <div class='product-body'>
                   <div class="row">
                     <div class="col-xs-12 col-sm-3 booking-path">
-                      <h5><%= space.name %></h5>
+                      <h5><%= link_to space.name, space_path(space) %></h5>
                       <%#= space.bookings.last ? "Booked" : "Pending" %>
                       <!-- change .last to [0] when only one booker per booking? -->
                       <% if space.bookings.last %>

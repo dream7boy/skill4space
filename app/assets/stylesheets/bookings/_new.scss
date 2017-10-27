@@ -1,0 +1,32 @@
+// _new.scss
+.booking-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+
+  h2 {
+    padding-bottom: 10px;
+  }
+  #payment-info {
+  //   background-color: $green;
+    margin: 60px 40px;
+    padding: 40px 50px;
+    padding-top: 20px;
+    border-radius: 10px;
+    border: 1px solid $green;
+  }
+  #booking-details {
+    // background-color: $green;
+    flex-grow: auto;
+    margin: 60px 40px;
+    padding: 40px 50px;
+    padding-top: 20px;
+    border-radius: 10px;
+    border: 1px solid $green;
+  }
+  .btn {
+    border-radius: 10px;
+  }
+}
