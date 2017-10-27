@@ -53,13 +53,18 @@
                 </ul>
               </div>
               <h3><i class="fa fa-users"></i> Your reviews</h3>
-              <% unless @user.user_reviews %>
                 <% @user.user_reviews.each do |review| %>
                   <div class="profile-review">
                     <div class="review-left">
                       <!-- Dynamic Reviewer's photo here -->
                       <%#= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
-                      <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
+
+                      <% if User.find_by(name: review.reviewer_name).photo.present? %>
+                        <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
+                      <% else %>
+                        <%= image_tag "person-placeholder.jpg", class: "profile-avatar reviewer-avatar" %>
+                      <% end %>
+
                       <p><%= review.reviewer_name %></p>
                       <div class="stars">
                         <ul>
@@ -78,8 +83,6 @@
                     </div>
                   </div>
                 <% end %>
-              <% end %>
-
               </div>
             </div>
           </div>
