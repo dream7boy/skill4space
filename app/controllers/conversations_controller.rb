@@ -12,8 +12,9 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    recipient = User.find(params[:user_id])
-    receipt = current_user.send_message(recipient, params[:body], params[:subject])
+    @space = Space.find(params[:space_id])
+    sender = User.find(@space.user.id)
+    receipt = sender.send_message(current_user, "#{current_user.email}, Thank you for your booking!!", "#{@space.name} has been booked!")
     redirect_to conversation_path(receipt.conversation)
   end
 end

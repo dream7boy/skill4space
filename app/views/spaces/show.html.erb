@@ -74,14 +74,16 @@
 <!--       Add sidebar here to contact, pay, and see/change calendar dates -->
       <br>
       <h4>SELECT DATES</h4>
-      <%= form_tag(space_path, method: :get, 'data-id': @space.id) do %>
+      <%= form_tag(conversations_path, method: :post) do %>
+      <%#= form_tag(conversations_path, method: :post, 'data-id': @space.id) do %>
         <%#= text_field_tag :species, params[:species] %>
         <h5>FROM</h5>
         <%= date_field_tag :start_date, params[:start_date], class: "input-lg form-top", value: @space.start_date, id: "book-start-date" %>
         <h5>TO</h5>
         <%= date_field_tag :end_date, params[:end_date], class: "input-lg form-top", value: @space.end_date, id: "book-end-date" %>
+        <%= hidden_field_tag "space_id", @space.id%>
         <p></p>
-        <%= link_to "Book", new_space_booking_path(@space), class: "btn btn-success btn-lg" %>
+        <%= submit_tag "Book", class: "btn btn-success btn-lg" %>
         <%#= submit_tag 'PAY WITH SKILLS', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
         <!-- <h5>OR</h5> -->
         <%#= submit_tag 'PAY WITH CASH', disabled: true, class: "btn btn-success btn-lg", id: "booking-cash-button" %>
