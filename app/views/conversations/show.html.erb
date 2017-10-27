@@ -1,19 +1,32 @@
-<div class="container">
-  <h1><%= @conversation.subject %></h1>
-  <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
-    <div>
-      <p><%= receipt.message.sender.email %> commented:</p>
-      <p><%= receipt.message.body %></p>
-      <br>
-    </div>
-  <% end %>
+<div class="conversation-container">
+  <div class="container">
+    <div class="row">
+      <h1>Messages</h1>
+      <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
+        <div class="message-wrapper">
+          <div class="sender-profile">
+            <!-- Need to modify condition -->
+            <% if receipt.message.sender.photo.nil? %>
+              <%= image_tag "logo.png", class: "profile-avatar" %>
+            <% else %>
+              <%= cl_image_tag receipt.message.sender.photo.path, class: "message-avatar" %>
+            <% end %>
+          </div>        
+          <div class="message-body">
+            <p>FROM: <%= receipt.message.sender.name %> <span>on <%= receipt.message.created_at.strftime("%Y/%m/%d %H:%M%p") %></span></p>
+            <p><%= receipt.message.body %></p>      
+          </div>        
+        </div>
+      <% end %>
+      <p class="lead">Type your message here:</p>
+      <%= form_tag conversation_messages_path(@conversation), method: :post,  class: "message-box" do %>
+        <div>
+          <%= text_area_tag :body %>
+        </div>
 
-  <%= form_tag conversation_messages_path(@conversation), method: :post do %>
-    <div>
-      <%= text_area_tag :body %>
+        <%= submit_tag "Send", class: "btn btn-successs" %>
+      <% end %>
     </div>
-
-    <%= submit_tag %>
-  <% end %>
+  </div>
 </div>
 
