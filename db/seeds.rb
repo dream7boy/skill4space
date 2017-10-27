@@ -29,7 +29,7 @@ puts 'Creating database...'
         category: ["Garage", "Kitchen", "Office", "Design studio", "Coworking", "Classroom", "Laboratory"].sample,
         # category: ["Chincilla", "Crocodile", "Wallaby", "Chameleon", "Capybara", "Fennec", "Hedgehog"].sample,
         start_date: DateTime.new(2017, 11, 6),
-        end_date: DateTime.new(2017, 11, 8),
+        end_date: DateTime.new(2017, 11, 10),
         # start_date: start_random_date,
         # end_date: start_random_date + rand(1..2),
         daily_price: rand(5000..20000).round(-3),
