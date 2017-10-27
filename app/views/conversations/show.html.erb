@@ -7,9 +7,9 @@
           <div class="sender-profile">
             <!-- Need to modify condition -->
             <% if receipt.message.sender.photo.nil? %>
-              <%= image_tag "logo.png", class: "profile-avatar" %>
+              <%= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
             <% else %>
-              <%= cl_image_tag receipt.message.sender.photo.path, class: "message-avatar" %>
+              <%= cl_image_tag receipt.message.sender.photo.path, class: "profile-avatar" %>
             <% end %>
           </div>
           <div class="message-body">
