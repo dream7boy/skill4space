@@ -18,7 +18,9 @@ class ConversationsController < ApplicationController
     BookingsController.callback(@space, params[:start_date], params[:end_date], current_user)
 
     sender = User.find(@space.user.id)
-    receipt = sender.send_message(current_user, "Hello! #{current_user.email}, Thank you for your booking!!", "#{@space.name} has been booked!")
+    receipt = sender.send_message(current_user, 
+      "Hi #{current_user.name}, I am #{sender.name}, the owner of #{@space.name}. Thank you for your booking!! Please leave messages if you have any questions. I will respond you soon!!",
+       "Message from #{@space.name}")
     redirect_to conversation_path(receipt.conversation)
   end
 end
