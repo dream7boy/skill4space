@@ -58,7 +58,17 @@
         <h5><i class="fa fa-wrench"></i> Facilities:</h5><p><%= @space.facility %></p>
         <h5><i class="fa fa-users"></i> Maximum Capacity:</h5><p><%= @space.people_capacity %></p>
         <h5><i class="fa fa-building-o"></i> Floor Area:</h5><p><%= @space.floor_area %></p>
-        <h5><i class="fa fa-clock-o"></i> Opening & Closing Hours:</h5><p><%= @space.opening_hours %> 〜 <%= @space.closing_hours %></p>
+        <% if @space.opening_hours.min < 10 %>
+          <% opening_min = "0#{@space.opening_hours.min}" %>
+        <% else %>
+          <% opening_min = @space.opening_hours.min %>
+        <% end %>
+        <% if @space.closing_hours.min < 10 %>
+          <% closing_min = "0#{@space.closing_hours.min}" %>
+        <% else %>
+          <% closing_min = @space.closing_hours.min %>
+        <% end %>
+        <h5><i class="fa fa-clock-o"></i> Opening & Closing Hours:</h5><p><%= "#{@space.opening_hours.hour}:#{opening_min}" %> 〜 <%= "#{@space.closing_hours.hour}:#{closing_min}" %></p>
         <br>
         <h3>Reviews</h3>
         <div class="row">
