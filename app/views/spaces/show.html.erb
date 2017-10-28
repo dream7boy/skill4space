@@ -114,7 +114,7 @@
         <%= date_field_tag :end_date, params[:end_date], class: "input-lg form-top", value: @space.end_date, id: "book-end-date" %>
         <%= hidden_field_tag "space_id", @space.id%>
         <p></p>
-        <%= submit_tag "Book", class: "btn btn-success btn-lg" %>
+        <%= submit_tag "Book", class: "btn btn-success btn-lg", data: { confirm: "Are you sure to book this space?" } %>
         <%#= submit_tag 'PAY WITH SKILLS', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
         <!-- <h5>OR</h5> -->
         <%#= submit_tag 'PAY WITH CASH', disabled: true, class: "btn btn-success btn-lg", id: "booking-cash-button" %>
