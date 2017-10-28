@@ -5,7 +5,7 @@
   <div class="new-space-container container">
     <div class="row">
       <div class="row col-xs-12 col-sm-8 col-sm-offset-2">
-        <h2 class="text-center">Create a new listing</h2>
+        <h1>Create a new listing</h1>
         <%= simple_form_for(@space) do |f| %>
           <% if @space.errors.any? %>
             <div>
@@ -19,26 +19,30 @@
               </ul>
             </div>
           <% end %>
-          <%= f.input :title, placeholder: "eg.) Please come to use our fully equipped kitchen" %>
-          <%= f.input :name, placeholder: "eg.) Cosy Kitchen Tokyo" %>
-          <%= f.input :category, collection: ["Office", "Coworking", "Design Studio", "Music Studio", "Dance Studio", "Classroom", "Laboratory", "Kitchen", "Garage", ], prompt: "Choose the category of your space" %>
+          <%= f.input :title, placeholder: "eg.) Please come to use our office", label: "Listing title" %>
+          <%= f.input :name, placeholder: "eg.) IMPACT HUB Tokyo", label: "Space name" %>
+          <%= f.input :category, collection: ["Office", "Coworking", "Design Studio", "Music Studio", "Dance Studio", "Classroom", "Laboratory", "Kitchen", "Garage", ], prompt: "Choose the category of your space", label: "Space category" %>
           <%= f.input :description, placeholder: "eg.) We have a beautiful, clean, and commercial share kitchen located in Tokyo... "%>
-          <%= f.input :city, placeholder: "eg.) Tokyo" %>
-          <%= f.input :address, placeholder: "eg.) Tokyo, Japan" %>
-          <%= f.input :floor_area, placeholder: "eg.) 20m2" %>
-          <%= f.input :facility, placeholder: "eg.) Wi-Fi, Large Mixer, Oven..." %>
-          <%= f.input :people_capacity, placeholder: "eg.) 100 people" %>
-          <%= f.input :start_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'} %>
-          <%= f.input :end_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'} %>
+          <%= f.input :city, collection: ["Tokyo", "Osaka", "Fukuoka"], prompt: "Choose the location of the space", label: "Location of the space" %>
+          <%= f.input :address, placeholder: "eg.) Tokyo, Japan", label: "Address of the space" %>
+          <%= f.input :floor_area, collection: ["〜10", "11〜20", "21〜50", "50〜100", "100〜"], label: "Floor area of the space (suquare meter)", prompt: "Choose floor area of the space" %>
+          <%= f.input :facility, placeholder: "eg.) Wi-Fi, Lounge, Free coffee..." , label: "Facility of the space"%>
+          <%= f.input :people_capacity, collection: ["1 person", "〜5 people", "〜10 people", "〜20 people", "〜50 people", "〜100 people", "〜200 people", "More than 200 people" ], prompt: "Choose people capacity of the office", label: "Capacity of the space" %>
+          <%= f.input :start_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'}, label: "Available from"%>
+          <%= f.input :end_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'}, label: "Available until" %>
           <%= f.input :opening_hours, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'}, default: Time.parse('8:00') %>
           <%= f.input :closing_hours, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'}, default: Time.parse('20:00') %>
-          <%#= f.input :opening_hours, selected: 00, wrapper_html: { class: 'form-inline'}, label_html: { class: 'form-inline-label'} %>
-          <%#= f.input :closing_hours, selected: 00, wrapper_html: { class: 'form-inline'}, label_html: { class: 'form-inline-label'} %>
-          <%= f.input :is_barter, label_html: { class: 'form-inline-label' } %>
-          <%= f.input :required_skill, collection: ["Cooking", "Cleaning", "Design", "Music", "Dance", "Teaching", "Coding", "Farming"], prompt: "Choose your desired skill" %>
+          <br>
+          <br>
+          <label class="control-label boolean optional" for="space_is_barter">▶Do you ask user's to provide skills instead of money?</label>
+          <%= f.input :is_barter, label: "Yes" %>
+          <%= f.input :required_skill, collection: ["Programming", "Design", "Teaching", "Translation", "Writing"], label: "What kind of skill do you require?", prompt: "Choose your desired skill", class: "prompt" %>
+          <br>
+          <p>▶Or do you allow users to pay for the office use?</p>
           <%= f.input :daily_price, placeholder: "eg.) 100 USD" %>
+          <br>
           <%= f.input :photos, as: :attachinary, label: "Space photos (*Up to 5 photos)" %>
-          <p>*First photo will be the main image of the space.</p>
+          <p><span>*First photo will be the main image of the space.</span></p>
           <br>
           <%= f.submit "CREATE LISTING", class: "btn btn-success btn-lg" %>
         <% end %>
