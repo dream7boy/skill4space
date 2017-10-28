@@ -1,11 +1,17 @@
-<div class="container">
-  <h1>All Conversations</h1>
-
-  <% @conversations.each do |conversation| %>
-    <div>
-      <%= link_to conversation.subject, conversation_path(conversation) %>
-    </div>
-  <% end %>
-
-  <%= link_to "New conversation", new_conversation_path %>
+<div class="mailbox-container">
+	<div class="container">
+		<div class="row">
+		  <h1><i class="fa fa-envelope-o"></i> Your Mailbox</h1>
+		  <%# raise %>
+		  <% @conversations.each do |conversation| %>
+		    <div>
+		      <h2><%= link_to conversation.subject, conversation_path(conversation) %></h2>
+		      <%# if  !conversation.messages.first.sender.photo.empty?%>
+		      <%#= cl_image_tag conversation.messages.first.sender.photo.path, class: "avatar" %>
+		      <p><%= conversation.messages.first.sender.name %></p>
+		    </div>
+		  <% end %>
+		  <%#= link_to "New conversation", new_conversation_path %>
+		</div>
+	</div>
 </div>
