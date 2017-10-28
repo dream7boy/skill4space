@@ -20,7 +20,7 @@ class ConversationsController < ApplicationController
     sender = User.find(@space.user.id)
     receipt = sender.send_message(current_user, 
       "Hi #{current_user.name}, I am #{sender.name}, the owner of #{@space.name}. Thank you for your booking!! Please leave messages if you have any questions. I will respond you soon!!",
-       "Message from #{@space.name}")
+       "#{@space.name}")
     redirect_to conversation_path(receipt.conversation)
   end
 end

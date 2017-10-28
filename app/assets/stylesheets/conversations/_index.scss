@@ -1,10 +1,48 @@
 @import "show";
 
 .mailbox-container {
+	.message-wrapper {
+		border-top: 1px solid #D7E4C9;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 14px 0;
+	}
+	a {
+		text-decoration: none;
+		opacity: 1.0;
+		&:hover {
+			text-decoration: none;
+			opacity: 0.7;	
+		}
+	}
 	h1 {
 		font-size: 24px;
 	}
 	h2 {
 		font-size: 18px;
+	}
+	.profile-avatar {
+		width: 60px;
+		height: 60px;
+	}
+	.mailbox-right {
+		margin-left: 14px;
+		min-width: 180px;
+	}
+	.mailbox-body {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		// align-items: center;
+	}
+	.latest-message {
+		font-size: 16px;
+	}
+	p {
+		margin: 0;
+		span {
+			font-weight: lighter;
+		}
 	}
 }
