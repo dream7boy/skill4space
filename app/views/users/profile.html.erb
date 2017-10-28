@@ -45,7 +45,7 @@
                   <% @user.skills.each do |skill| %>
                     <li class="profile-skill">
                       <%= skill.skill_category %>
-                      <%= link_to [current_user, skill], class: "btn", method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <%= link_to [current_user, skill], class: "btn", method: :delete, data: { confirm: "Are you sure to delete this skill?" } do %>
                          <i class="fa fa-times"></i>
                       <% end %>
                     </li>

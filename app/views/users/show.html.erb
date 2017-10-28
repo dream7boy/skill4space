@@ -36,6 +36,7 @@
                     </li>
                   <% end %>
                 </ul>
+              </div>
                 <h3><i class="fa fa-users"></i> <%= @user.name %>'s reviews</h3>
                 <% @user.user_reviews.each do |review| %>
                   <div class="profile-review">
@@ -64,7 +65,6 @@
                     </div>
                   </div>
                 <% end %>
-              </div>
             </div>
           </div>
         </div>

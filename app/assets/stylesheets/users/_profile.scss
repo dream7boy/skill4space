@@ -99,15 +99,18 @@
     font-size: 16px;
     margin: 0;
   }
-  li {
-    display: inline-block;
+  .stars>ul>li {
+    margin: 0;
+    padding: 2px;
+    display: flex;
+    justify-content: space-around;
     font-size: 12px;
-  }
-  .fa-star {
-    color: #767676;
-  }
-  .starred {
-    color: #F4BC2B;
+    .fa-star {
+      color: #767676;
+    }
+    .starred {
+      color: #F4BC2B;
+    }
   }
 }
 
