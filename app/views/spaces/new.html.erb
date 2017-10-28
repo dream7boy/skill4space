@@ -30,14 +30,15 @@
           <%= f.input :people_capacity, placeholder: "eg.) 100 people" %>
           <%= f.input :start_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'} %>
           <%= f.input :end_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'} %>
-          <%= f.input :opening_hours %>
-          <%= f.input :closing_hours %>
+          <%= f.input :opening_hours, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'} %>
+          <%= f.input :closing_hours, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'} %>
           <%#= f.input :opening_hours, selected: 00, wrapper_html: { class: 'form-inline'}, label_html: { class: 'form-inline-label'} %>
           <%#= f.input :closing_hours, selected: 00, wrapper_html: { class: 'form-inline'}, label_html: { class: 'form-inline-label'} %>
-          <%= f.input :is_barter %>
+          <%= f.input :is_barter, label_html: { class: 'form-inline-label' } %>
           <%= f.input :required_skill, collection: ["Cooking", "Cleaning", "Design", "Music", "Dance", "Teaching", "Coding", "Farming"], prompt: "Choose your desired skill" %>
           <%= f.input :daily_price, placeholder: "eg.) 100 USD" %>
-          <%= f.input :photos, as: :attachinary %>
+          <%= f.input :photos, as: :attachinary, label: "Space photos (*Up to 5 photos)" %>
+          <p>*First photo will be the main image</p>
           <br>
           <%= f.submit "CREATE LISTING", class: "btn btn-success btn-lg" %>
         <% end %>

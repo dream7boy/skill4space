@@ -17,9 +17,6 @@
 			}
 		}
 	}
-	.hidden {
-	  // display: none;
-	}
   .form-inline {
     display: inline-block;
     float: none;
@@ -32,6 +29,9 @@
     width: 100%;
     text-align: center;
     margin-bottom: 30px;
+  }
+  p {
+    font-size: 14px;
   }
 }
 
