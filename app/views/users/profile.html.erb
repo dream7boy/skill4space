@@ -9,17 +9,12 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4">
             <div class="left-profile">
-              <%# profile_pic = @user.facebook_picture_url || @user.photo.path %>
               <% if @user.photo.present? %>
                 <% avatar_url = @user.photo.path %>
               <% else %>
                 <% avatar_url = @user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
               <% end %>
               <%= cl_image_tag avatar_url, class: "profile-avatar" %>
-                <%#= cl_image_tag profile_pic, width: 200, height: 300, crop: :fill, class: "profile-avatar" %>
-              <%# else %>
-                <%#= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
-              <%# end %>
 
               <p><i class="fa fa-map-marker"></i> : <%= @user.address %></p>
               <%= link_to bookings_path(@user), class: "btn btn-primary" do%>
