@@ -61,6 +61,70 @@
   }
 }
 
+.home-content {
+  height: 100%;
+  .explanation {
+    padding: 50px;
+  }
+  .lead {
+    font-size: 24px;
+    margin: 0;
+  }
+  .chatting {
+    width: 100%;
+  }
+  .says {
+    display: inline-block;
+    position: relative; 
+    margin: 6px auto;
+    padding: 17px 13px;
+    border-radius: 12px;
+    background: #d7ebfe;
+  }
+  .left:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 18px; 
+    left: -24px;
+    border: 12px solid transparent;
+    border-right: 12px solid #d7ebfe;
+  }
+    .right:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 18px; 
+    right: -24px;
+    border: 12px solid transparent;
+    border-left: 12px solid #d7ebfe;
+  }
+  .says p {
+    margin: 0;
+    padding: 0;
+  }
+}
+.exp {
+  height: 500px;
+  display: flex;
+  justify-content: flex-start;
+  .exp-img {
+    width:50%;
+    height: auto;
+  }
+  .exp-text{
+    width: 50%;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+}
+.cta {
+  height: 600px;
+  padding: 40px;
+}
 
 /* The typing effect */
 @keyframes typing {
