@@ -25,6 +25,7 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
+gem 'omniauth-facebook'
 
 gem "letter_opener", group: :development
 
