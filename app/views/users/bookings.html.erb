@@ -1,71 +1,124 @@
 <div class="dashboard-container container">
     <div class="tabs">
         <h2>MY BOOKINGS</h2>
-
     </div>
-          <div class="row text-center headings-row">
-            <div class="col-sm-2 col-sm-offset-1">
+    <div class="table-responsive">
+      <table class="table table-hover table-responsive">
+        <thead>
+          <tr>
+            <th class="table-heading text-center">PHOTO</th>
+            <th class="table-heading text-center">NAME</th>
+            <th class="table-heading text-center">PRICE</th>
+            <th class="table-heading text-center">DATES</th>
+            <th class="table-heading text-center">ACTIONS</th>
+            <th class="table-heading text-center">STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @user.bookings.reverse.each do |booking| %>
+            <tr>
+            <div class="">
+                <div class=''>
+                  <div class="row">
+                    <td class="">
+                      <%= image_tag 'airbnb2.jpg', height: 100, width: 200, crop: :fill, class: "booking-photo" %>
+                    </td>
+                    <td class="booking-path">
+                      <h5><%= link_to booking.space.name, space_path(booking.space) %></h5>
+                      <p><%= booking.space.user.name %></p>
+                      <p><%= link_to "Review owner", new_user_user_review_path(booking.space.user) %>
+                      </p>
+                    </td>
+                  <td class="text-center">
+                    <h5><%= "¥#{booking.total_price}" %></h5>
+                  </td>
+                  <td class="text-center">
+                    <%= "#{booking.start_date.month}/#{booking.start_date.day}/#{booking.start_date.year} to #{booking.end_date.month}/#{booking.end_date.day}/#{booking.end_date.year}" %>
+                  </td>
+                  <td class="">
+                    <ul class="list-inline product-controls hidden-sm hidden-xs">
+                      <li class="icons"><a href="" title="Contact owner" data-toggle="tooltip"><i class="fa fa-envelope-o"></i></a></li>
+                     <li class="icons"> <%= link_to booking, class: "btn", method: :delete, data: { confirm: "Are you sure you want to delete this booking?" } do  %><i class="fa fa-lg fa-ban"></i><% end %></li>
+                    </ul>
+                  </td>
+                  <td>
+                    <p class="booking-status">
+                        <% if booking.status === "Confirmed" %>
+                          <h5 class="green-status"><%= booking.status %></h5>
+                        <% elsif booking.status === "Pending" %>
+                          <h5 class="red-status"><%= booking.status %></h5>
+                        <% end %>
+                    </p>
+                  </td>
+                </div>
+              </div>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+<!--           <div class="row text-center headings-row">
+            <div class="col-xs-2 col-xs-offset-1">
               <h5>PHOTO</h5>
             </div>
-            <div class="col-sm-2 col-sm-offset-1">
+            <div class="col-xs-3">
               <h5>NAME</h5>
             </div>
-            <div class="col-sm-1">
+            <div class="col-xs-1">
               <h5>PRICE</h5>
             </div>
-            <div class="col-sm-2">
+            <div class="col-xs-2">
               <h5>DATES</h5>
             </div>
-            <div class="col-sm-1">
+            <div class="col-xs-1">
               <h5>ACTIONS</h5>
             </div>
- <!--            <div class="col-sm-1">
-              <h5>Cancel</h5>
-            </div> -->
-            <div class="col-sm-2">
+            <div class="col-xs-2">
               <h5>STATUS</h5>
             </div>
           </div>
     <div id="my-items">
       <div id="my-bookings">
         <ul>
-          <% @user.bookings.reverse.each do |booking| %>
+          <%# @user.bookings.reverse.each do |booking| %>
             <li>
             <div class="product">
-              <%= image_tag 'airbnb2.jpg', height: 200, width: 300, crop: :fill, class: "booking-photo" %>
                 <div class='product-body'>
                   <div class="row">
-                    <div class="col-xs-12 col-sm-3 booking-path">
-                      <h5><%= link_to booking.space.name, space_path(booking.space) %></h5>
-                      <p><%= booking.space.user.name %></p>
-                      <p><%= link_to "Review owner", new_user_user_review_path(booking.space.user) %>
+                    <div class="col-xs-2">
+                      <%#= image_tag 'airbnb2.jpg', height: 100, width: 200, crop: :fill, class: "booking-photo" %>
+                    </div>
+                    <div class="col-xs-3 col-xs-offset-1 booking-path">
+                      <h5><%#= link_to booking.space.name, space_path(booking.space) %></h5>
+                      <p><%#= booking.space.user.name %></p>
+                      <p><%#= link_to "Review owner", new_user_user_review_path(booking.space.user) %>
                       </p>
                     </div>
-                  <div class="col-xs-12 col-sm-2 col-sm-offset-0.5">
-                    <h5><%= "¥#{booking.total_price}" %></h5>
+                  <div class="col-xs-1 text-center">
+                    <h5><%#= "¥#{booking.total_price}" %></h5>
                   </div>
-                  <div class="col-xs-12 col-sm-2 col-sm-offset-0.5 text-center">
-                    <%= "#{booking.start_date.month}/#{booking.start_date.day}/#{booking.start_date.year} to #{booking.end_date.month}/#{booking.end_date.day}/#{booking.end_date.year}" %>
+                  <div class="col-xs-2 text-center">
+                    <%#= "#{booking.start_date.month}/#{booking.start_date.day}/#{booking.start_date.year} to #{booking.end_date.month}/#{booking.end_date.day}/#{booking.end_date.year}" %>
                   </div>
-                  <div class="col-xs-12 col-sm-2">
+                  <div class="col-xs-1">
                     <ul class="list-inline product-controls hidden-sm hidden-xs">
                       <li class="icons"><a href="" title="Contact owner" data-toggle="tooltip"><i class="fa fa-envelope-o"></i></a></li>
-                     <li class="icons"> <%= link_to booking, class: "btn", method: :delete, data: { confirm: "Are you sure you want to delete this booking?" } do  %><i class="fa fa-lg fa-ban"></i><% end %></li>
-                      <li class="booking-status">
-                        <% if booking.status === "Confirmed" %>
-                          <h5 class="green-status"><%= booking.status %></h5>
-                        <% elsif booking.status === "Pending" %>
-                          <h5 class="red-status"><%= booking.status %></h5>
-                        <% end %>
+                     <li class="icons"> <%#= link_to booking, class: "btn", method: :delete, data: { confirm: "Are you sure you want to delete this booking?" } do  %><i class="fa fa-lg fa-ban"></i><%# end %></li>
+                      <li class="col-xs-2 booking-status">
+                        <%# if booking.status === "Confirmed" %>
+                          <h5 class="green-status"><%#= booking.status %></h5>
+                        <%# elsif booking.status === "Pending" %>
+                          <h5 class="red-status"><%#= booking.status %></h5>
+                        <%# end %>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
             </li>
-          <% end %>
+          <%# end %>
         </ul>
       </div>
-    </div>
+    </div> -->
 </div>
 
