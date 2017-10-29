@@ -12,12 +12,11 @@
           <%= f.input :email %>
           <%= f.input :address %>
           <%= f.input :photo, as: :attachinary %>
-          <%# profile_pic = current_user.facebook_picture_url || current_user.photo %>
-          <%# if profile_pic.present? %>
-            <%#= image_tag profile_pic, class: "show-image text-center" %>
-          <%# end %>
-          <%#= f.input :photo %>
           <%#= f.input :photo_cache, as: :hidden %>
+          <%# profile_pic = current_user.facebook_picture_url || current_user.photo %>
+          <% if @user.photo.present? %>
+            <% cl_image_tag @user.photo %>
+          <% end %>
           <%= f.submit "Edit", class: "btn btn-success" %>
         <% end %>
       </div>
