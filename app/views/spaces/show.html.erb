@@ -34,13 +34,11 @@
           <p><i class="fa fa-building-o"></i> Floor Area: <%= @space.floor_area %></p>
           <p><i class="fa fa-clock-o"></i> Opening & Closing Hours: <%= @space.opening_hours %> 〜 <%= @space.closing_hours %></p>
           <br>
-          <h3>Reviews</h3>
+          <h2>Reviews on the owner</h2>
           <div class="row">
             <% @space.user.user_reviews.each do |review| %>
               <div class="profile-review">
                 <div class="review-left">
-                  <!-- Dynamic Reviewer's photo here -->
-                  <%#= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
                   <% if User.find_by(name: review.reviewer_name).photo.present? %>
                     <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
                   <% else %>
@@ -64,35 +62,32 @@
                 </div>
               </div>
             <% end %>
-            <!-- <ul> -->
-              <%# @space.user.user_reviews.each do |review| %>
-                <!-- <div> -->
-                  <!-- <li><%#= review.title %> by <%#= review.reviewer_name %> | <%#= review.content %> | <%#= review.rating %> -->
-                  <!-- </li> -->
-                <!-- </div> -->
-              <%# end %>
-            <!-- </ul> -->
           </div>
           <br>
       </div>
       <div class="col-xs-12 col-sm-4">
-      <!--       Add sidebar here to contact, pay, and see/change calendar dates -->
-        <br>
-        <h4>SELECT DATES</h4>
-        <%= form_tag(conversations_path, method: :post) do %>
-        <%#= form_tag(conversations_path, method: :post, 'data-id': @space.id) do %>
-          <%#= text_field_tag :species, params[:species] %>
-          <h5>FROM</h5>
-          <%= date_field_tag :start_date, params[:start_date], class: "form-top", value: @space.start_date, id: "book-start-date" %>
-          <h5>TO</h5>
-          <%= date_field_tag :end_date, params[:end_date], class: "form-top", value: @space.end_date, id: "book-end-date" %>
-          <%= hidden_field_tag "space_id", @space.id%>
-          <p></p>
-          <%= submit_tag "Book", class: "btn btn-success" %>
-          <%#= submit_tag 'PAY WITH SKILLS', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
-          <!-- <h5>OR</h5> -->
-          <%#= submit_tag 'PAY WITH CASH', disabled: true, class: "btn btn-success btn-lg", id: "booking-cash-button" %>
-        <% end %>
+        <div class="right-pain text-center">
+          <h2>Book this place</h2>
+          <hr>
+          <h3>Select Dates</h3>
+          <div class="book-form">
+            <%= form_tag(conversations_path, method: :post) do %>
+            <%#= form_tag(conversations_path, method: :post, 'data-id': @space.id) do %>
+              <%#= text_field_tag :species, params[:species] %>
+              <label class="control-label optional" for="book_start_date">FROM:</label>
+              <%= date_field_tag :start_date, params[:start_date], value: @space.start_date, id: "book-start-date" %>
+              <br>
+              <label class="control-label optional" for="book_end_date">TO:</label>
+              <%= date_field_tag :end_date, params[:end_date], class: "form-top", value: @space.end_date, id: "book-end-date" %>
+              <%= hidden_field_tag "space_id", @space.id%>
+              <p></p>
+              <%= submit_tag "Book", class: "btn btn-success" %>
+              <%#= submit_tag 'PAY WITH SKILLS', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
+              <!-- <h5>OR</h5> -->
+              <%#= submit_tag 'PAY WITH CASH', disabled: true, class: "btn btn-success btn-lg", id: "booking-cash-button" %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

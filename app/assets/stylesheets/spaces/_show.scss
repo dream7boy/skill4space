@@ -1,10 +1,9 @@
-// _show.scss
-// Specific CSS for your home-page
+
 
 .slider-nav .space-show-banner {
   height: 100px;
   width: 90%;
-  // margin: 0 auto;
+  margin: 0 auto;
 }
 
 .space-show-banner {
@@ -41,6 +40,38 @@
 .space-show-container {
   h2 {
     margin-top: 36px;
+  }
+  .profile-review {
+    margin-left: 10px;
+    ul {
+      padding: 0px;
+    }
+  }
+  label {
+    font-weight: lighter;
+  }
+
+  .btn {
+    width: 76%;
+  }
+}
+
+.right-pain {
+  padding: 28px;
+  border: 1px solid #C7C7C7;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  h2 {
+    color: $green;
+    margin: 14px 0 20px 0;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  .text-left {
+    margin-left: 20px;
   }
 }
 
