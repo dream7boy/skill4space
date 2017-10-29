@@ -10,7 +10,7 @@
     color: white;
     font: $headers-font;
     text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-    padding: 100px;
+    // padding: 100px;
   }
   // .banner-content {
   //   color: white;
@@ -24,4 +24,46 @@
       padding: 100px;
     }
   }
+}
+
+.typewriter {
+  h1 {
+    width: 100%;
+    margin: 0 0 30px 0;
+    height: 1em;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    // border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  span.wrap {
+    color: $green !important;
+    &:hover {
+      text-decoration: none;
+      color: #44657D;
+    }
+  }
+}
+
+.banner-content {
+  .form-wrapper {
+    margin-top: 40px;
+  }
+}
+
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
 }

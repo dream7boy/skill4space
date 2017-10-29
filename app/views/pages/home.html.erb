@@ -1,6 +1,14 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "coworkingspace.jpg" %>');">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('<%= image_path "coworkingspace.jpg" %>');">
   <div class="banner-content text-center">
-    <h1>Match your skills with a space that needs it</h1>
+    <h1>
+      Provide your
+      <div class="typewriter">
+          <a href="" class="typewrite" data-period="2000" data-type='[ "Programming", "Design", "Writing", "Editing", "Teaching", "Translateion", "Physical work" ]'>
+          <span class="wrap"></span>
+          </a> 
+      </div>
+      skill to find a space
+      </h1>
     <div class="form-wrapper">
       <%= form_tag(spaces_path, method: :get) do %>
         <%#= text_field_tag :species, params[:species] %>
@@ -22,8 +30,8 @@
           <option>Kitchen</option>
           <option>Garage</option>"),
            class: "input-lg form-top" %>
-        <%= date_field_tag :start_date, params[:start_date], class: "input-lg form-top" %>
-        <%= date_field_tag :end_date, params[:end_date], class: "input-lg form-top" %>
+        <%#= date_field_tag :start_date, params[:start_date], class: "input-lg form-top" %>
+        <%#= date_field_tag :end_date, params[:end_date], class: "input-lg form-top" %>
         <%= submit_tag 'Search', name: nil, class: "btn btn-success" %>
       <% end %>
     </div>
@@ -31,17 +39,72 @@
 </div>
 
 <div class="home-content text-center">
-<br>
-  <h2>Why use Skill4Space?</h2>
-  <br>
-  <div class="row">
-    <div class="col-sm-3 col-sm-offset-3">
-      <h4>About Skill4Space</h4>
-      <p>With Skill4Space, users can use their skills in exchange for using company spaces.</p>
-    </div>
-    <div class="col-sm-3">
-      <h4>Testimonials</h4>
-      <p></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        
+      </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    var TxtType = function(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtType.prototype.tick = function() {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) { delta /= 2; }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+            }
+
+            setTimeout(function() {
+            that.tick();
+            }, delta);
+        };
+
+        window.onload = function() {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i=0; i<elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                  new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+            document.body.appendChild(css);
+        };
+  <% end %>
+<% end %>
