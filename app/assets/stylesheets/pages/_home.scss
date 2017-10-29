@@ -1,27 +1,32 @@
 // Specific CSS for your home-page
 .banner {
   text-align: center;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 180px);
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  h1, h2 {
+  h1 {
+    font-size: 58px;
     color: white;
-    font: $headers-font;
-    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-    // padding: 100px;
   }
-  // .banner-content {
-  //   color: white;
-  //   padding: 200px;
-  // }
-  .home-content {
-    padding: 200px;
-    font: $body-font;
-    margin-bottom: 200px;
-    p {
-      padding: 100px;
+  select {
+    background: transparent;
+    color: #A6A6A6;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .btn {
+    color: $green;
+    background: transparent;
+    display: block;
+    margin: 10px auto;
+    width: 68%;
+    border-radius: 5px;
+    &:hover {
+      background: $green;
+      color: white;
+      transition: 0.3s;
     }
   }
 }
@@ -41,11 +46,12 @@
       blink-caret .75s step-end infinite;
   }
   span.wrap {
-    color: $green !important;
-    &:hover {
-      text-decoration: none;
-      color: #44657D;
-    }
+    color: $green;
+  }
+  a:hover {
+    text-decoration: none;
+    color: $green;
+    cursor: default;
   }
 }
 

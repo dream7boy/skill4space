@@ -3,7 +3,7 @@
     <h1>
       Provide your
       <div class="typewriter">
-          <a href="" class="typewrite" data-period="2000" data-type='[ "Programming", "Design", "Writing", "Editing", "Teaching", "Translateion", "Physical work" ]'>
+          <a href="javascript:void(0)" onClick="hogeFunction();return false;" class="typewrite" data-period="2000" data-type='[ "Programming", "Design", "Writing", "Editing", "Teaching", "Translateion", "Physical work" ]' >
           <span class="wrap"></span>
           </a> 
       </div>
@@ -17,7 +17,7 @@
           <option>Tokyo</option>
           <option>Osaka</option>
           <option>Fukuoka</option>"),
-           class: "input-lg form-top" %>
+           class: "input-lg form-top", prompt: "Work at" %>
         <%= select_tag "category",
           raw("<option>Select workspace</option>
           <option>Office</option>
@@ -29,10 +29,10 @@
           <option>Laboratory</option>
           <option>Kitchen</option>
           <option>Garage</option>"),
-           class: "input-lg form-top" %>
+           class: "input-lg form-top", prompt: "Choose your skill"  %>
         <%#= date_field_tag :start_date, params[:start_date], class: "input-lg form-top" %>
         <%#= date_field_tag :end_date, params[:end_date], class: "input-lg form-top" %>
-        <%= submit_tag 'Search', name: nil, class: "btn btn-success" %>
+        <%= submit_tag 'Search spaces', name: nil, class: "btn btn-success btn-lg" %>
       <% end %>
     </div>
   </div>
