@@ -22,17 +22,36 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8">
           <h1><%= @space.title %></h1>
-          <p>-<%= @space.category %> Opportunity at <%= @space.name %> </p>
+          <div class="index-tags">
+            <div class="category-tag">
+              <div>
+                <i class="fa fa-home"></i> <%= @space.category %>
+              </div>
+            </div>
+            <% if @space.is_barter == true %>
+              <div class="category-tag barter">
+                <div>
+                  <i class="fa fa-handshake-o"></i> Barter
+                </div>
+              </div>
+            <% else %>
+              <div class="category-tag paid">
+                <div>
+                  <i class="fa fa-money"></i> Paid
+                </div>
+              </div>
+            <% end %>
+          </div>
           <p><i class="fa fa-map-marker"></i> <%= @space.address %></p>
           <p><%= @space.description %></p>
           <h2>Desired Skills</h2>
-          <p><i class="fa fa-key"></i> <%= @space.required_skill %> Skill</p>
+          <p><i class="fa fa-key"></i> <span class="require"><%= @space.required_skill %></span> skill for <span class="days">7days</span> use</p>
           <p>(Required skill description here)<%#= @space.required_skill_description %></p>
           <h2>Space Details</h2>
-          <p><i class="fa fa-wrench"></i> Facilities: <%= @space.facility %></p>
-          <p><i class="fa fa-users"></i> Maximum Capacity: <%= @space.people_capacity %></p>
-          <p><i class="fa fa-building-o"></i> Floor Area: <%= @space.floor_area %></p>
-          <p><i class="fa fa-clock-o"></i> Opening & Closing Hours: <%= @space.opening_hours %> 〜 <%= @space.closing_hours %></p>
+          <p><i class="fa fa-wrench"></i><span class="light"> Facilities:</span> <%= @space.facility %></p>
+          <p><i class="fa fa-users"></i><span class="light"> Maximum Capacity:</span> <%= @space.people_capacity %></p>
+          <p><i class="fa fa-building-o"></i><span class="light"> Floor Area:</span> <%= @space.floor_area %>m&sup2;</p>
+          <p><i class="fa fa-clock-o"></i><span class="light"> Opening & Closing Hours:</span> <%= @space.opening_hours %> 〜 <%= @space.closing_hours %></p>
           <br>
           <h2>Reviews on the owner</h2>
           <div class="row">
@@ -68,6 +87,7 @@
       <div class="col-xs-12 col-sm-4">
         <div class="right-pain text-center">
           <h2>Book this place</h2>
+          <p class="book-lead">bartering with your <%= @space.required_skill %> skill</p>
           <hr>
           <h3>Select Dates</h3>
           <div class="book-form">
