@@ -9,11 +9,12 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4">
             <div class="left-profile">
-              <% if @user.photo.nil? %>
-                <%= image_tag "logo.png", class: "profile-avatar" %>
+              <% if @user.photo.present? %>
+                <% avatar_url = @user.photo.path %>
               <% else %>
-                <%= cl_image_tag @user.photo.path, class: "avatar profile-avatar" %>
+                <% avatar_url = @user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
               <% end %>
+              <%= cl_image_tag avatar_url, class: "profile-avatar" %>
 
               <p><i class="fa fa-map-marker"></i> : <%= @user.address %></p>
               <%= link_to bookings_path(@user), class: "btn btn-primary" do%>
