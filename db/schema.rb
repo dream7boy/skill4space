@@ -128,6 +128,8 @@ ActiveRecord::Schema.define(version: 20171030021355) do
     t.string "city"
     t.float "latitude"
     t.float "longitude"
+    t.text "skill_description"
+    t.boolean "is_paid"
     t.text "required_skill_description"
     t.index ["user_id"], name: "index_spaces_on_user_id"
   end
