@@ -8,6 +8,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     # @booking.total_price = (@booking.end_date - @booking.start_date) * space.daily_price
     @booking.save
+    send_after_booking_booker_email(current_user, space)
+    send_after_booking_owner_email(current_user, space)
   end
 
   def new
@@ -51,5 +53,13 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :status)
+  end
+
+  def self.send_after_booking_booker_email(booker, space)
+    UserMailer.after_booking_booker(booker, space).deliver_now
+  end
+
+  def self.send_after_booking_owner_email(booker, space)
+    UserMailer.after_booking_owner(booker, space).deliver_now
   end
 end

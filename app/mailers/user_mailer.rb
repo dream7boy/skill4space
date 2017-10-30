@@ -20,4 +20,18 @@ class UserMailer < ApplicationMailer
     @receiver = receiver
     mail(to: @receiver.email, subject: "You've got a message from #{@sender.name}")
   end
+
+  def after_booking_owner(booker, space)
+    @booker = booker
+    @space = space
+    @owner = space.user
+    mail(to: @owner.email, subject: "#{@space.name} has been booked!")
+  end
+
+  def after_booking_booker(booker, space)
+    @booker = booker
+    @space = space
+    @owner = space.user
+    mail(to: @booker.email, subject: "Thank you for your booking of #{@space.name}!")
+  end
 end
