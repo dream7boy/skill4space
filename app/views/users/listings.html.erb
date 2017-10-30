@@ -15,11 +15,11 @@
       <table class="table table-hover table-responsive">
         <thead>
           <tr>
-            <th class="table-heading text-center">PHOTO</th>
-            <th class="table-heading text-center">NAME</th>
-            <th class="table-heading text-center">PRICE</th>
-            <th class="table-heading text-center">DATES</th>
-            <th class="table-heading text-center">ACTIONS</th>
+            <th class="table-heading">PHOTO</th>
+            <th class="table-heading">NAME</th>
+<!--        <th class="table-heading text-center">PRICE</th>
+            <th class="table-heading text-center">DATES</th> -->
+            <th class="table-heading">ACTIONS</th>
             <th class="table-heading text-center">STATUS</th>
           </tr>
         </thead>
@@ -37,12 +37,12 @@
                       <p><%= space.user.name %></p>
                       </p>
                     </td>
-                  <td class="text-center">
-                    <h5 class="bookings-table-data"><%= "¥#{space.daily_price}" %></h5>
+<!--                   <td class="text-center">
+                    <h5 class="bookings-table-data"><%#= "¥#{space.daily_price}" %></h5>
                   </td>
                   <td class="text-center">
-                    <h5 class="bookings-table-data"><%= "#{space.start_date.month}/#{space.start_date.day}/#{space.start_date.year} ~ #{space.end_date.month}/#{space.end_date.day}/#{space.end_date.year}" %></h5>
-                  </td>
+                    <h5 class="bookings-table-data"><%#= "#{space.start_date.month}/#{space.start_date.day}/#{space.start_date.year} ~ #{space.end_date.month}/#{space.end_date.day}/#{space.end_date.year}" %></h5>
+                  </td> -->
                   <td class="">
                     <ul class="list-inline product-controls hidden-sm hidden-xs">
 <!--                      <li class="icons"><%#= link_to space, class: "btn" do %><i class="fa fa-lg fa-info-circle" title="View details"></i><#% end %></li> -->
