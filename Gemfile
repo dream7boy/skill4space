@@ -26,6 +26,7 @@ gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
 gem 'omniauth-facebook'
+gem 'sendgrid-ruby'
 
 gem "letter_opener", group: :development
 
