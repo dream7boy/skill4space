@@ -18,6 +18,6 @@ class UserMailer < ApplicationMailer
   def get_message(sender, receiver)
     @sender = sender
     @receiver = receiver
-    mail(to: @receiver.email, subject: "You've got a message from #{@sender}")
+    mail(to: @receiver.email, subject: "You've got a message from #{@sender.name}")
   end
 end
