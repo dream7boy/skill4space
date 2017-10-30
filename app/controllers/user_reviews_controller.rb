@@ -14,7 +14,8 @@ class UserReviewsController < ApplicationController
     if @user_review.save
       redirect_to user_path(@user)
     else
-      render "new"
+      # render "new"
+      redirect_back(fallback_location: root_path)
     end
   end
 

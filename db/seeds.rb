@@ -5,7 +5,7 @@ User.destroy_all
 
 puts 'Creating database...'
 
-5.times do
+6.times do
   user = User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -33,6 +33,8 @@ puts 'Creating database...'
         end_date: DateTime.new(2017, 11, 10),
         # start_date: start_random_date,
         # end_date: start_random_date + rand(1..2),
+        opening_hours: Time.new(2017, 10, 31, 9, 0, 0),
+        closing_hours: Time.new(2017, 10, 31, 17, 0, 0),
         daily_price: rand(5000..20000).round(-3),
         is_barter: [true, false].sample,
         user_id: user.id,

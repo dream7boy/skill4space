@@ -1,36 +1,31 @@
-<div class="dashboard-container container">
+<div class="review-container container">
   <div class="row">
-    <div class="col-sm-8 tabs">
-        <h2 class="text-center">Write a review on <%= @user.name %></h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-8">
-    <br>
-      <%= simple_form_for [@user, @user_review] do |f| %>
-          <% if @user_review.errors.any? %>
-            <div>
-              <p>Errors</p>
-              <ul>
-                <% @user_review.errors.full_messages.each do |message| %>
-                  <li>
-                    <%= message %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <div class="form-inputs">
-            <%= f.input :title %>
-            <%= f.input :content %>
-            <%= f.input :rating, collection: 1..5 %>
-            <%= f.hidden_field :booking_id, value: @booking.id %>
-          </div>
-            <br>
-              <div class="form-actions">
-                <%= f.submit "POST REVIEW", class: "btn btn-success btn-lg", style: "width: 50%", data: { confirm: "Are you sure you want to post this review?"} %>
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <h1 class="text-center">Write a review on <%= @user.name %></h1>
+    
+        <%= simple_form_for [@user, @user_review] do |f| %>
+            <% if @user_review.errors.any? %>
+              <div>
+                <p>Errors</p>
+                <ul>
+                  <% @user_review.errors.full_messages.each do |message| %>
+                    <li>
+                      <%= message %>
+                    </li>
+                  <% end %>
+                </ul>
               </div>
-          <% end %>
-  </div>
+            <% end %>
+            <div class="form-inputs">
+              <%= f.input :title, label: "Review title" %>
+              <%= f.input :content, label: "Review content" %>
+              <%= f.input :rating, collection: 1..5 %>
+              <%= f.hidden_field :booking_id, value: @booking.id %>
+            </div>
+            <div class="form-actions text-center">
+              <%= f.submit "POST REVIEW", class: "btn btn-success btn-lg", data: { confirm: "Are you sure you want to post this review?"} %>
+            </div>
+        <% end %>
     </div>
+  </div>    
 </div>
