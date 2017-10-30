@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :spaces, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     get "check_availability", to: 'spaces#check_availability'
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :edit, :update]
   end
   resources :bookings, only: [:destroy]
 

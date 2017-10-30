@@ -121,7 +121,7 @@ end
 
   booking = Booking.create!(
     total_price: booked_days * booked_space.daily_price,
-    status: ["Pending", "Confirmed"].sample,
+    status: "Available",
     start_date: booked_space.start_date,
     end_date: booked_space.end_date,
     user_id: User.first.id,
