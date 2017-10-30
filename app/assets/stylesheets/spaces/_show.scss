@@ -64,34 +64,34 @@
   .btn {
     width: 76%;
   }
-  .index-tags {
-    display: flex;
-    justify-content: flex-start;
+}
+.index-tags {
+  display: flex;
+  justify-content: flex-start;
+}
+.category-tag {
+  background-color: #2C6783;
+  color: white;
+  font-size: 16px;
+  font-weight: lighter;
+  width: 120px;
+  height: 36px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4px;
+  div {
+    display: inline-block;
   }
-  .category-tag {
-    background-color: #2C6783;
-    color: white;
-    font-size: 16px;
-    font-weight: lighter;
-    width: 120px;
-    height: 36px;
-    border-radius: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 4px;
-    div {
-      display: inline-block;
-    }
-  }
-  .barter {
-    background-color: #F2994A;
-    width: 90px;
-  }
-  .paid {
-    background-color: #EB5757;
-    width: 90px;
-  }
+}
+.barter {
+  background-color: #F2994A;
+  width: 90px;
+}
+.paid {
+  background-color: #EB5757;
+  width: 90px;
 }
 
 .right-pain {
