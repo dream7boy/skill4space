@@ -114,8 +114,13 @@
           <hr>
           <!-- <h3>Select Dates</h3> -->
           <div class="book-form">
-            <%= form_tag(conversations_path, method: :post) do %>
-            <%#= form_tag(conversations_path, method: :post, 'data-id': @space.id) do %>
+            <% if @space.user == current_user %>
+              <button type="button" class="btn btn-success btn-lg" disabled>Your listing!</button>
+            <% elsif @space.bookings.present? %>
+              <button type="button" class="btn btn-lg btn-primary" disabled>Booked already</button>
+            <% else %>
+              <%= form_tag(conversations_path, method: :post) do %>
+              <%#= form_tag(conversations_path, method: :post, 'data-id': @space.id) do %>
               <%#= text_field_tag :species, params[:species] %>
               <!-- <label class="control-label optional" for="book_start_date">FROM:</label> -->
               <%#= date_field_tag :start_date, params[:start_date], value: @space.start_date, id: "book-start-date" %>
@@ -130,6 +135,7 @@
               <%#= submit_tag 'PAY WITH SKILLS', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
               <!-- <h5>OR</h5> -->
               <%#= submit_tag 'PAY WITH CASH', disabled: true, class: "btn btn-success btn-lg", id: "booking-cash-button" %>
+              <% end %>
             <% end %>
           </div>
         </div>

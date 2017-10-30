@@ -5,7 +5,7 @@ User.destroy_all
 
 puts 'Creating database...'
 
-5.times do
+6.times do
   user = User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
