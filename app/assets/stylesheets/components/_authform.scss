@@ -18,12 +18,15 @@
     padding: 30px 50px 50px  50px;
   }
   .links {
-    margin-top: 20px;
-    color: $green;
+    // margin-top: 20px;
+    // color: $green;
+    a {
+      display: block;
+    }
     a.btn {
       color: white;
       font-size: 23px;
-      background-color: $blue;
+      // background-color: $green;
       &:hover {
         // background-color: #214E7E;
         text-decoration: none;
@@ -31,14 +34,12 @@
     }
   }
   #user_remember_me {
-    margin-top: 8px;
+    margin-top: 4px;
     // margin-bottom: 50px;
   }
   .btn {
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
-    background: $blue;
-    border: $blue;
   }
 }

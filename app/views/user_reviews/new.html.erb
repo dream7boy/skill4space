@@ -27,8 +27,8 @@
             <%= f.hidden_field :booking_id, value: @booking.id %>
           </div>
             <br>
-              <div class="form-actions text-center">
-                <%= f.submit "POST REVIEW", class: "btn btn-success btn-lg", style: "width: 50%" %>
+              <div class="form-actions">
+                <%= f.submit "POST REVIEW", class: "btn btn-success btn-lg", style: "width: 50%", data: { confirm: "Are you sure you want to post this review?"} %>
               </div>
           <% end %>
   </div>

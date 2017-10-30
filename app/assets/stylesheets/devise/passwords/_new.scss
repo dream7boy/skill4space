@@ -1,31 +1,10 @@
-// _new.scss
-.forgot-password-container {
-  margin-top: 70px;
-  color: $green;
-  h2 {
-    margin-bottom: 42px;
+.password-links {
+  .fb {
+    background-color: #4862A3;
+    border-color: #4862A3;
+    opacity: 1.0;
   }
-  p {
-    margin: 0;
-  }
-  .new-form {
-    border: $green solid 1px;
-    border-radius: 20px;
-    padding: 30px 50px 50px 50px;
-  }
-  .links {
-    margin-top: 20px;
-    color: $green;
-    a.btn {
-      &:hover {
-        color: $green;
-        text-decoration: underline;
-      }
-    }
-  }
-  .btn {
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  .fb:hover {
+    opacity: 0.8;
   }
 }

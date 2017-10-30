@@ -39,6 +39,7 @@
   </div>
 </div>
 <% end %>
+<div class="space-show-container">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-8">
@@ -73,7 +74,7 @@
           <p><i class="fa fa-wrench"></i><span class="light"> Facilities:</span> <%= @space.facility %></p>
           <p><i class="fa fa-users"></i><span class="light"> Maximum Capacity:</span> <%= @space.people_capacity %></p>
           <p><i class="fa fa-building-o"></i><span class="light"> Floor Area:</span> <%= @space.floor_area %>m&sup2;</p>
-          <p><i class="fa fa-clock-o"></i><span class="light"> Opening & Closing Hours:</span> <%= @space.opening_hours %> 〜 <%= @space.closing_hours %></p>
+          <p><i class="fa fa-clock-o"></i><span class="light"> Opening & Closing Hours:</span> <%= @space.opening_hours.strftime("%H:%M") %> 〜 <%= @space.closing_hours.strftime("%H:%M") %></p>
           <br>
           <% if @space.user.user_reviews.count > 0 %>
             <h2>Reviews on the owner</h2>
@@ -107,6 +108,7 @@
             </div>
           <% end %>
       </div>
+
       <div class="col-xs-12 col-sm-4">
         <div class="right-pain text-center">
           <h2>Book this place</h2>
@@ -140,12 +142,13 @@
           </div>
         </div>
         <div class="pay-option text-center">
-          <p>Do you want to pay to use this space?</p>
-          <p>Please contact us, <a href="mailto:admin@skill4.space" target="_top">admin@skill4.space</a> to send a request.</p>
+          <p class="pay-option-lead">Do you want to pay to use this space?</p>
+          <p class="pay-option-lead">Please contact us, <a href="mailto:admin@skill4.space" target="_top">admin@skill4.space</a> to send a request.</p>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <div id="map"></div>
@@ -155,7 +158,7 @@
     <!-- $(document).ready(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        markers = handler.addMarkers(<%#= raw @hash.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
         if (markers.length == 0) {
