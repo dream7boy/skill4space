@@ -44,44 +44,46 @@
           <p><i class="fa fa-map-marker"></i> <%= @space.address %></p>
           <p><%= @space.description %></p>
           <h2>Desired Skills</h2>
+          <!-- Should have dynamical terms -->
           <p><i class="fa fa-key"></i> <span class="require"><%= @space.required_skill %></span> skill for <span class="days">7days</span> use</p>
-          <p>(Required skill description here)<%#= @space.required_skill_description %></p>
+          <p><%= @space.required_skill_description %></p>
           <h2>Space Details</h2>
           <p><i class="fa fa-wrench"></i><span class="light"> Facilities:</span> <%= @space.facility %></p>
           <p><i class="fa fa-users"></i><span class="light"> Maximum Capacity:</span> <%= @space.people_capacity %></p>
           <p><i class="fa fa-building-o"></i><span class="light"> Floor Area:</span> <%= @space.floor_area %>m&sup2;</p>
           <p><i class="fa fa-clock-o"></i><span class="light"> Opening & Closing Hours:</span> <%= @space.opening_hours %> 〜 <%= @space.closing_hours %></p>
           <br>
-          <h2>Reviews on the owner</h2>
-          <div class="row">
-            <% @space.user.user_reviews.each do |review| %>
-              <div class="profile-review">
-                <div class="review-left">
-                  <% if User.find_by(name: review.reviewer_name).photo.present? %>
-                    <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
-                  <% else %>
-                    <%= image_tag "person-placeholder.jpg", class: "profile-avatar reviewer-avatar" %>
-                  <% end %>
-                  <p><%= review.reviewer_name %></p>
-                  <div class="stars">
-                    <ul>
-                      <% review.rating.to_i.times do  %>
-                        <li><i class="fa fa-star starred"></i></li>
-                      <% end %>
-                      <% (5 - review.rating.to_i).times do  %>
-                        <li><i class="fa fa-star"></i></li>
-                      <% end %>
-                    </ul>
+          <% if @space.user.user_reviews.count > 0 %>
+            <h2>Reviews on the owner</h2>
+            <div class="row">
+              <% @space.user.user_reviews.each do |review| %>
+                <div class="profile-review">
+                  <div class="review-left">
+                    <% if User.find_by(name: review.reviewer_name).photo.present? %>
+                      <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
+                    <% else %>
+                      <%= image_tag "person-placeholder.jpg", class: "profile-avatar reviewer-avatar" %>
+                    <% end %>
+                    <p><%= review.reviewer_name %></p>
+                    <div class="stars">
+                      <ul>
+                        <% review.rating.to_i.times do  %>
+                          <li><i class="fa fa-star starred"></i></li>
+                        <% end %>
+                        <% (5 - review.rating.to_i).times do  %>
+                          <li><i class="fa fa-star"></i></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="review-right">
+                    <h4><%= review.title %></h4>
+                    <p><%= review.content %></p>
                   </div>
                 </div>
-                <div class="review-right">
-                  <h4><%= review.title %></h4>
-                  <p><%= review.content %></p>
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <br>
+              <% end %>
+            </div>
+          <% end %>
       </div>
       <div class="col-xs-12 col-sm-4">
         <div class="right-pain text-center">
