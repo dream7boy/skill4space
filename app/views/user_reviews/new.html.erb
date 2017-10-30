@@ -33,7 +33,7 @@
 <div class="dashboard-container container">
   <div class="row">
     <div class="col-sm-8 tabs">
-          <h2 class="text-center">Write a review on <%= @user.name %></h2>
+        <h2 class="text-center">Write a review on <%= @user.name %></h2>
     </div>
   </div>
   <div class="row">
@@ -56,6 +56,7 @@
             <%= f.input :title %>
             <%= f.input :content %>
             <%= f.input :rating, collection: 1..5 %>
+            <%= f.hidden_field :booking_id, value: @booking.id %>
           </div>
             <br>
               <div class="form-actions text-center">

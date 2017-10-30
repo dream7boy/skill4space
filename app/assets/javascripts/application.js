@@ -20,9 +20,12 @@
  $('.slider-for').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
-  arrows: false,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  arrows: true,
+  accessibility: true,
   fade: true,
-  asNavFor: '.slider-nav'
+  asNavFor: '.slider-nav',
 });
 $('.slider-nav').slick({
   slidesToShow: 3,
@@ -38,6 +41,23 @@ $('.slider-nav').slick({
 //   slidesToShow: 3,
 //   slidesToScroll: 3
 // });
+ $('.slider-for-two').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  fade: true,
+  asNavFor: '.slider-nav-two',
+});
+$('.slider-nav-two').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  asNavFor: '.slider-for-two',
+  dots: true,
+  centerMode: true,
+  focusOnSelect: true,
+});
 
 
 $('#book-start-date, #book-end-date').change(function(event) {
