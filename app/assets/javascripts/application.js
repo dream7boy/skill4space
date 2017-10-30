@@ -33,6 +33,13 @@ $('.slider-nav').slick({
   focusOnSelect: true
 });
 
+// $('.multiple-item').slick({
+//   infinite: true,
+//   slidesToShow: 3,
+//   slidesToScroll: 3
+// });
+
+
 $('#book-start-date, #book-end-date').change(function(event) {
   const id = $(event.target).closest('form').attr('data-id');
   const end_date = $('#book-end-date').val();
