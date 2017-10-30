@@ -8,8 +8,8 @@
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
         <h1>Edit your profile</h1>
         <%= simple_form_for(@user) do |f| %>
-          <%= f.input :name %>
-          <%= f.input :email %>
+          <%= f.input :name, label: "Your name" %>
+          <%= f.input :email, label: "Your email"  %>
           <%= f.input :address %>
           <%= f.input :photo, as: :attachinary %>
           <%#= f.input :photo_cache, as: :hidden %>
@@ -17,7 +17,7 @@
           <% if @user.photo.present? %>
             <% cl_image_tag @user.photo %>
           <% end %>
-          <%= f.submit "Edit", class: "btn btn-success" %>
+          <%= f.submit "Edit Profile", class: "btn btn-success" %>
         <% end %>
       </div>
     </div>

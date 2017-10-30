@@ -1,14 +1,15 @@
 
-
-<div class="container">
-  <div class="row">
-  	<div class="col-xs-12 col-sm-8 col-sm-offset-2 ">
-	   <h1>Add skill for <%= current_user.name %></h1>
-	    <%= simple_form_for [current_user, @skill] do |f| %>
-	      <%= f.input :skill_category, collection: ["Programming", "Design", "Teaching", "Translation", "Writing"], placeholder: "Skill category", prompt: "Choose your skill category" %>
-	      <%= f.input :description, placeholder: "eg,) 5 years programming experience in Japanese company..." %>
-	      <%= f.submit "Add", class: "btn btn-success" %>
-	    <% end %>
-  	</div>
-  </div>
+<div class="skill-container">
+	<div class="container">
+	  <div class="row">
+	  	<div class="col-xs-12 col-sm-8 col-sm-offset-2 ">
+		   <h1>Add skill for <%= current_user.name %></h1>
+		    <%= simple_form_for [current_user, @skill] do |f| %>
+		      <%= f.input :skill_category, collection: ["Programming", "Design", "Teaching", "Translation", "Writing"], placeholder: "Skill category", prompt: "Choose your skill category" %>
+		      <%= f.input :description, placeholder: "eg,) 5 years programming experience in Japanese company..." %>
+		      <%= f.submit "Add new skill", class: "btn btn-success" %>
+		    <% end %>
+	  	</div>
+	  </div>
+	</div>
 </div>
