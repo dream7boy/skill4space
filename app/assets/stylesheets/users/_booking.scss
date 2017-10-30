@@ -3,12 +3,14 @@
   margin-bottom: 100px;
 }
   table {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     // margin-left: 10px;
     font-family: $body-font;
   }
   .table-heading {
     font-family: $headers-font;
+    font-size: 16px;
   }
 .tabs {
   background: white;
@@ -110,11 +112,14 @@
   list-style-type: none;
   margin-left: 0px;
 }
-  // .icons {
-  //   padding: 0px;
-  // }
+  .icons {
+    padding: 0px;
+  }
+    //   i .fa {
+    //   padding: 0px;
+    // }
   .booking-photo{
-    margin: 10px 30px 0px 0px;
+    margin: 10px 30px 10px 20px;
     border-radius: 10px;
   }
   h1 {
@@ -152,4 +157,15 @@
     font-weight: bold;
     margin-top: 30px;
   }
+}
+
+.table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  border-color: white;
+}
+
+.bookings-table-data {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    // padding-bottom: 20px;
+    // padding-top: 20px;
 }
