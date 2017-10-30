@@ -7,6 +7,7 @@
     margin: 8px 0;
     border: solid 1px #C4C4C4;
     box-shadow: 2px 2px 1px #C4C4C4;
+    opacity: 1.0;
     h2 {
       font-size: 24px;
       margin: 12px 0 12px 4px;
@@ -19,6 +20,11 @@
     }
     p {
       font-size: 14px;
+    }
+    &:hover {
+      opacity: 0.9;
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 1px #C4C4C4;
     }
   }
 
