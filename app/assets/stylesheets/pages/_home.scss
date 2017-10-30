@@ -9,10 +9,12 @@
   h1 {
     font-size: 58px;
     color: white;
+        text-shadow: 1px 1px 1px #747474;
   }
   select {
     background: transparent;
-    color: #A6A6A6;
+    color: #EDF4F5;
+    border-color: #EDF4F5;
     border-radius: 3px;
     cursor: pointer;
   }
