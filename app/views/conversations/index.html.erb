@@ -1,31 +1,39 @@
-<div class="mailbox-container">
-	<div class="container">
-		<div class="row">
-	  	  <h1><i class="fa fa-envelope-o"></i> Your Mailbox</h1>
-		  <% @conversations.each do |conversation| %>
-		  	  	<%= link_to conversation_path(conversation) do %>
-			  	    <div class="message-wrapper">
-				        <div class="mailbox-left">
-				        <% if conversation.messages.first.sender.photo.nil? %>
+<div class="mailbox-container container">
+	  <h1><i class="fa fa-envelope-o"></i> Your Mailbox</h1>
+  <div class="table-responsive">
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th class="text-center">USER</th>
+          <th>LISTING TITLE</th>
+          <th>MESSAGE CONTENT</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+      	<% @conversations.each do |conversation| %>
+	  	  	<tr>
+	  	  		<td class="message-users">
+			        <% if conversation.messages.first.sender.photo.nil? %>
 		              <%= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
 		            <% else %>
 				          <%= cl_image_tag conversation.messages.first.sender.photo.path, class: "profile-avatar"  %>
 		            <% end %>
-		            </div>
-		            <div class="mailbox-right">
-				      <h2><%= conversation.subject %>
-				      	<%#= link_to conversation.subject, conversation_path(conversation) %>
-				      </h2>
-				      <p><%= conversation.messages.first.sender.name %></p>
-		            </div>
-		            <div class="mailbox-body">
-		              <p class="latest-message"><span>Latest message: <%= conversation.messages.last.created_at.strftime("%Y/%m/%d %H:%M%p") %></span>  </p>
-		              <p><%= conversation.messages.last.body %></p>
-		            </div>
-			  	  </div>
-			  	<% end %>
+		             <p class="text-center"><%= conversation.messages.first.sender.name %></p>
+	             </td>
+             	 <td><p><%= conversation.subject %></p></td>
+	             <td>
+		            <p class="latest-message"><span>Latest message: <%= conversation.messages.last.created_at.strftime("%Y/%m/%d %H:%M%p") %></span>  </p>
+		            <p><%= conversation.messages.last.body %></p>
+	             </td>
+	             <td>
+		  	  		<%= link_to conversation_path(conversation), class: "btn btn-success" do %>
+						<i class="fa fa-envelope-o"></i> Check message
+			  		<% end %>
+	             </td>
+             </tr>
 		  <% end %>
-		  <%#= link_to "New conversation", new_conversation_path %>
-		</div>
-	</div>
+      </tbody>
+    </table>
+  </div>
 </div>
