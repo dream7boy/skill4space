@@ -55,7 +55,7 @@
                       <% if space.bookings.last %>
                         <h5 class="green-status">Confirmed</h5>
 <!--                         <p>Booked by: <%#= space.bookings.last.user.name %></p> -->
-                      <p><%= link_to "Review booker", new_user_user_review_path(space.bookings.last.user), id: "review-booker" %>
+                      <p><%= link_to "Review booker", new_user_user_review_path(space.bookings.last.user, booking_id: space.bookings.last.id), id: "review-booker" %>
                       </p>
                       <% else %>
                         <h5 class="red-status">Pending</h5>

@@ -32,7 +32,7 @@
                     </td>
                     <td class="booking-path">
                       <p><%= booking.space.user.name %></p>
-                      <p><%= link_to "Review owner", new_user_user_review_path(booking.space.user) %>
+                      <p><%= link_to "Review owner", new_user_user_review_path(booking.space.user, booking_id: booking.id) %>
                       </p>
                     </td>
 <!--                   <td class="text-center">
