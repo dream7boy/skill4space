@@ -101,11 +101,16 @@
               <%= hidden_field_tag "space_id", @space.id%>
               <p></p>
               <%= submit_tag "Book", class: "btn btn-success" %>
+              <!-- For payment features -->
               <%#= submit_tag 'PAY WITH SKILLS', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
               <!-- <h5>OR</h5> -->
               <%#= submit_tag 'PAY WITH CASH', disabled: true, class: "btn btn-success btn-lg", id: "booking-cash-button" %>
             <% end %>
           </div>
+        </div>
+        <div class="pay-option text-center">
+          <p>Do you want to pay to use this space?</p>
+          <p>Please contact us, <a href="mailto:admin@skill4.space" target="_top">admin@skill4.space</a> to send a request.</p>
         </div>
       </div>
     </div>
