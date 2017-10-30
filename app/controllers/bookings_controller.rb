@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
     @booking = space.bookings.build({start_date: start_date, end_date: end_date})
     @booking.status = "Pending"
     @booking.user = current_user
-    @booking.total_price = (@booking.end_date - @booking.start_date) * space.daily_price
+    # @booking.total_price = (@booking.end_date - @booking.start_date) * space.daily_price
     @booking.save
   end
 
@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @booking = @space.bookings.build(booking_params)
     @booking.status = "Pending"
     @booking.user = current_user
-    @booking.total_price = (@booking.end_date - @booking.start_date) * @space.daily_price
+    # @booking.total_price = (@booking.end_date - @booking.start_date) * @space.daily_price
 
     if @booking.save
       redirect_to bookings_path

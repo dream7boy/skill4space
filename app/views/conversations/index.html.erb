@@ -4,13 +4,13 @@
 	  	  <h1><i class="fa fa-envelope-o"></i> Your Mailbox</h1>
 		  <% @conversations.each do |conversation| %>
 		  	  	<%= link_to conversation_path(conversation) do %>
-			  	  <div class="message-wrapper">
-				    <div class="mailbox-left">
-				      <% if conversation.messages.first.sender.photo.nil? %>
+			  	    <div class="message-wrapper">
+				        <div class="mailbox-left">
+				        <% if conversation.messages.first.sender.photo.nil? %>
 		              <%= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
-		              <% else %>
-				      <%= cl_image_tag conversation.messages.first.sender.photo %>
-		              <% end %>
+		            <% else %>
+				          <%= cl_image_tag conversation.messages.first.sender.photo.path, class: "profile-avatar"  %>
+		            <% end %>
 		            </div>
 		            <div class="mailbox-right">
 				      <h2><%= conversation.subject %>
@@ -23,7 +23,7 @@
 		              <p><%= conversation.messages.last.body %></p>
 		            </div>
 			  	  </div>
-			  	<% end %> 
+			  	<% end %>
 		  <% end %>
 		  <%#= link_to "New conversation", new_conversation_path %>
 		</div>
