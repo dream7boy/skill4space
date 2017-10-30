@@ -114,10 +114,15 @@
 }
   .icons {
     padding: 0px;
+    a {
+      padding: 0px 10px 0px 10px;
+      // padding-left: 10px;
+      // padding-right: 10px;
+    }
   }
-    //   i .fa {
-    //   padding: 0px;
-    // }
+  //     i .fa {
+  //     padding: 0px;
+  //   }
   .booking-photo{
     margin: 10px 30px 10px 20px;
     border-radius: 10px;
@@ -169,3 +174,7 @@
     // padding-bottom: 20px;
     // padding-top: 20px;
 }
+
+// .list-inline .product-controls {
+//   margin-right: 0px;
+// }
