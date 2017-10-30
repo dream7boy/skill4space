@@ -72,6 +72,9 @@
     font-size: 24px;
     margin: 0;
   }
+  .last {
+    margin-bottom: 20px;
+  }
   .chatting {
     width: 100%;
   }
@@ -107,9 +110,17 @@
   }
 }
 .exp {
-  height: 500px;
+  min-height: 500px;
+  font-weight: lighter;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-star;
+  h2 {
+    margin-top: 0;
+  }
+  .content {
+    margin: auto;
+    padding: 50px;
+  }
   .exp-img {
     width:50%;
     height: auto;
@@ -120,10 +131,21 @@
     color: white;
     display: flex;
     justify-content: center;
-    padding: 40px;
+    // padding: 40px;
+  }
+  .exp-btn {
+    margin-top: 24px;
+  }
+  .btn {
+    border-radius: 3px;
+  }
+  .btn-option {
+    font-weight: lighter;
+    font-size: 14px;
+    margin-right: 6px;
   }
 }
-.cta {
+.home-recommend {
   height: 600px;
   padding: 40px;
 }
