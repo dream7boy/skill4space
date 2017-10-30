@@ -12,10 +12,10 @@
             <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
           </div>
           <div class="form-actions">
-            <%= f.button :submit, "Change my password" %>
+            <%= f.button :submit, "Change my password", class: "btn btn-lg btn-success" %>
           </div>
         <% end %>
-        <div class="links text-center">
+        <div class="links passwords-links text-center">
           <%= render "devise/shared/links" %>
         </div>
       </div>
