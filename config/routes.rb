@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :skills, only: [:new, :create, :destroy]
     resources :user_reviews, only: [:new, :create]
   end
+  resources :user_reviews, only: [:destroy]
 
   get "profile", to: 'users#profile'
   get "bookings", to: 'users#bookings'
