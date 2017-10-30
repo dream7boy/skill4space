@@ -34,7 +34,7 @@
   }
   h2 {
     font-weight: bold;
-    margin-top: 36px;
+    margin-top: 40px;
   }
   p {
     font-size: 20px;
@@ -54,8 +54,14 @@
   }
   .profile-review {
     margin-left: 10px;
-    ul {
-      padding: 0px;
+    .stars {
+      ul {
+        padding: 0px;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        
+      }
     }
   }
   label {
@@ -64,6 +70,9 @@
   .btn {
     width: 76%;
   }
+  .pay-option-lead {
+  font-size: 14px;
+}
 }
 .index-tags {
   display: flex;
