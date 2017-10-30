@@ -1,12 +1,12 @@
 class BookingsController < ApplicationController
 
-  def self.callback(space, start_date, end_date, current_user)
-    # @callback = BookingsController.new
-    # @callback.create
-    @booking = space.bookings.build({start_date: start_date, end_date: end_date})
+  # def self.callback(space, start_date, end_date, current_user)
+  def self.callback(space, current_user)
+    # @booking = space.bookings.build({start_date: start_date, end_date: end_date})
+    @booking = space.bookings.build
     @booking.status = "Pending"
     @booking.user = current_user
-    @booking.total_price = (@booking.end_date - @booking.start_date) * space.daily_price
+    # @booking.total_price = (@booking.end_date - @booking.start_date) * space.daily_price
     @booking.save
   end
 
@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @booking = @space.bookings.build(booking_params)
     @booking.status = "Pending"
     @booking.user = current_user
-    @booking.total_price = (@booking.end_date - @booking.start_date) * @space.daily_price
+    # @booking.total_price = (@booking.end_date - @booking.start_date) * @space.daily_price
 
     if @booking.save
       redirect_to bookings_path

@@ -2,12 +2,33 @@
   <%= @space.title %> | skill4.space: Match your skills with a space that needs it
 <% end %>
 
+<% if @space.photos.count === 1 %>
 <div class="slider-for">
   <% @space.photos.each do |photo| %>
     <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
   <% end %>
 </div>
-
+<% elsif @space.photos.count === 2 %>
+<div class="slider-for-two">
+  <% @space.photos.each do |photo| %>
+    <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
+  <% end %>
+</div>
+<div class="container">
+  <div class="slider-nav-two">
+    <% @space.photos.each do |photo| %>
+      <div>
+        <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path, width: 300, height: 200, crop: :fill %>');"></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% elsif @space.photos.count >= 3 %>
+<div class="slider-for">
+  <% @space.photos.each do |photo| %>
+    <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
+  <% end %>
+</div>
 <div class="container">
   <div class="slider-nav">
     <% @space.photos.each do |photo| %>
@@ -17,6 +38,7 @@
     <% end %>
   </div>
 </div>
+<% end %>
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-8">
@@ -27,19 +49,19 @@
                 <i class="fa fa-home"></i> <%= @space.category %>
               </div>
             </div>
-            <% if @space.is_barter == true %>
+            <%# if @space.is_barter == true %>
               <div class="category-tag barter">
                 <div>
                   <i class="fa fa-handshake-o"></i> Barter
                 </div>
               </div>
-            <% else %>
-              <div class="category-tag paid">
+            <%# else %>
+              <!-- <div class="category-tag paid">
                 <div>
                   <i class="fa fa-money"></i> Paid
                 </div>
-              </div>
-            <% end %>
+              </div> -->
+            <%# end %>
           </div>
           <p><i class="fa fa-map-marker"></i> <%= @space.address %></p>
           <p><%= @space.description %></p>
@@ -90,19 +112,20 @@
           <h2>Book this place</h2>
           <p class="book-lead">bartering with your <%= @space.required_skill %> skill</p>
           <hr>
-          <h3>Select Dates</h3>
+          <!-- <h3>Select Dates</h3> -->
           <div class="book-form">
             <%= form_tag(conversations_path, method: :post) do %>
             <%#= form_tag(conversations_path, method: :post, 'data-id': @space.id) do %>
               <%#= text_field_tag :species, params[:species] %>
-              <label class="control-label optional" for="book_start_date">FROM:</label>
-              <%= date_field_tag :start_date, params[:start_date], value: @space.start_date, id: "book-start-date" %>
-              <br>
-              <label class="control-label optional" for="book_end_date">TO:</label>
-              <%= date_field_tag :end_date, params[:end_date], class: "form-top", value: @space.end_date, id: "book-end-date" %>
+              <!-- <label class="control-label optional" for="book_start_date">FROM:</label> -->
+              <%#= date_field_tag :start_date, params[:start_date], value: @space.start_date, id: "book-start-date" %>
+              <!-- <br>
+              <label class="control-label optional" for="book_end_date">TO:</label> -->
+              <%#= date_field_tag :end_date, params[:end_date], class: "form-top", value: @space.end_date, id: "book-end-date" %>
               <%= hidden_field_tag "space_id", @space.id%>
               <p></p>
-              <%= submit_tag "Book", class: "btn btn-success" %>
+              <%= submit_tag "Book ", class: "btn btn-success btn-lg" %>
+              <p class="book-lead">and send message<br> to a space owner</p>
               <!-- For payment features -->
               <%#= submit_tag 'PAY WITH SKILLS', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
               <!-- <h5>OR</h5> -->
@@ -121,9 +144,9 @@
 
 <div id="map"></div>
 
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
+<%# content_for(:after_js) do %>
+  <%#= javascript_tag do %>
+    <!-- $(document).ready(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
@@ -135,7 +158,7 @@
           handler.getMap().setZoom(14);
         }
       });
-    });
-  <% end %>
-<% end %>
+    }); -->
+  <%# end %>
+<%# end %>
 

@@ -1,7 +1,9 @@
 class UserReviewsController < ApplicationController
   def new
+    @booking = Booking.find(params[:booking_id])
+    @space = @booking.space
     @user = User.find(params[:user_id])
-    @user_review = @user.user_reviews.build
+    @user_review = @user.user_reviews.build({ booking_id: @booking.id })
   end
 
   def create
@@ -30,7 +32,7 @@ class UserReviewsController < ApplicationController
   private
 
   def user_review_params
-    params.require(:user_review).permit(:title, :content, :rating)
+    params.require(:user_review).permit(:title, :content, :rating, :booking_id)
   end
 
 end

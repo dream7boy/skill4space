@@ -30,34 +30,34 @@
                       <i class="fa fa-home"></i> <%= space.category %>
                     </div>
                   </div>
-                  <% if space.is_barter == true %>
+                  <%# if space.is_barter == true %>
                     <div class="category-tag barter">
                       <div>
                         <i class="fa fa-handshake-o"></i> Barter
                       </div>
                     </div>
-                  <% else %>
-                    <div class="category-tag paid">
+                  <%# else %>
+                    <!-- <div class="category-tag paid">
                       <div>
                         <i class="fa fa-money"></i> Paid
                       </div>
-                    </div>
-                  <% end %>
+                    </div> -->
+                  <%# end %>
                 </div>
-                <h3><%= space.name %></h3>
+                <h3>@<%= space.name %></h3>
                 <div class="space-location">
                   <p><i class="fa fa-map-marker"></i> <%= space.address %></p>
                 </div>
-                <% if space.is_barter == true %>
+                <%# if space.is_barter == true %>
                   <div class="space-price text-right">
-                    <p>provide your <span class="skill"><strong><%= space.required_skill %></strong></span> skill</p>
-                    <p>or pay <strong><%= number_to_currency(space.daily_price, unit: "¥", separator: ",", precision: 0) %></strong>/day to use</p>
+                    <p>provide your <span class="skill"><strong><%= space.required_skill %></strong></span> skill<br>to use this space</p>
+                    <!-- <p>or pay <strong><%#= number_to_currency(space.daily_price, unit: "¥", separator: ",", precision: 0) %></strong>/day to use</p> -->
                   </div>
-                <% else %>
-                  <div class="space-price text-right">
-                    <p><span><strong><%= number_to_currency(space.daily_price, unit: "¥", separator: ",", precision: 0) %></strong></span>/day to use</p>
-                  </div>
-                <% end %>
+                <%# else %>
+                  <!-- <div class="space-price text-right">
+                    <p><span><strong><%#= number_to_currency(space.daily_price, unit: "¥", separator: ",", precision: 0) %></strong></span>/day to use</p>
+                  </div> -->
+                <%# end %>
               <% end %>
             </div>
           </div>
