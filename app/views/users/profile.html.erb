@@ -4,91 +4,96 @@
 
 <div class="profile-container">
   <div class="container">
-    <div class="row">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-4">
-            <div class="left-profile">
-              <% if @user.photo.present? %>
-                <% avatar_url = @user.photo.path %>
-              <% else %>
-                <% avatar_url = @user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
-              <% end %>
-              <%= cl_image_tag avatar_url, class: "profile-avatar" %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <div class="left-profile">
+            <% if @user.photo.present? %>
+              <% avatar_url = @user.photo.path %>
+            <% else %>
+              <% avatar_url = @user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
+            <% end %>
+            <%= cl_image_tag avatar_url, class: "profile-avatar" %>
 
-              <p><i class="fa fa-map-marker"></i> : <%= @user.address %></p>
-              <%= link_to bookings_path(@user), class: "btn btn-primary" do%>
-                <i class="fa fa-book"></i> Your bookings
-              <% end %>
-              <%= link_to listings_path(@user), class: "btn btn-primary" do%>
-                <i class="fa fa-list-alt"></i> Your listings
-              <%= link_to edit_user_path(@user), class: "btn" do%>
-                <i class="fa fa-user"></i> Edit profile
-              <% end %>
-              <% end %>
-            </div>
+            <p><i class="fa fa-map-marker"></i> : <%= @user.address %></p>
+            <%= link_to bookings_path(@user), class: "btn btn-primary" do%>
+              <i class="fa fa-book"></i> Your bookings
+            <% end %>
+            <%= link_to listings_path(@user), class: "btn btn-primary" do%>
+              <i class="fa fa-list-alt"></i> Your listings
+            <%= link_to edit_user_path(@user), class: "btn" do%>
+              <i class="fa fa-user"></i> Edit profile
+            <% end %>
+            <% end %>
           </div>
-          <div class="col-xs-12 col-sm-8">
-            <div class="right-profile">
-              <h1><%= @user.name %></h1>
-              <h3><i class="fa fa-drivers-license"></i> About Me:</h3>
-              <p>User's description should be here User's description should be here User's description should be here</p>
-              <div class="profile-skills">
-                <div class="profile-head">
-                  <div>
-                    <h3><i class="fa fa-wrench"></i> Skills</h3>
-                  </div>
-                  <div>
-                    <%= link_to "Add skill", new_user_skill_path(@user), class: "btn btn-primary text-right" %>
-                  </div>
+        </div>
+        <div class="col-xs-12 col-sm-8">
+          <div class="right-profile">
+            <h1><%= @user.name %></h1>
+            <h3><i class="fa fa-drivers-license"></i> About Me:</h3>
+            <p>User's description should be here User's description should be here User's description should be here</p>
+            <div class="profile-skills">
+              <div class="profile-head">
+                <div>
+                  <h3><i class="fa fa-wrench"></i> Skills</h3>
                 </div>
-                <ul>
-                  <% @user.skills.each do |skill| %>
-                    <li class="profile-skill">
-                      <%= skill.skill_category %>
-                      <%= link_to [current_user, skill], class: "btn", method: :delete, data: { confirm: "Are you sure to delete this skill?" } do %>
-                         <i class="fa fa-times"></i>
-                      <% end %>
-                    </li>
-                  <% end %>
-                </ul>
+                <div>
+                  <%= link_to "Add skill", new_user_skill_path(@user), class: "btn btn-primary text-right" %>
+                </div>
               </div>
-              <h3><i class="fa fa-users"></i> Your reviews</h3>
-                <% @user.user_reviews.each do |review| %>
-                  <div class="profile-review">
-                    <div class="review-left">
-                      <!-- Dynamic Reviewer's photo here -->
-                      <%#= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
-
-                      <% if User.find_by(name: review.reviewer_name).photo.present? %>
-                        <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
-                      <% else %>
-                        <%= image_tag "person-placeholder.jpg", class: "profile-avatar reviewer-avatar" %>
-                      <% end %>
-
-                      <p><%= review.reviewer_name %></p>
-                      <div class="stars">
-                        <ul>
-                          <% review.rating.to_i.times do  %>
-                            <li><i class="fa fa-star starred"></i></li>
-                          <% end %>
-                          <% (5 - review.rating.to_i).times do  %>
-                            <li><i class="fa fa-star"></i></li>
-                          <% end %>
-                        </ul>
+              <div>
+                <% @user.skills.each do |skill| %>
+                  <div class="profile-skill">
+                    <div class="skill-heading">
+                      <h4>◎<%= skill.skill_category %></h4>
+                      <div class="actions">
+                        <%= link_to "#" do %>
+                          <i class="fa fa-pencil-square-o"></i>
+                        <% end %>
+                        <%= link_to [current_user, skill], method: :delete, data: { confirm: "Are you sure to delete this skill?" } do %>
+                           <i class="fa fa-times"></i>
+                        <% end %>
                       </div>
                     </div>
-                    <div class="review-right">
-                      <h4><%= review.title %></h4>
-                      <p><%= review.content %></p>
-                    </div>
+                    <p><%= skill.description %></p>
+                    
                   </div>
                 <% end %>
               </div>
             </div>
+            <h3><i class="fa fa-users"></i> Your reviews</h3>
+              <% @user.user_reviews.each do |review| %>
+                <div class="profile-review">
+                  <div class="review-left">
+                    <!-- Dynamic Reviewer's photo here -->
+                    <%#= image_tag "jung.jpg", class: "profile-avatar reviewer-avatar" %>
+
+                    <% if User.find_by(name: review.reviewer_name).photo.present? %>
+                      <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
+                    <% else %>
+                      <%= image_tag "person-placeholder.jpg", class: "profile-avatar reviewer-avatar" %>
+                    <% end %>
+
+                    <p><%= review.reviewer_name %></p>
+                    <div class="stars">
+                      <ul>
+                        <% review.rating.to_i.times do  %>
+                          <li><i class="fa fa-star starred"></i></li>
+                        <% end %>
+                        <% (5 - review.rating.to_i).times do  %>
+                          <li><i class="fa fa-star"></i></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="review-right">
+                    <h4><%= review.title %></h4>
+                    <p><%= review.content %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
