@@ -28,11 +28,21 @@
           <option>Laboratory</option>
           <option>Kitchen</option>
           <option>Garage</option>"),
-           class: "input-lg form-top", prompt: "Choose your skill"  %>
-        <!-- Need to remove them?? -->
-        <%= hidden_field_tag :start_date, params[:start_date] %>
-        <%= hidden_field_tag :end_date, params[:end_date] %>
-        <%= submit_tag 'Search spaces', name: nil, class: "btn btn-success btn-lg" %>
+           class: "input-lg form-top" %>
+        <%= select_tag "required_skill",
+          raw("<option>Skill to offer</option>
+          <option>Coding</option>
+          <option>Design</option>
+          <option>Teaching</option>
+          <option>Music</option>
+          <option>Dance</option>
+          <option>Cooking</option>
+          <option>Farming</option>
+          <option>Cleaning</option>"),
+           class: "input-lg form-top" %>
+        <%#= date_field_tag :start_date, params[:start_date], class: "input-lg form-top" %>
+        <%#= date_field_tag :end_date, params[:end_date], class: "input-lg form-top" %>
+        <%= submit_tag 'Search', name: nil, class: "btn btn-success" %>
       <% end %>
     </div>
   </div>

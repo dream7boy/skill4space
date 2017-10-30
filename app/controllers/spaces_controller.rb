@@ -6,14 +6,19 @@ class SpacesController < ApplicationController
     if params[:city] == "Select city" || params[:category] == "Select workspace"
       @spaces = Space.all
       flash[:alert] = "No specific city or workspace chosen"
-    elsif params[:start_date] == "" || params[:end_date] == ""
+    elsif params[:required_skill] == "Skill to offer"
+    # elsif params[:start_date] == "" || params[:end_date] == ""
       @spaces = Space.where('city LIKE ? AND category LIKE ?',
       "%#{params[:city]}%", "%#{params[:category]}%")
-      flash[:alert] = "No specific dates chosen"
+      flash[:alert] = "No specific skill chosen"
     else
       @spaces = Space.where('city LIKE ? AND category LIKE ?
-        AND start_date <= ? AND end_date >= ?',
-      "%#{params[:city]}%", "%#{params[:category]}%", "%#{params[:start_date]}%", "%#{params[:end_date]}%")
+        AND required_skill LIKE ?',
+        "%#{params[:city]}%", "%#{params[:category]}%", "%#{params[:required_skill]}%")
+
+      # @spaces = Space.where('city LIKE ? AND category LIKE ?
+      #   AND start_date <= ? AND end_date >= ?',
+      # "%#{params[:city]}%", "%#{params[:category]}%", "%#{params[:start_date]}%", "%#{params[:end_date]}%")
     end
 
     # availability = (astart..aend).map{ |date| date.strftime("%d %b %y") }

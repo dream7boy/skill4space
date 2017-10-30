@@ -5,7 +5,7 @@ User.destroy_all
 
 puts 'Creating database...'
 
-10.times do
+5.times do
   user = User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -16,7 +16,7 @@ puts 'Creating database...'
 
   3.times do
     skill = Skill.create!(
-      skill_category: Faker::Job.field,
+      skill_category: ["Cooking", "Cleaning", "Design", "Music", "Dance", "Teaching", "Coding", "Farming"].sample,
       user_id: user.id
       )
   end
@@ -39,6 +39,16 @@ puts 'Creating database...'
         city: "Tokyo",
         address: user.address
         )
+
+      if space.is_barter == true
+        space.required_skill = ["Cooking", "Cleaning", "Design", "Music", "Dance", "Teaching", "Coding", "Farming"].sample
+        space.save!
+      end
+
+      # skill_match = {
+      #   "Office" => "Coding"
+      # }
+
 
       photo_urls = {
         "Office" => ["app/assets/images/Office1.jpg",
@@ -104,7 +114,7 @@ end
       # product.remote_photo_url = url
       # product.save
 
-5.times do
+3.times do
   # start_random_date = DateTime.new(2017, 11, rand(6..8))
   booked_space = Space.order("RANDOM()").first
   booked_days = booked_space.end_date - booked_space.start_date + 1
