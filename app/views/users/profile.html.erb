@@ -12,7 +12,7 @@
               <% if @user.photo.nil? %>
                 <%= image_tag "logo.png", class: "profile-avatar" %>
               <% else %>
-                <%= cl_image_tag @user.photo.path, width: 200, height: 300, crop: :fill, class: "profile-avatar" %>
+                <%= cl_image_tag @user.photo.path, class: "avatar profile-avatar" %>
               <% end %>
 
               <p><i class="fa fa-map-marker"></i> : <%= @user.address %></p>
@@ -45,7 +45,7 @@
                   <% @user.skills.each do |skill| %>
                     <li class="profile-skill">
                       <%= skill.skill_category %>
-                      <%= link_to [current_user, skill], class: "btn", method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <%= link_to [current_user, skill], class: "btn", method: :delete, data: { confirm: "Are you sure to delete this skill?" } do %>
                          <i class="fa fa-times"></i>
                       <% end %>
                     </li>

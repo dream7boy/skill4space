@@ -1,27 +1,139 @@
 // Specific CSS for your home-page
 .banner {
   text-align: center;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 180px);
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  h1, h2 {
+  h1 {
+    font-size: 58px;
     color: white;
-    font: $headers-font;
-    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-    padding: 100px;
   }
-  // .banner-content {
-  //   color: white;
-  //   padding: 200px;
-  // }
-  .home-content {
-    padding: 200px;
-    font: $body-font;
-    margin-bottom: 200px;
-    p {
-      padding: 100px;
+  select {
+    background: transparent;
+    color: #A6A6A6;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .btn {
+    color: $green;
+    background: transparent;
+    display: block;
+    margin: 10px auto;
+    width: 68%;
+    border-radius: 5px;
+    &:hover {
+      background: $green;
+      color: white;
+      transition: 0.3s;
     }
   }
+}
+
+.typewriter {
+  h1 {
+    width: 100%;
+    margin: 0 0 30px 0;
+    height: 1em;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    // border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  span.wrap {
+    color: $green;
+  }
+  a:hover {
+    text-decoration: none;
+    color: $green;
+    cursor: default;
+  }
+}
+
+.banner-content {
+  .form-wrapper {
+    margin-top: 40px;
+  }
+}
+
+.home-content {
+  height: 100%;
+  .explanation {
+    padding: 50px;
+  }
+  .lead {
+    font-size: 24px;
+    margin: 0;
+  }
+  .chatting {
+    width: 100%;
+  }
+  .says {
+    display: inline-block;
+    position: relative; 
+    margin: 6px auto;
+    padding: 17px 13px;
+    border-radius: 12px;
+    background: #d7ebfe;
+  }
+  .left:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 18px; 
+    left: -24px;
+    border: 12px solid transparent;
+    border-right: 12px solid #d7ebfe;
+  }
+    .right:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 18px; 
+    right: -24px;
+    border: 12px solid transparent;
+    border-left: 12px solid #d7ebfe;
+  }
+  .says p {
+    margin: 0;
+    padding: 0;
+  }
+}
+.exp {
+  height: 500px;
+  display: flex;
+  justify-content: flex-start;
+  .exp-img {
+    width:50%;
+    height: auto;
+  }
+  .exp-text{
+    width: 50%;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+}
+.cta {
+  height: 600px;
+  padding: 40px;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
 }

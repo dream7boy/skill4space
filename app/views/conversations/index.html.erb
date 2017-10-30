@@ -1,11 +1,31 @@
-<div class="container">
-  <h1>All Conversations</h1>
-
-  <% @conversations.each do |conversation| %>
-    <div>
-      <%= link_to conversation.subject, conversation_path(conversation) %>
-    </div>
-  <% end %>
-
-  <%= link_to "New conversation", new_conversation_path %>
+<div class="mailbox-container">
+	<div class="container">
+		<div class="row">
+	  	  <h1><i class="fa fa-envelope-o"></i> Your Mailbox</h1>
+		  <% @conversations.each do |conversation| %>
+		  	  	<%= link_to conversation_path(conversation) do %>
+			  	  <div class="message-wrapper">
+				    <div class="mailbox-left">
+				      <% if conversation.messages.first.sender.photo.nil? %>
+		              <%= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
+		              <% else %>
+				      <%= cl_image_tag conversation.messages.first.sender.photo %>
+		              <% end %>
+		            </div>
+		            <div class="mailbox-right">
+				      <h2><%= conversation.subject %>
+				      	<%#= link_to conversation.subject, conversation_path(conversation) %>
+				      </h2>
+				      <p><%= conversation.messages.first.sender.name %></p>
+		            </div>
+		            <div class="mailbox-body">
+		              <p class="latest-message"><span>Latest message: <%= conversation.messages.last.created_at.strftime("%Y/%m/%d %H:%M%p") %></span>  </p>
+		              <p><%= conversation.messages.last.body %></p>
+		            </div>
+			  	  </div>
+			  	<% end %> 
+		  <% end %>
+		  <%#= link_to "New conversation", new_conversation_path %>
+		</div>
+	</div>
 </div>

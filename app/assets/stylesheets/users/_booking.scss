@@ -2,6 +2,14 @@
 .dashboard-container {
   margin-bottom: 100px;
 }
+  table {
+    margin-top: 10px;
+    // margin-left: 10px;
+    font-family: $body-font;
+  }
+  .table-heading {
+    font-family: $headers-font;
+  }
 .tabs {
   background: white;
   display: flex;
@@ -37,7 +45,7 @@
 /* Body design */
 .product-body {
   flex: 1 1 auto;
-  padding: 30px;
+  // padding: 30px;
 }
 .product-body h2 {
   font-weight: bold;
@@ -53,7 +61,7 @@
 /* Product image */
 .product-image {
   border-radius: 10px;
-  margin-right: 20px;
+  margin-left: 30px;
   width: 175px;
 }
 
