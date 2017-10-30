@@ -2,89 +2,97 @@
   My listings | skill4.space: Match your skills with a space that needs it
 <% end %>
 <div class="dashboard-container container">
-    <div class="tabs">
-        <!-- <div class="col-sm-8"> -->
-        <h1>MY LISTINGS</h1>
-        <!-- </div> -->
-        <%= link_to new_space_path, class: "btn btn-success" do %>
-         <i class="fa fa-list-alt"></i> CREATE A NEW LISTING
-        <% end %>
-        <!-- <div class="col-sm-3 col-sm-offset-3"> -->
-        <!-- </div> -->
-    </div>
+  <div class="tabs">
+    <!-- <div class="col-sm-8"> -->
+    <h1>MY LISTINGS</h1>
+    <!-- </div> -->
+    <%= link_to new_space_path, class: "btn btn-success" do %>
+     <i class="fa fa-list-alt"></i> CREATE A NEW LISTING
+    <% end %>
+    <!-- <div class="col-sm-3 col-sm-offset-3"> -->
+    <!-- </div> -->
+  </div>
 
-    <div class="table-responsive">
-      <table class="table table-hover table-responsive">
-        <thead>
+  <div class="table-responsive">
+    <table class="table table-hover table-responsive">
+      <thead>
+        <tr>
+          <th class="text-center">PHOTO</th>
+          <th class="text-center">LISTING NAME</th>
+          <!-- <th class="text-center">PRICE</th>
+          <th class="table-heading text-center">DATES</th> -->
+          <th class="text-center">ACTIONS</th>
+          <th class="text-center">STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.spaces.reverse.each do |space| %>
           <tr>
-            <th class="table-heading text-center">PHOTO</th>
-            <th class="table-heading text-center">NAME</th>
-<!--        <th class="table-heading text-center">PRICE</th>
-            <th class="table-heading text-center">DATES</th> -->
-            <th class="table-heading text-center">ACTIONS</th>
-            <th class="table-heading text-center">STATUS</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user.spaces.reverse.each do |space| %>
-            <tr>
-              <td>
-                <%= image_tag 'airbnb2.jpg', height: 150, width: 300, crop: :fill, class: "booking-photo bookings-table-data" %>
-              </td>
-              <td class="booking-path">
-                <h5 class="bookings-table-data"><%= link_to space.name, space_path(space) %></h5>
-                <p><%= space.user.name %></p>
-              </td>
-<!--              <td class="text-center">
-                    <h5 class="bookings-table-data"><%#= "¥#{space.daily_price}" %></h5>
-                  </td>
-                  <td class="text-center">
-                    <h5 class="bookings-table-data"><%#= "#{space.start_date.month}/#{space.start_date.day}/#{space.start_date.year} ~ #{space.end_date.month}/#{space.end_date.day}/#{space.end_date.year}" %></h5>
-                  </td> -->
-              <td>
-                <ul class="list-inline product-controls hidden-sm hidden-xs">
-<!--                      <li class="icons"><%#= link_to space, class: "btn" do %><i class="fa fa-lg fa-info-circle" title="View details"></i><#% end %></li> -->
-                  <li class="icons"><%= link_to edit_space_path(space), class: "btn" do %><i class="fa fa-lg fa-pencil-square-o" title="Edit"></i><% end %></li>
-                   <li class="icons bookings-table-data"> <%= link_to space, class: "btn", method: :delete, data: { confirm: "Are you sure you want to delete this listing?" } do  %><i class="fa fa-lg fa-trash-o" title="Delete"></i><% end %></li>
-                </ul>
-              </td>
-              <td class="text-center">
-                <p class="booking-status bookings-table-data">
-
-                  <!-- check if space.bookings is nil (after seeding) -->
-                  <% if space.bookings.last.nil? %>
-                    <h5 class="green-status">Available</h5>
-                    <p>
-                  <% elsif space.bookings.last.status == "Confirm" %>
-                    <%= simple_form_for [space, space.bookings.last] do |f| %>
-                      <%= f.input :status, collection: ["Confirm", "Cancel"] %>
-                      <%= f.submit "update" %>
-                    <% end %>
-                    <h5 class="green-status">Confirmed</h5>
-                    <p>
-                      <%= link_to "Review booker", new_user_user_review_path(space.bookings.last.user, booking_id: space.bookings.last.id), id: "review-booker" %>
-                    </p>
-                  <% elsif space.bookings.last.status == "Cancel" %>
-                    <%= simple_form_for [space, space.bookings.last] do |f| %>
-                      <%= f.input :status, collection: ["Confirm", "Cancel"] %>
-                      <%= f.submit "update" %>
-                    <% end %>
-                    <h5 class="red-status">Cancelled</h5>
-                    <p>
-                  <% else %>
-                    <%= simple_form_for [space, space.bookings.last] do |f| %>
-                      <%= f.input :status, collection: ["Confirm", "Cancel"] %>
-                      <%= f.submit "update" %>
-                    <% end %>
-                      <h5 class="red-status">Pending</h5>
-                      <p></p>
+            <td>
+              <% if space.photos.first != nil %> <!-- Should remove it -->
+                <%= cl_image_tag space.photo, height: 150, width: 300, crop: :fill %>
+              <% end %> <!-- Should remove it -->
+            </td>
+            <td>
+              <p><%= link_to space.name, space_path(space) %></p>
+            </td>
+            <!-- <td class="text-center">
+                  <h5 class="bookings-table-data"><%#= "¥#{space.daily_price}" %></h5>
+                </td>
+                <td class="text-center">
+                  <h5 class="bookings-table-data"><%#= "#{space.start_date.month}/#{space.start_date.day}/#{space.start_date.year} ~ #{space.end_date.month}/#{space.end_date.day}/#{space.end_date.year}" %></h5>
+                </td> -->
+            <td>
+              <ul class="list-inline product-controls">
+<!--              <li class="icons"><%#= link_to space, class: "btn" do %><i class="fa fa-lg fa-info-circle" title="View details"></i><#% end %></li> -->
+                <li>
+                  <%= link_to edit_space_path(space) do %>
+                    <i class="fa fa-lg fa-pencil-square-o"></i>
                   <% end %>
-                </p>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+                </li>
+                <li>
+                  <%= link_to space, method: :delete, data: { confirm: "Are you sure you want to delete this listing?" } do %>
+                    <i class="fa fa-lg fa-trash-o"></i>
+                  <% end %>
+                </li>
+              </ul>
+            </td>
+            <td class="text-center">
+              <p>
+                <!-- check if space.bookings is nil (after seeding) -->
+                <% if space.bookings.last.nil? %>
+                  <h5 class="status available">Available</h5>
+                  <p>
+                <% elsif space.bookings.last.status == "Confirm" %>
+                  <%= simple_form_for [space, space.bookings.last] do |f| %>
+                    <%= f.input :status, collection: ["Confirm", "Cancel"] %>
+                    <%= f.submit "update" %>
+                  <% end %>
+                  <h5 class="status status confirmed">Confirmed</h5>
+                  <p>
+                    <%= link_to "Review booker", new_user_user_review_path(space.bookings.last.user, booking_id: space.bookings.last.id), id: "review-booker" %>
+                  </p>
+                <% elsif space.bookings.last.status == "Cancel" %>
+                  <%= simple_form_for [space, space.bookings.last] do |f| %>
+                    <%= f.input :status, collection: ["Confirm", "Cancel"] %>
+                    <%= f.submit "update" %>
+                  <% end %>
+                  <h5 class="status cancelled">Cancelled</h5>
+                  <p>
+                <% else %>
+                  <%= simple_form_for [space, space.bookings.last] do |f| %>
+                    <%= f.input :status, collection: ["Confirm", "Cancel"] %>
+                    <%= f.submit "update" %>
+                  <% end %>
+                    <h5 class="status pending">Pending</h5>
+                    <p></p>
+                <% end %>
+              </p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
