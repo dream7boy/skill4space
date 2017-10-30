@@ -29,8 +29,10 @@
                     <td class="booking-path">
                       <h5 class="bookings-table-data"><%= link_to booking.space.name, space_path(booking.space) %></h5>
                       <p><%= booking.space.user.name %></p>
-                      <p><%= link_to "Review owner", new_user_user_review_path(booking.space.user) %>
-                      </p>
+                      <% if booking.status == "Confirm" %>
+                        <p><%= link_to "Review owner", new_user_user_review_path(booking.space.user) %>
+                        </p>
+                      <% end %>
                     </td>
                   <td class="text-center">
                     <h5 class="bookings-table-data"><%= "¥#{booking.total_price}" %></h5>
@@ -47,10 +49,12 @@
                   </td>
                   <td>
                     <p class="booking-status bookings-table-data">
-                        <% if booking.status === "Confirmed" %>
-                          <h5 class="green-status"><%= booking.status %></h5>
-                        <% elsif booking.status === "Pending" %>
-                          <h5 class="red-status"><%= booking.status %></h5>
+                        <% if booking.status == "Confirm" %>
+                          <h5 class="green-status">Confirmed</h5>
+                        <% elsif booking.status == "Cancel" %>
+                          <h5 class="red-status">Cancelled</h5>
+                        <% else %>
+                          <h5 class="red-status">Pending</h5>
                         <% end %>
                     </p>
                   </td>
