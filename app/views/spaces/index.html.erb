@@ -13,54 +13,56 @@
       <!-- Filters will be here -->
       <div class="row-cards">
         <% @spaces.each do |space| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="card-wrapper">
-              <%= link_to space_path(space) do %>
-                <% if space.photos.empty? %>
-                  <div class="card" style="background-image: url(http://via.placeholder.com/350x150);">
-                  </div>
-                <% else %>
-                  <div class="card" style="background-image: url('<%= cl_image_path space.photos.first.path %>');">
-                  </div>
-                <% end %>
-                <h2><%= space.title %></h2>
-                <div class="index-tags">
-                  <div class="category-tag">
-                    <div>
-                      <i class="fa fa-home"></i> <%= space.category %>
+          <% if space.bookings.empty? %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="card-wrapper">
+                <%= link_to space_path(space) do %>
+                  <% if space.photos.empty? %>
+                    <div class="card" style="background-image: url(http://via.placeholder.com/350x150);">
                     </div>
+                  <% else %>
+                    <div class="card" style="background-image: url('<%= cl_image_path space.photos.first.path %>');">
+                    </div>
+                  <% end %>
+                  <h2><%= space.title %></h2>
+                  <div class="index-tags">
+                    <div class="category-tag">
+                      <div>
+                        <i class="fa fa-home"></i> <%= space.category %>
+                      </div>
+                    </div>
+                    <%# if space.is_barter == true %>
+                      <div class="category-tag barter">
+                        <div>
+                          <i class="fa fa-handshake-o"></i> Barter
+                        </div>
+                      </div>
+                    <%# else %>
+                      <!-- <div class="category-tag paid">
+                        <div>
+                          <i class="fa fa-money"></i> Paid
+                        </div>
+                      </div> -->
+                    <%# end %>
+                  </div>
+                  <h3>@<%= space.name %></h3>
+                  <div class="space-location">
+                    <p><i class="fa fa-map-marker"></i> <%= space.address %></p>
                   </div>
                   <%# if space.is_barter == true %>
-                    <div class="category-tag barter">
-                      <div>
-                        <i class="fa fa-handshake-o"></i> Barter
-                      </div>
+                    <div class="space-price text-right">
+                      <p>provide your <span class="skill"><strong><%= space.required_skill %></strong></span> skill<br>to use this space</p>
+                      <!-- <p>or pay <strong><%#= number_to_currency(space.daily_price, unit: "¥", separator: ",", precision: 0) %></strong>/day to use</p> -->
                     </div>
                   <%# else %>
-                    <!-- <div class="category-tag paid">
-                      <div>
-                        <i class="fa fa-money"></i> Paid
-                      </div>
+                    <!-- <div class="space-price text-right">
+                      <p><span><strong><%#= number_to_currency(space.daily_price, unit: "¥", separator: ",", precision: 0) %></strong></span>/day to use</p>
                     </div> -->
                   <%# end %>
-                </div>
-                <h3>@<%= space.name %></h3>
-                <div class="space-location">
-                  <p><i class="fa fa-map-marker"></i> <%= space.address %></p>
-                </div>
-                <%# if space.is_barter == true %>
-                  <div class="space-price text-right">
-                    <p>provide your <span class="skill"><strong><%= space.required_skill %></strong></span> skill<br>to use this space</p>
-                    <!-- <p>or pay <strong><%#= number_to_currency(space.daily_price, unit: "¥", separator: ",", precision: 0) %></strong>/day to use</p> -->
-                  </div>
-                <%# else %>
-                  <!-- <div class="space-price text-right">
-                    <p><span><strong><%#= number_to_currency(space.daily_price, unit: "¥", separator: ",", precision: 0) %></strong></span>/day to use</p>
-                  </div> -->
-                <%# end %>
-              <% end %>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>

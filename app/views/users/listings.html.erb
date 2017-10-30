@@ -64,7 +64,9 @@
                         <% end %>
                         <h5 class="green-status">Confirmed</h5>
                         <p>
+                        <% if current_user.name.present? %>
                           <%= link_to "Review booker", new_user_user_review_path(space.bookings.last.user, booking_id: space.bookings.last.id), id: "review-booker" %>
+                        <% end %>
                         </p>
                       <% elsif space.bookings.last.status == "Cancel" %>
                         <%= simple_form_for [space, space.bookings.last] do |f| %>
