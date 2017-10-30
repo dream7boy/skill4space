@@ -2,12 +2,33 @@
   <%= @space.title %> | skill4.space: Match your skills with a space that needs it
 <% end %>
 
+<% if @space.photos.count === 1 %>
 <div class="slider-for">
   <% @space.photos.each do |photo| %>
     <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
   <% end %>
 </div>
-
+<% elsif @space.photos.count === 2 %>
+<div class="slider-for-two">
+  <% @space.photos.each do |photo| %>
+    <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
+  <% end %>
+</div>
+<div class="container">
+  <div class="slider-nav-two">
+    <% @space.photos.each do |photo| %>
+      <div>
+        <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path, width: 300, height: 200, crop: :fill %>');"></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% elsif @space.photos.count >= 3 %>
+<div class="slider-for">
+  <% @space.photos.each do |photo| %>
+    <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
+  <% end %>
+</div>
 <div class="container">
   <div class="slider-nav">
     <% @space.photos.each do |photo| %>
@@ -17,6 +38,7 @@
     <% end %>
   </div>
 </div>
+<% end %>
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-8">
