@@ -9,12 +9,13 @@
       <table class="table table-hover table-responsive">
         <thead>
           <tr>
-            <th class="table-heading text-center">PHOTO</th>
-            <th class="table-heading text-center">NAME</th>
-            <th class="table-heading text-center">PRICE</th>
-            <th class="table-heading text-center">DATES</th>
-            <th class="table-heading text-center">ACTIONS</th>
-            <th class="table-heading text-center">STATUS</th>
+            <th class="table-heading">PHOTO</th>
+            <th class="table-heading">NAME</th>
+<!--        <th class="table-heading text-center">PRICE</th>
+            <th class="table-heading text-center">DATES</th> -->
+            <th class="table-heading">OWNER</th>
+            <th class="table-heading">ACTIONS</th>
+            <th class="table-heading">STATUS</th>
           </tr>
         </thead>
         <tbody>
@@ -28,16 +29,18 @@
                     </td>
                     <td class="booking-path">
                       <h5 class="bookings-table-data"><%= link_to booking.space.name, space_path(booking.space) %></h5>
+                    </td>
+                    <td class="booking-path">
                       <p><%= booking.space.user.name %></p>
                       <p><%= link_to "Review owner", new_user_user_review_path(booking.space.user) %>
                       </p>
                     </td>
-                  <td class="text-center">
-                    <h5 class="bookings-table-data"><%= "¥#{booking.total_price}" %></h5>
+<!--                   <td class="text-center">
+                    <h5 class="bookings-table-data"><%#= "¥#{booking.total_price}" %></h5>
                   </td>
                   <td class="text-center">
-                    <h5 class="bookings-table-data"><%= "#{booking.start_date.month}/#{booking.start_date.day}/#{booking.start_date.year} ~ #{booking.end_date.month}/#{booking.end_date.day}/#{booking.end_date.year}" %></h5>
-                  </td>
+                    <h5 class="bookings-table-data"><%#= "#{booking.start_date.month}/#{booking.start_date.day}/#{booking.start_date.year} ~ #{booking.end_date.month}/#{booking.end_date.day}/#{booking.end_date.year}" %></h5>
+                  </td> -->
                   <td class="">
                     <ul class="list-inline product-controls hidden-sm hidden-xs">
                       <li class="icons bookings-table-data"><a href="" title="Contact owner" data-toggle="tooltip"><i class="fa fa-envelope-o"></i></a></li>
