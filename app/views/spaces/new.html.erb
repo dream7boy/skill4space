@@ -25,11 +25,13 @@
           <%= f.input :description, placeholder: "eg.) We have a nice co-working office especially for startups in Tokyo... "%>
           <%= f.input :city, collection: ["Tokyo", "Osaka", "Fukuoka"], prompt: "Choose the location of the space", label: "Location of the space" %>
           <%= f.input :address, placeholder: "eg.) Tokyo, Japan", label: "Address of the space" %>
+          <br>
           <%= f.input :floor_area, collection: ["〜10", "11〜20", "21〜50", "50〜100", "100〜"], label: "Floor area of the space (suquare meter)", prompt: "Choose floor area of the space" %>
           <%= f.input :facility, placeholder: "eg.) Wi-Fi, Lounge, Free coffee..." , label: "Facility of the space"%>
           <%= f.input :people_capacity, collection: ["1 person", "〜5 people", "〜10 people", "〜20 people", "〜50 people", "〜100 people", "〜200 people", "More than 200 people" ], prompt: "Choose people capacity of the office", label: "Capacity of the space" %>
-          <%= f.input :start_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'}, label: "Available from"%>
-          <%= f.input :end_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'}, label: "Available until" %>
+          <%#= f.input :start_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'}, label: "Available from"%>
+          <%# f.input :end_date, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'}, label: "Available until" %>
+          <br>
           <%= f.input :opening_hours, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'}, default: Time.parse('8:00') %>
           <%= f.input :closing_hours, wrapper_html: { class: 'form-inline' }, label_html: { class: 'form-inline-label'}, default: Time.parse('20:00') %>
           <br>
