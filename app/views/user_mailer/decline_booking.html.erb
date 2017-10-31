@@ -1,4 +1,17 @@
-<p>Hi <%= @booker.name %>,</p>
-<p>Your booking of <%= @space.name %> has been declined.</p>
-
-
+<div class="container">
+	<div id="email-header">
+		<%#= image_tag "logo.png", class: "logo" %>
+	</div>
+	<div class="body">
+		<div class="content">
+			<p>Hi, <%= @booker.name %>.</p>
+		    <p>I'm sorry but your bookings for <%= @space.name %> is declined by the owner.</p>
+		    <p>I hope to see you again.</p>
+		    <%= link_to "Go to the website & find another space", root_url, class: "btn"%>
+		    <p class="contact">Contact to <a href="mailto:admin@skill4.space?Subject=Inquiry" target="_top">Help center</a></p>
+ 		</div>
+	</div>
+	<div id="email-footer">
+		<p>Copyright©2017 skill4.space</p>
+	</div>
+</div>
