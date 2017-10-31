@@ -6,6 +6,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
         <h1>Create a new listing</h1>
+        <%= simple_form_for(@space) do |f| %>
           <%= f.input :title, placeholder: "eg.) Renew or website, and come to use our office", label: "Listing title" %>
           <%= f.input :name, placeholder: "eg.) IMPACT HUB Tokyo", label: "Space name" %>
           <%= f.input :category, collection: ["Office", "Coworking", "Event space", "Art gallery", "Design Studio", "Music Studio", "Dance Studio", "Kitchen", "Garage", ], prompt: "Choose the category of your space", label: "Space category" %>
