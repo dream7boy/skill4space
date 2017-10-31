@@ -28,7 +28,6 @@
             </td>
             </td>
             <td>
-
               <p><%= link_to booking.space.name, space_path(booking.space) %></p>
             </td>
             <td>
@@ -36,7 +35,12 @@
                 <div>
                   <%= booking.space.user.name %>
                 </div>
-                <%#= cl_image_tag booking.space.user.photo.path, class: "avatar" %>
+                <% if booking.space.user.photo.present? %>
+                  <% avatar_url = booking.space.user.photo.path %>
+                <% else %>
+                  <% avatar_url = booking.space.user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
+                <% end %>
+                <%= cl_image_tag avatar_url, class: "avatar" %>
                 <% end %>
               <% if booking.status == "Confirm" %>
                 <%= link_to "Review owner", new_user_user_review_path(booking.space.user, booking_id: booking.id) %>
