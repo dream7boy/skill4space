@@ -32,6 +32,20 @@ class UserMailer < ApplicationMailer
     @booker = booker
     @space = space
     @owner = space.user
-    mail(to: @booker.email, subject: "Thank you for your booking of #{@space.name}!")
+    mail(to: @booker.email, subject: "Booking Made - #{@space.name}")
+  end
+
+  def accept_booking(booker, space)
+    @booker = booker
+    @space = space
+    @owner = space.user
+    mail(to: @booker.email, subject: "Booking Accepted - #{@space.name}")
+  end
+
+  def decline_booking(booker, space)
+    @booker = booker
+    @space = space
+    @owner = space.user
+    mail(to: @booker.email, subject: "Booking Declined - #{@space.name}")
   end
 end
