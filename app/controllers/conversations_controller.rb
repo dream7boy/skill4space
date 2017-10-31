@@ -16,12 +16,13 @@ class ConversationsController < ApplicationController
   def create
     @space = Space.find(params[:space_id])
     # BookingsController.callback(@space, params[:start_date], params[:end_date], current_user)
-    BookingsController.callback(@space, current_user)
 
     sender = User.find(@space.user.id)
     receipt = sender.send_message(current_user,
       "Hi #{current_user.name}, I am #{sender.name}, the owner of #{@space.name}. Thank you for your booking!! Please leave messages if you have any questions. I will respond you soon!!",
        "#{@space.name}")
+
+    BookingsController.callback(@space, current_user, receipt.conversation.id)
     redirect_to conversation_path(receipt.conversation)
   end
 end

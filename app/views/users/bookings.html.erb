@@ -51,11 +51,10 @@
             <td>
               <ul class="list-inline product-controls">
                 <li>
-                  <%# raise %>
-                  <!-- Should link to the conversation -->
-                  <!-- conversation_message_path(booking.space.user) did not work -->
-                  <%= link_to "#" do  %>
+                  <% if booking.conversation %>
+                    <%= link_to conversation_path(@conversations.find(booking.conversation)) do  %>
                     <i class="fa fa-envelope-o"></i>
+                    <% end %>
                   <% end %>
                 </li>
                 <li>
