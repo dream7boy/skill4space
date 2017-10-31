@@ -13,19 +13,21 @@
                 <th class="text-center">BOOKING STATUS</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <%= cl_image_tag @booking.space.photos.first.path, class: "booking-info-photo" %>
-                </td>
-                <td>
-                  <p><%= link_to @booking.space.name, space_path(@booking.space) %></p>        
-                </td>
-                <td>
-                  <p><%= @booking.status %></p>
-                </td>
-              </tr>
-            </tbody>
+            <% if @booking %>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= cl_image_tag @booking.space.photos.first.path, class: "booking-info-photo" %>
+                  </td>
+                  <td>
+                    <p><%= link_to @booking.space.name, space_path(@booking.space) %></p>
+                  </td>
+                  <td>
+                    <p><%= @booking.status %></p>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
           </table>
         </div>
       </div>
