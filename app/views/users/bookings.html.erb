@@ -28,13 +28,18 @@
             </td>
             </td>
             <td>
+
               <p><%= link_to booking.space.name, space_path(booking.space) %></p>
             </td>
             <td>
-              <p><%= booking.space.user.name %></p>
+              <%= link_to user_path(booking.space.user) do%>
+                <div>
+                  <%= booking.space.user.name %>
+                </div>
+                <%= cl_image_tag booking.space.user.photo.path, class: "avatar" %>
+                <% end %>
               <% if booking.status == "Confirm" %>
-                <p><%= link_to "Review owner", new_user_user_review_path(booking.space.user, booking_id: booking.id) %>
-                </p>
+                <%= link_to "Review owner", new_user_user_review_path(booking.space.user, booking_id: booking.id) %>
               <% end %>
             </td>
             <!--  <td class="text-center">
@@ -46,11 +51,13 @@
             <td>
               <ul class="list-inline product-controls">
                 <li>
+                  <%# raise %>
+                  <!-- Should link to the conversation -->
+                  <!-- conversation_message_path(booking.space.user) did not work -->
                   <%= link_to "#" do  %>
                     <i class="fa fa-envelope-o"></i>
                   <% end %>
                 </li>
-                <!-- <li class="icons"><%#= link_to booking.space.user.name, class: "btn" <%><i class="fa fa-lg fa-envelope-o"></i><%# end %></li> -->
                 <li>
                   <%= link_to booking, method: :delete, data: { confirm: "Are you sure you want to delete this booking?" } do  %>
                     <i class="fa fa-lg fa-ban"></i>

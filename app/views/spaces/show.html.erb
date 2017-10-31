@@ -85,7 +85,7 @@
                     <% if User.find_by(name: review.reviewer_name).photo.present? %>
                       <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
                     <% else %>
-                      <%= image_tag "person-placeholder.jpg", class: "profile-avatar reviewer-avatar" %>
+                      <%= image_tag User.find_by(name: review.reviewer_name).facebook_picture_url || "person-placeholder.jpg", class: "profile-avatar reviewer-avatar" %>
                     <% end %>
                     <p><%= review.reviewer_name %></p>
                     <div class="stars">
