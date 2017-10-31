@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def listings
+    @conversations = current_user.mailbox.conversations
   end
 
   def bookings
