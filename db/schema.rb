@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030083635) do
+ActiveRecord::Schema.define(version: 20171031032537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20171030083635) do
     t.date "start_date"
     t.date "end_date"
     t.integer "floor_area"
-    t.integer "people_capacity"
+    t.text "people_capacity"
     t.time "opening_hours"
     t.time "closing_hours"
     t.boolean "is_barter"
