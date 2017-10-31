@@ -3,7 +3,16 @@
     <h1>
       Provide your
       <div class="typewriter">
-          <a href="javascript:void(0)" onClick="hogeFunction();return false;" class="typewrite" data-period="2000" data-type='[ "Programming", "Design", "Writing", "Editing", "Teaching", "Translation", "Physical work" ]' >
+          <a href="javascript:void(0)" onClick="hogeFunction();return false;" class="typewrite" data-period="2000" data-type='[ "Programming", "Web Design", "Writing", "Proofreading",  "Translation", "Teaching", "Consultation", "Illustration", "Photography" ]' >
+                      <option>Programming</option>
+          <option>Web Design</option>
+          <option>Writing</option>
+          <option>ProofreadingCopy</option>
+          <option>Translation</option>
+          <option>Teaching</option>
+          <option>Consultation</option>
+          <option>Illustration</option>
+          <option>Photography</option>
           <span class="wrap"></span>
           </a>
       </div>
@@ -12,33 +21,36 @@
     <div class="form-wrapper">
       <%= form_tag(spaces_path, method: :get) do %>
         <%= select_tag "city",
-          raw("<option>Select city</option>
+          raw("<option>Work in</option>
           <option>Tokyo</option>
           <option>Osaka</option>
           <option>Fukuoka</option>"),
            class: "input-lg form-top" %>
         <%= select_tag "category",
-          raw("<option>Select workspace</option>
+          raw("<option>&lt;Space type&gt;</option>
           <option>Office</option>
           <option>Coworking</option>
+          <option>Event space</option>
+          <option>Art gallery</option>
           <option>Design studio</option>
           <option>Music studio</option>
           <option>Dance studio</option>
-          <option>Classroom</option>
-          <option>Laboratory</option>
           <option>Kitchen</option>
+          <option>Classroom</option>
           <option>Garage</option>"),
            class: "input-lg form-top" %>
         <%= select_tag "required_skill",
-          raw("<option>Skill to offer</option>
-          <option>Coding</option>
-          <option>Design</option>
+          raw("<option>with this skill</option>
+          <option>Programming</option>
+          <option>Web Design</option>
+          <option>Writing</option>
+          <option>Proofreading</option>
+          <option>Translation</option>
           <option>Teaching</option>
-          <option>Music</option>
-          <option>Dance</option>
-          <option>Cooking</option>
-          <option>Farming</option>
-          <option>Cleaning</option>"),
+          <option>Consultation</option>
+          <option>Illustration</option>
+          <option>Photography</option>
+          "),
            class: "input-lg form-top" %>
         <%#= date_field_tag :start_date, params[:start_date], class: "input-lg form-top" %>
         <%#= date_field_tag :end_date, params[:end_date], class: "input-lg form-top" %>
@@ -116,8 +128,6 @@
       <div class="row">
         <div class="col-xs-12">
           <h2 class="text-center">Recommended spaces</h2>
-          <!-- Recommended spaces (3 latest spaces, if possible, nearby users) -->
-
           <div class="row-cards">
             <% n = 0 %>
             <% @spaces.reverse.each do |space| %>

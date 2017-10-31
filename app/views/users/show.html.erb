@@ -64,6 +64,7 @@
               <div class="review-right">
                 <h4><%= review.title %></h4>
                 <p><%= review.content %></p>
+                <p>Space: <%= review.booking.space.name %></p>
                 <% if review.reviewer_name == current_user.name %>
                 <%= link_to "delete review", user_review_path(review), class: "delete",
                     method: :delete,

@@ -148,6 +148,12 @@
 .home-recommend {
   height: 600px;
   padding: 40px;
+  h2 {
+    margin-bottom: 30px;
+  }
+  .row-cards:last-child {
+    margin-bottom: 100px;
+  }
 }
 
 /* The typing effect */
