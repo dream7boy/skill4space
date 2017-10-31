@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20171031060639) do
     t.date "start_date"
     t.date "end_date"
     t.integer "floor_area"
-    t.text "people_capacity"
+    t.string "people_capacity"
     t.time "opening_hours"
     t.time "closing_hours"
     t.boolean "is_barter"
