@@ -5,7 +5,12 @@
         <%= link_to user_path(@user) do %>
         <div class="review-on">
           <%= @user.name %>
-          <%= cl_image_tag @user.facebook_picture_url || @user.photo.path, class: "avatar" %>
+          <% if @user.photo.present? %>
+            <% avatar_url = @user.photo.path %>
+          <% else %>
+            <% avatar_url = @user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
+          <% end %>
+          <%= cl_image_tag avatar_url, class: "avatar" %>
         </div>
         <% end %>
         <%= simple_form_for [@user, @user_review] do |f| %>
