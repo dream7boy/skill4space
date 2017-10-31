@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get "profile", to: 'users#profile'
   get "bookings", to: 'users#bookings'
   get "listings", to: 'users#listings'
+  # For ajax status change
+  # post '/ajax/bookings'
 
   resources :spaces, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     get "check_availability", to: 'spaces#check_availability'
