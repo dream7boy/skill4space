@@ -46,8 +46,10 @@
             <td>
               <ul class="list-inline product-controls">
                 <li>
-                  <%= link_to "#" do  %>
+                  <% if booking.conversation %>
+                    <%= link_to conversation_path(@conversations.find(booking.conversation)) do  %>
                     <i class="fa fa-envelope-o"></i>
+                    <% end %>
                   <% end %>
                 </li>
                 <!-- <li class="icons"><%#= link_to booking.space.user.name, class: "btn" <%><i class="fa fa-lg fa-envelope-o"></i><%# end %></li> -->
