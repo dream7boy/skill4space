@@ -21,8 +21,8 @@
       <tbody>
         <% @user.bookings.reverse.each do |booking| %>
           <tr>
-            <td>                
-              <% if booking.space.photos != nil %> <!-- Should remove it -->
+            <td>
+              <% if booking.space.photos.first != nil %> <!-- Should remove it -->
                 <%= cl_image_tag booking.space.photos.first.path, height: 150, width: 300, crop: :fill %>
               <% end %> <!-- Should remove it -->
             </td>
