@@ -5,6 +5,10 @@ class Space < ApplicationRecord
   validates :address, presence: true
   validates :category, presence: true
   validates :required_skill, presence: true
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :required_skill_description, presence: true
+
   # validates :daily_price, numericality: { only_integer: true, greater_than: 0 }
 
   geocoded_by :address
