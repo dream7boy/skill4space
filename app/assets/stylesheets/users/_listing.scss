@@ -1,18 +1,44 @@
-// _listing.scss
-#new-listing-button {
-  // margin-left: 870px;
-  margin-top: 30px;
-  // margin-bottom: 0px;
-  color: white;
-}
-#listings-heading {
-  margin-top: 0px;
-}
-.booking-status {
-  font-family: $body-font;
-}
-#review-booker {
-  text-decoration: none;
-  color: $green;
-  font-family: $body-font;
+.dashboard-container {
+	.tabs {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.btn {
+			height: 50px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-radius: 3px;
+		}
+	}
+	thead {
+		color: $green;
+	}
+	tbody {
+		color: black;
+		td {
+			padding: 30px 0 !important;
+		}
+		a:hover {
+			color: $green;
+		}
+	}
+	td{
+		width: 500px !important;
+		text-align: center;
+		vertical-align: middle !important;
+	}
+	.status {
+		font-family: $headers_font;
+		font-weight: bold;
+	}
+	.available, .confirmed {
+		color: $green;
+	}
+	.cancelled, .pending {
+		color: $red;
+	}
+	i {
+		margin: 0 6px;
+	}
 }
