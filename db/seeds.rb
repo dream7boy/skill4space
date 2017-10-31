@@ -24,26 +24,27 @@ puts 'Creating database...'
   if user.is_owner
     3.times do
       # start_random_date = DateTime.new(2017, 11, rand(6..8))
-      space = Space.create!(
+      space = Space.new(
+        title: "Title TBD",
         name: Faker::Company.name,
         category: ["Garage", "Kitchen", "Office", "Design studio", "Coworking"].sample,
         start_date: DateTime.new(2017, 11, 6),
         end_date: DateTime.new(2017, 11, 10),
         # start_date: start_random_date,
         # end_date: start_random_date + rand(1..2),
-        opening_hours: Time.new(2017, 10, 31, 9, 0, 0),
-        closing_hours: Time.new(2017, 10, 31, 17, 0, 0),
         daily_price: rand(5000..20000).round(-3),
+        facility: ["Wi-Fi", "Meeting rooms", "Breakout area", "Printing", "Free coffee"].sample,
+        people_capacity: ["1 person", "〜5 people", "〜10 people", "〜20 people",
+          "〜50 people", "〜100 people", "〜200 people", "More than 200 people" ].sample,
+        floor_area: ["〜10", "11〜20", "21〜50", "50〜100", "100〜"].sample,
+        opening_hours: Time.new(2017, 10, 31, 9, 0, 0, "+09:00"),
+        closing_hours: Time.new(2017, 10, 31, 17, 0, 0, "+09:00"),
         is_barter: true,
         user_id: user.id,
         city: "Tokyo",
-        address: user.address
+        address: user.address,
+        required_skill: ["Design", "Teaching", "Programming", "Translation", "Writing"].sample
         )
-
-      if space.is_barter == true
-        space.required_skill = ["Design", "Teaching", "Programming", "Translation", "Writing"].sample
-        space.save!
-      end
 
       # skill_match = {
       #   "Office" => "Coding"
