@@ -47,6 +47,13 @@
               <ul class="list-inline product-controls">
               <!-- <li class="icons"><%#= link_to space, class: "btn" do %><i class="fa fa-lg fa-info-circle" title="View details"></i><#% end %></li> -->
                 <li>
+                  <% if space.bookings.present? && space.bookings.last.conversation %>
+                    <%= link_to conversation_path(@conversations.find(space.bookings.last.conversation)) do  %>
+                    <i class="fa fa-envelope-o"></i>
+                    <% end %>
+                  <% end %>
+                </li>
+                <li>
                   <%= link_to edit_space_path(space) do %>
                     <i class="fa fa-lg fa-pencil-square-o"></i>
                   <% end %>
