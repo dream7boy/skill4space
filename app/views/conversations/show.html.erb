@@ -1,9 +1,34 @@
+
 <div class="conversation-container">
   <div class="container">
     <div class="row">
       <h1>Messages</h1>
-      <p>Booking Space: <%= @booking.space.name %></p>
-      <p>Booking Status: <%= @booking.status %></p>
+      <div class="space-info">
+        <div class="table-responsive">
+          <table class="table table-hover table-responsive">
+            <thead>
+              <tr>
+                <th class="text-center">PHOTO</th>
+                <th class="text-center">LISTING NAME</th>
+                <th class="text-center">BOOKING STATUS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= cl_image_tag @booking.space.photos.first.path, class: "booking-info-photo" %>
+                </td>
+                <td>
+                  <p><%= link_to @booking.space.name, space_path(@booking.space) %></p>        
+                </td>
+                <td>
+                  <p><%= @booking.status %></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
       <% @conversation.receipts_for(current_user).sort_by(&:created_at).each do |receipt| %>
         <div class="message-wrapper">
           <div class="sender-profile">

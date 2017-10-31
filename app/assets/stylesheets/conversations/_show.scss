@@ -42,4 +42,25 @@
 			opacity: 0.9;
 		}
 	}
+	.booking-info-photo {
+		width: 300px;
+		height: 200px;
+	}
+	thead {
+		color: $green;
+	}
+	tbody {
+		color: black;
+		td {
+			padding: 30px 0 !important;
+		}
+		a:hover {
+			color: $green;
+		}
+	}
+	td{
+		width: 500px !important;
+		text-align: center;
+		vertical-align: middle !important;
+	}
 }
