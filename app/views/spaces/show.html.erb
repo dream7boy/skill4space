@@ -42,7 +42,7 @@
 <div class="space-show-container">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-8">
+      <div class="col-xs-12 col-md-8">
           <h1><%= @space.title %></h1>
           <div class="index-tags">
             <div class="category-tag">
@@ -68,12 +68,18 @@
           <p><%= @space.description %></p>
           <h2>Desired Skills</h2>
           <!-- Should have dynamical terms -->
-          <p><i class="fa fa-key"></i> <span class="require"><%= @space.required_skill %></span> skill for <span class="days">7days</span> use</p>
+          <p><i class="fa fa-key"></i> <span class="require"><%= @space.required_skill %></span> skill</p>
           <p><%= @space.required_skill_description %></p>
           <h2>Space Details</h2>
-          <p><i class="fa fa-wrench"></i><span class="light"> Facilities:</span> <%= @space.facility %></p>
-          <p><i class="fa fa-users"></i><span class="light"> Maximum Capacity:</span> <%= @space.people_capacity %></p>
-          <p><i class="fa fa-building-o"></i><span class="light"> Floor Area:</span> <%= @space.floor_area %>m&sup2;</p>
+          <% if @space.facility != nil %>
+            <p><i class="fa fa-wrench"></i><span class="light"> Facilities:</span> <%= @space.facility %></p>
+          <% end %>
+          <% if @space.people_capacity != nil %>
+            <p><i class="fa fa-users"></i><span class="light"> Maximum Capacity:</span> <%= @space.people_capacity %></p>
+          <% end %>
+          <% if @space.floor_area != nil %>
+            <p><i class="fa fa-building-o"></i><span class="light"> Floor Area:</span> <%= @space.floor_area %>m&sup2;</p>
+          <% end %>
           <p><i class="fa fa-clock-o"></i><span class="light"> Opening & Closing Hours:</span> <%= @space.opening_hours.strftime("%H:%M") %> 〜 <%= @space.closing_hours.strftime("%H:%M") %></p>
           <br>
           <% if @space.user.user_reviews.count > 0 %>
@@ -109,7 +115,7 @@
           <% end %>
       </div>
 
-      <div class="col-xs-12 col-sm-4">
+      <div class="col-xs-12 col-md-4">
         <div class="right-pain text-center">
           <h2>Book this place</h2>
           <p class="book-lead">bartering with your <%= @space.required_skill %> skill</p>
