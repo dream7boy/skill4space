@@ -12,7 +12,7 @@
       </div>
       <!-- Filters will be here -->
       <div class="row-cards">
-        <% @spaces.each do |space| %>
+        <% @spaces.reverse.each do |space| %>
           <% if space.bookings.empty? %>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="card-wrapper">
