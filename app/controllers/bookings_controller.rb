@@ -38,6 +38,12 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
+    if @booking.status == "Confirm"
+      send_accept_booking_email(@booking.user, @booking.space)
+    elsif @booking.status == "Cancel"
+      send_decline_booking_email(@booking.user, @booking.space)
+    end
+
     redirect_to listings_path
     flash[:notice] = "Your booking has been edited"
   end
@@ -53,6 +59,14 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :status)
+  end
+
+  def send_accept_booking_email(booker, space)
+    UserMailer.accept_booking(booker, space).deliver_now
+  end
+
+  def send_decline_booking_email(booker, space)
+    UserMailer.decline_booking(booker, space).deliver_now
   end
 
   def self.send_after_booking_booker_email(booker, space)
