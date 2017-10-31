@@ -29,7 +29,8 @@
             <div class="form-inputs">
               <%= f.input :title, label: "Review title" %>
               <%= f.input :content, label: "Review content" %>
-              <%= f.input :rating, collection: 1..5 %>
+              <label class="rating-label">*Rating: </label>
+              <%= f.collection_radio_buttons :rating, [[1, '1'] ,[2,'2'],[3,'3'],[4,'4'],[5,'5']], :first, :last, class: "radio-rating" %>
               <%= f.hidden_field :booking_id, value: @booking.id %>
             </div>
             <div class="form-actions text-center">

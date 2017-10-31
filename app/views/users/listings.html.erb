@@ -98,7 +98,7 @@
             <td class="listings-review">
               <% if space.bookings.last.nil?%>
                 <p>This listing has no booker yet.</p>
-              <% elsif space.bookings.last.status == "Confirm" %>
+              <% else %>
                 <%# raise %>
                 <%= link_to user_path(space.bookings.last.user) do%>
                   <div>
