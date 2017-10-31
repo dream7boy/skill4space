@@ -1,4 +1,17 @@
-<p>Hi <%= @booker.name %>,</p>
-<p>Thank you for your booking of <%= @space.name %>!</p>
-<p>Your booking request is waiting to be confirmed.</p>
-
+<div class="container">
+	<div id="email-header">
+		<%#= image_tag "logo.png", class: "logo" %>
+	</div>
+	<div class="body">
+		<div class="content">
+		    <h1>Thank you for your booking: <%= @space.name %>.</h1>
+			<p>Hi, <%= @booker.name %>.</p>
+		    <p class="last">Please wait for a while to get approved of your booking request.</p>
+		    <%= link_to "Go to the website & check your booking status", root_url, class: "btn"%>
+		    <p class="contact">Contact to <a href="mailto:admin@skill4.space?Subject=Inquiry" target="_top">Help center</a></p>
+ 		</div>
+	</div>
+	<div id="email-footer">
+		<p>Copyright©2017 skill4.space</p>
+	</div>
+</div>

@@ -1,11 +1,12 @@
 class BookingsController < ApplicationController
 
   # def self.callback(space, start_date, end_date, current_user)
-  def self.callback(space, current_user)
+  def self.callback(space, current_user, conversation_id)
     # @booking = space.bookings.build({start_date: start_date, end_date: end_date})
     @booking = space.bookings.build
     @booking.status = "Pending"
     @booking.user = current_user
+    @booking.conversation = conversation_id
     # @booking.total_price = (@booking.end_date - @booking.start_date) * space.daily_price
     @booking.save
     send_after_booking_booker_email(current_user, space)

@@ -5,9 +5,9 @@
       <thead>
         <tr>
           <th class="text-center">USER</th>
-          <th>LISTING TITLE</th>
-          <th>MESSAGE CONTENT</th>
-          <th>ACTION</th>
+          <th class="text-center">LISTING</th>
+          <th id="message-content">MESSAGE CONTENT</th>
+          <th class="text-center">ACTION</th>
         </tr>
       </thead>
       <tbody>
@@ -16,22 +16,22 @@
 	  	  		<td class="message-users">
 			        <% if conversation.messages.first.sender.photo.nil? %>
 		              <%= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
-		            <% else %>
+		          <% else %>
 				          <%= cl_image_tag conversation.messages.first.sender.photo.path, class: "profile-avatar"  %>
-		            <% end %>
+		          <% end %>
 		             <p class="text-center"><%= conversation.messages.first.sender.name %></p>
-	             </td>
-             	 <td><p><%= conversation.subject %></p></td>
-	             <td>
-		            <p class="latest-message"><span>Latest message: <%= conversation.messages.last.created_at.strftime("%Y/%m/%d %H:%M%p") %></span>  </p>
-		            <p><%= conversation.messages.last.body %></p>
-	             </td>
-	             <td>
+	           </td>
+             <td><p><%= conversation.subject %></p></td>
+	           <td>
+		          <p class="latest-message"><span>Latest message: <%= conversation.messages.last.created_at.strftime("%Y/%m/%d %H:%M%p") %></span>  </p>
+		          <p><%= conversation.messages.last.body %></p>
+	           </td>
+	           <td>
 		  	  		<%= link_to conversation_path(conversation), class: "btn btn-success" do %>
-						<i class="fa fa-envelope-o"></i> Check message
-			  		<% end %>
-	             </td>
-             </tr>
+						    <i class="fa fa-envelope-o"></i> Check message
+			  		   <% end %>
+	           </td>
+          </tr>
 		  <% end %>
       </tbody>
     </table>

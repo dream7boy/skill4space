@@ -1,4 +1,17 @@
-<p>Hi <%= @owner.name %>,</p>
-
-<p><%= @space.name %> has been booked by <%= @booker.name %>.</p>
-
+<div class="container">
+	<div id="email-header">
+		<%#= image_tag "logo.png", class: "logo" %>
+	</div>
+	<div class="body">
+		<div class="content">
+		    <h1><%= @space.name %> has been booked.</h1>
+			<p>Hi, <%= @owner.name %>.</p>
+		    <p class="last">Check your mailbox and send message to the booker.</p>
+		    <%= link_to "Go to the website & check the booker info", root_url, class: "btn"%>
+		    <p class="contact">Contact to <a href="mailto:admin@skill4.space?Subject=Inquiry" target="_top">Help center</a></p>
+ 		</div>
+	</div>
+	<div id="email-footer">
+		<p>Copyright©2017 skill4.space</p>
+	</div>
+</div>
