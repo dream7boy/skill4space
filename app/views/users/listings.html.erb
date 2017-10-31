@@ -65,23 +65,26 @@
                   <p>
                 <% elsif space.bookings.last.status == "Confirm" %>
                   <%= simple_form_for [space, space.bookings.last] do |f| %>
-                    <%= f.input :status, collection: ["Confirm", "Cancel"] %>
-                    <%= f.submit "update" %>
+                    <%= f.input :status, collection: ["Confirm", "Cancel"], :input_html => { "data-remote" => true }, label: false %>
+                    <%= f.submit "update", class: "btn btn-success" %>
                   <% end %>
-                  <h5 class="status status confirmed">Confirmed</h5>
+                  <h5 class="status status confirmed">
+                    <%#= select_tag(:id,options_from_collection_for_select(@booking, :status))%>
+                    <p>Confirmed</p>
+                  </h5>
                   <p>
                     <%= link_to "Review booker", new_user_user_review_path(space.bookings.last.user, booking_id: space.bookings.last.id), id: "review-booker" %>
                   </p>
                 <% elsif space.bookings.last.status == "Cancel" %>
                   <%= simple_form_for [space, space.bookings.last] do |f| %>
-                    <%= f.input :status, collection: ["Confirm", "Cancel"] %>
+                    <%= f.input :status, collection: ["Confirm", "Cancel"], label: false  %>
                     <%= f.submit "update" %>
                   <% end %>
                   <h5 class="status cancelled">Cancelled</h5>
                   <p>
                 <% else %>
                   <%= simple_form_for [space, space.bookings.last] do |f| %>
-                    <%= f.input :status, collection: ["Confirm", "Cancel"] %>
+                    <%= f.input :status, collection: ["Confirm", "Cancel"], label: false  %>
                     <%= f.submit "update" %>
                   <% end %>
                     <h5 class="status pending">Pending</h5>
@@ -94,3 +97,16 @@
       </tbody>
     </table>
   </div>
+<!-- 
+  <#% content_for(:after_js) do %>
+  <#%= javascript_tag do %>
+    $.ajax({
+      $('#booking_status').change(function() {
+        $.get({
+          url: "#{listings_path}",
+          data: { booking_status: $('#booking_status').has('option:selected').val() }
+        });
+      });
+    });
+  <#% end %>
+<#% end %> -->
