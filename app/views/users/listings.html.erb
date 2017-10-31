@@ -1,4 +1,4 @@
-<% content_for(:title_tag) do %>
+ <% content_for(:title_tag) do %>
   My listings | skill4.space: Match your skills with a space that needs it
 <% end %>
 <div class="dashboard-container container">
@@ -125,15 +125,15 @@
   </div>
 </div>
 
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $.ajax({
+<%# content_for(:after_js) do %>
+  <%#= javascript_tag do %>
+    <!-- $.ajax({
       $('#booking_status').change(function() {
         $.get({
           url: "#{listings_path}",
           data: { booking_status: $('#booking_status').has('option:selected').val() }
         });
       });
-    });
-  <% end %>
-<% end %>
+    }); -->
+  <%# end %>
+<%# end %>
