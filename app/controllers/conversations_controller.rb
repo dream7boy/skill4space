@@ -7,6 +7,7 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = current_user.mailbox.conversations.find(params[:id])
+    @booking = Booking.find_by(conversation: params[:id])
   end
 
   def new
