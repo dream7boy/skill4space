@@ -7,6 +7,7 @@
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= f.error_notification %>
             <div class="form-inputs">
+              <%= f.input :name, label: false, required: true, autofocus: true, placeholder: "Enter name", class: "rounded" %>
               <%= f.input :email, label: false, required: true, autofocus: true, placeholder: "Enter email", class: "rounded" %>
               <%= f.input :password, label: false, required: true, placeholder: "Enter password" %>
               <%= f.input :password_confirmation, label: false, required: true, placeholder: "Confirm password" %>

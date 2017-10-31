@@ -53,27 +53,35 @@ puts 'Creating database...'
 
 
       photo_urls = {
-        "Office" => ["app/assets/images/Office1.jpg",
-          "app/assets/images/Office2.jpg",
-          "app/assets/images/Office3.jpg",
-          "app/assets/images/Office4.jpg"],
-        "Coworking" => ["app/assets/images/Coworking1.jpg",
-          "app/assets/images/Coworking2.jpg",
-          "app/assets/images/Coworking3.jpg",
-          "app/assets/images/Coworking4.jpg"],
-        "Design studio" => ["app/assets/images/dstudio1.jpg",
-          "app/assets/images/dstudio2.jpg",
-          "app/assets/images/dstudio3.jpg",
-          "app/assets/images/dstudio4.jpg"],
-        "Kitchen" => ["app/assets/images/kitchen1.jpg",
-          "app/assets/images/kitchen2.jpg",
-          "app/assets/images/kitchen3.jpg",
-          "app/assets/images/kitchen4.jpg"],
-        "Garage" => ["app/assets/images/garage1.jpg",
-          "app/assets/images/garage2.jpg",
-          "app/assets/images/garage3.jpg",
-          "app/assets/images/garage4.jpg"]
+        "Office" => ["app/assets/images/Office4.jpg"],
+        "Coworking" => ["app/assets/images/Coworking4.jpg"],
+        "Design studio" => ["app/assets/images/dstudio4.jpg"],
+        "Kitchen" => ["app/assets/images/kitchen4.jpg"],
+        "Garage" => ["app/assets/images/garage4.jpg"]
       }
+
+      # photo_urls = {
+      #   "Office" => ["app/assets/images/Office1.jpg",
+      #     "app/assets/images/Office2.jpg",
+      #     "app/assets/images/Office3.jpg",
+      #     "app/assets/images/Office4.jpg"],
+      #   "Coworking" => ["app/assets/images/Coworking1.jpg",
+      #     "app/assets/images/Coworking2.jpg",
+      #     "app/assets/images/Coworking3.jpg",
+      #     "app/assets/images/Coworking4.jpg"],
+      #   "Design studio" => ["app/assets/images/dstudio1.jpg",
+      #     "app/assets/images/dstudio2.jpg",
+      #     "app/assets/images/dstudio3.jpg",
+      #     "app/assets/images/dstudio4.jpg"],
+      #   "Kitchen" => ["app/assets/images/kitchen1.jpg",
+      #     "app/assets/images/kitchen2.jpg",
+      #     "app/assets/images/kitchen3.jpg",
+      #     "app/assets/images/kitchen4.jpg"],
+      #   "Garage" => ["app/assets/images/garage1.jpg",
+      #     "app/assets/images/garage2.jpg",
+      #     "app/assets/images/garage3.jpg",
+      #     "app/assets/images/garage4.jpg"]
+      # }
 
 
       # photo_urls = {
