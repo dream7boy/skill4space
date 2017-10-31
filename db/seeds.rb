@@ -16,7 +16,7 @@ puts 'Creating database...'
 
   3.times do
     skill = Skill.create!(
-      skill_category: ["Cooking", "Cleaning", "Design", "Music", "Dance", "Teaching", "Coding", "Farming"].sample,
+      skill_category: ["Design", "Teaching", "Programming", "Translation", "Writing"].sample,
       user_id: user.id
       )
   end
@@ -27,8 +27,6 @@ puts 'Creating database...'
       space = Space.create!(
         name: Faker::Company.name,
         category: ["Garage", "Kitchen", "Office", "Design studio", "Coworking"].sample,
-        # category: ["Garage", "Kitchen", "Office", "Design studio", "Coworking", "Classroom", "Laboratory"].sample,
-        # category: ["Chincilla", "Crocodile", "Wallaby", "Chameleon", "Capybara", "Fennec", "Hedgehog"].sample,
         start_date: DateTime.new(2017, 11, 6),
         end_date: DateTime.new(2017, 11, 10),
         # start_date: start_random_date,
@@ -36,21 +34,20 @@ puts 'Creating database...'
         opening_hours: Time.new(2017, 10, 31, 9, 0, 0),
         closing_hours: Time.new(2017, 10, 31, 17, 0, 0),
         daily_price: rand(5000..20000).round(-3),
-        is_barter: [true, false].sample,
+        is_barter: true,
         user_id: user.id,
         city: "Tokyo",
         address: user.address
         )
 
       if space.is_barter == true
-        space.required_skill = ["Cooking", "Cleaning", "Design", "Music", "Dance", "Teaching", "Coding", "Farming"].sample
+        space.required_skill = ["Design", "Teaching", "Programming", "Translation", "Writing"].sample
         space.save!
       end
 
       # skill_match = {
       #   "Office" => "Coding"
       # }
-
 
       photo_urls = {
         "Office" => ["app/assets/images/Office4.jpg"],
@@ -116,13 +113,6 @@ puts 'Creating database...'
     end
   end
 end
-      # pet.remote_photo_url = photo_urls[pet.species]
-      # pet.save
-
-      # url = "http://static.giantbomb.com/uploads/original/9/99864/
-      # product = Product.new(name: 'NES')
-      # product.remote_photo_url = url
-      # product.save
 
 3.times do
   # start_random_date = DateTime.new(2017, 11, rand(6..8))
