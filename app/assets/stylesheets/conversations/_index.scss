@@ -1,13 +1,19 @@
 @import "show";
 
 .mailbox-container {
+  #message-content {
+    padding-left: 20px;
+  }
 	thead {
 		color: $green;
 	}
+  .table > thead > tr> th {
+    border-bottom: white;
+  }
 	tbody {
 		color: black;
 		td {
-			padding: 20px 0 !important;
+			padding: 20px 15px !important;
 		}
 	}
 	td{
