@@ -30,7 +30,7 @@
           <tr>
             <td>
               <% if space.photos.first != nil %> <!-- Should remove it -->
-                <%= cl_image_tag space.photo, height: 150, width: 300, crop: :fill %>
+                <%= cl_image_tag space.photos.first, height: 150, width: 300, crop: :fill %>
               <% end %> <!-- Should remove it -->
             </td>
             <td>
