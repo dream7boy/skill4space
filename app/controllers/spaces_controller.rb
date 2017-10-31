@@ -3,10 +3,10 @@ class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:city] == "Select city" || params[:category] == "Select workspace"
+    if params[:city] == "Work in" || params[:category] == "Space type"
       @spaces = Space.all
       flash[:alert] = "No specific city or workspace chosen"
-    elsif params[:required_skill] == "Skill to offer"
+    elsif params[:required_skill] == "with this skill"
     # elsif params[:start_date] == "" || params[:end_date] == ""
       @spaces = Space.where('city LIKE ? AND category LIKE ?',
       "%#{params[:city]}%", "%#{params[:category]}%")
