@@ -79,7 +79,7 @@ class SpacesController < ApplicationController
     params.require(:space).permit(:title, :category, :name,
       :address, :description, :facility, :daily_price, :required_skill,
       :start_date, :end_date, :floor_area, :people_capacity, :opening_hours,
-      :closing_hours, :is_barter, :city, photos: [])
+      :closing_hours, :is_barter, :city, :required_skill_description, photos: [])
   end
 
   def set_space
