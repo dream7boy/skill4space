@@ -42,6 +42,7 @@
                 <% end %>
                 <%= cl_image_tag avatar_url, class: "avatar" %>
                 <% end %>
+                <br>
               <% if booking.status == "Confirm" %>
                 <% if booking.user_reviews.last.nil? || (booking.user_reviews.last.user_id == current_user.id) %>
                   <%= link_to "Review owner", new_user_user_review_path(booking.space.user, booking_id: booking.id) %>
