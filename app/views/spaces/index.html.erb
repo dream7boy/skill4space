@@ -11,7 +11,7 @@
         <h1>Search Results</h1>
       </div>
       <!-- Filters will be here -->
-      <div>
+      <div class="index-filter">
         <%= form_tag(spaces_path, method: :get) do %>
         <%= select_tag "city",
           options_for_select(@available_cities),
