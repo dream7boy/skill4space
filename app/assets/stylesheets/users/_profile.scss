@@ -114,7 +114,7 @@
     }
   }
 }
-.no-skills {
+.no-description, .no-skills {
   margin-top: 20px;
   padding: 30px;
   background-color: #F3F3F3;
@@ -123,6 +123,7 @@
     margin: 0;
   }
   .btn {
+    width: 50% !important;
     margin-top: 8px;
     padding: 10px 14px;
     border-radius: 3px;

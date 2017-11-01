@@ -33,7 +33,16 @@
       <div class="col-xs-12 col-sm-8">
         <div class="right-profile">
           <h3><i class="fa fa-drivers-license"></i> About Me:</h3>
-          <p>User's description should be here User's description should be here User's description should be here</p>
+          <% if @user.description.present? %>
+            <p><%= @user.description %></p>
+          <% else %>
+            <div class="no-description text-center">
+              <p>Add your profile to let the space owner know more about you!</p>
+              <%= link_to edit_user_path(@user), class: "btn btn-success" do%>
+                <i class="fa fa-user"></i> Edit profile
+              <% end %>
+            </div>
+          <% end %>
           <div class="profile-skills">
             <div class="profile-head">
               <div>

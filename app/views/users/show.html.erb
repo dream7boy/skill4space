@@ -25,7 +25,13 @@
         <div class="right-profile">
           <h1><%#= @user.name %></h1>
           <h3><i class="fa fa-drivers-license"></i> About <%= @user.name %>:</h3>
-          <p>User's description should be here User's description should be here User's description should be here</p>
+          <% if @user.description.present? %>
+            <p><%= @user.description %></p>
+          <% else %>
+            <div class="no-description text-center">
+              <p>No description added yet</p>
+            </div>
+          <% end %>
           <div class="profile-skills">
             <div class="profile-skills">
               <div class="profile-head">
