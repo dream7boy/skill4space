@@ -131,7 +131,7 @@
             <% elsif @space.bookings.present? %>
               <button type="button" class="btn btn-lg btn-primary" disabled>Booked already</button>
             <% else %>
-              <%= form_tag(conversations_path, method: :post) do %>
+              <%= form_tag(conversations_path, method: :post, data: { confirm: "Confirm booking?" }) do %>
               <%#= form_tag(conversations_path, method: :post, 'data-id': @space.id) do %>
               <%#= text_field_tag :species, params[:species] %>
               <!-- <label class="control-label optional" for="book_start_date">FROM:</label> -->

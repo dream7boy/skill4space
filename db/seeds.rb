@@ -16,7 +16,7 @@ puts 'Creating database...'
 
   3.times do
     skill = Skill.create!(
-      skill_category: ["Design", "Teaching", "Programming", "Translation", "Writing"].sample,
+      skill_category: ["Web Design", "Teaching", "Programming", "Translation", "Writing"].sample,
       user_id: user.id
       )
   end
@@ -45,7 +45,7 @@ puts 'Creating database...'
         user_id: user.id,
         city: "Tokyo",
         address: user.address,
-        required_skill: ["Design", "Teaching", "Programming", "Translation", "Writing"].sample
+        required_skill: ["Web Design", "Teaching", "Programming", "Translation", "Writing"].sample
         )
 
       # skill_match = {
