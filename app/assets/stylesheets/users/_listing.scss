@@ -79,4 +79,15 @@
 		height: 80px;
 		border-radius: 50%;
 	}
+	.no-listings, .no-bookings {
+		margin-top: 40px;
+		padding: 30px;
+		background-color: #F3F3F3;
+		border-radius: 5px;
+		.btn {
+			margin-top: 20px;
+			padding: 10px 14px;
+			border-radius: 3px;
+		}
+	}
 }

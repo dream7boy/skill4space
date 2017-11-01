@@ -14,7 +14,11 @@
             <% avatar_url = @user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
           <% end %>
           <%= cl_image_tag avatar_url, class: "profile-avatar" %>
-          <p><i class="fa fa-map-marker"></i> : <%= @user.address %></p>
+          <p>
+            <% if @user.address.present? %>
+              <i class="fa fa-map-marker"></i> : <%= @user.address %>
+            <% end %>
+          </p>
         </div>
       </div>
       <div class="col-xs-12 col-sm-8">
@@ -34,49 +38,61 @@
                 <h3><i class="fa fa-wrench"></i> Skills</h3>
               </div>
               <div>
-                <% @user.skills.each do |skill| %>
-                  <div class="profile-skill">
-                    <div class="skill-heading">
-                      <h4>◎<%= skill.skill_category %></h4>
+                <% if @user.skills.count > 0 %>
+                  <% @user.skills.each do |skill| %>
+                    <div class="profile-skill">
+                      <div class="skill-heading">
+                        <h4>◎<%= skill.skill_category %></h4>
+                      </div>
+                      <p><%= skill.description %></p>
                     </div>
-                    <p><%= skill.description %></p>
+                  <% end %>
+                <% else %>
+                  <div class="no-skills text-center">
+                    <p>No skills added yet</p>
                   </div>
                 <% end %>
               </div>
             </div>
           </div>
           <h3><i class="fa fa-users"></i> <%= @user.name %>'s reviews</h3>
-          <% @user.user_reviews.each do |review| %>
-            <div class="profile-review">
-              <div class="review-left">
-                <!-- Dynamic Reviewer's photo here -->
-                <% if User.find_by(name: review.reviewer_name).photo.present? %>
-                  <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
-                <% else %>
-                  <%= image_tag User.find_by(name: review.reviewer_name).facebook_picture_url || "person-placeholder.jpg", class: "profile-avatar reviewer-avatar" %>
-                <% end %>
-                <p><%= review.reviewer_name %></p>
-                <div class="stars">
-                  <ul>
-                    <% review.rating.to_i.times do  %>
-                      <li><i class="fa fa-star starred"></i></li>
-                    <% end %>
-                    <% (5 - review.rating.to_i).times do  %>
-                      <li><i class="fa fa-star"></i></li>
-                    <% end %>
-                  </ul>
+          <% if @user.user_reviews.count > 0 %>
+            <% @user.user_reviews.each do |review| %>
+              <div class="profile-review">
+                <div class="review-left">
+                  <!-- Dynamic Reviewer's photo here -->
+                  <% if User.find_by(name: review.reviewer_name).photo.present? %>
+                    <%= cl_image_tag User.find_by(name: review.reviewer_name).photo.path, class: "profile-avatar reviewer-avatar" %>
+                  <% else %>
+                    <%= image_tag User.find_by(name: review.reviewer_name).facebook_picture_url || "person-placeholder.jpg", class: "profile-avatar reviewer-avatar" %>
+                  <% end %>
+                  <p><%= review.reviewer_name %></p>
+                  <div class="stars">
+                    <ul>
+                      <% review.rating.to_i.times do  %>
+                        <li><i class="fa fa-star starred"></i></li>
+                      <% end %>
+                      <% (5 - review.rating.to_i).times do  %>
+                        <li><i class="fa fa-star"></i></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+                <div class="review-right">
+                  <h4><%= review.title %></h4>
+                  <p><%= review.content %></p>
+                  <p>Space: <%= review.booking.space.name %></p>
+                  <% if review.reviewer_name == current_user.name %>
+                  <%= link_to "delete review", user_review_path(review), class: "delete",
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+                  <% end %>
                 </div>
               </div>
-              <div class="review-right">
-                <h4><%= review.title %></h4>
-                <p><%= review.content %></p>
-                <p>Space: <%= review.booking.space.name %></p>
-                <% if review.reviewer_name == current_user.name %>
-                <%= link_to "delete review", user_review_path(review), class: "delete",
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %>
-                <% end %>
-              </div>
+            <% end %>
+          <% else %>
+            <div class="no-skills text-center">
+              <p>No reviews added yet</p>
             </div>
           <% end %>
         </div>

@@ -5,84 +5,94 @@
   <div class="tabs">
       <h1>MY BOOKINGS</h1>
   </div>
-  <div class="table-responsive">
-    <table class="table table-hover table-responsive">
-      <thead>
-        <tr>
-          <th class="text-center">PHOTO</th>
-          <th class="text-center">LISTING NAME</th>
-          <!-- <th class="text-center">PRICE</th>
-          <th class="text-center">DATES</th> -->
-          <th class="text-center">OWNER</th>
-          <th class="text-center">ACTIONS</th>
-          <th class="text-center">STATUS</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @user.bookings.reverse.each do |booking| %>
+  <% if @user.bookings.count <= 0 %>
+    <div class="no-bookings text-center">
+      <p>You have no booking yet.</p>
+      <p>Bartering with your skill, let's find a best place for you!</p>
+      <%= link_to root_path, class: "btn btn-success" do %>
+       <i class="fa fa-search"></i> SEACH SPACES
+      <% end %>
+    </div>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-hover table-responsive">
+        <thead>
           <tr>
-            <td>
-              <% if booking.space.photos.first != nil %> <!-- Should remove it -->
-                <%= cl_image_tag booking.space.photos.first.path, height: 150, width: 300, crop: :fill %>
-              <% end %> <!-- Should remove it -->
-            </td>
-            </td>
-            <td>
-              <p><%= link_to booking.space.name, space_path(booking.space) %></p>
-            </td>
-            <td>
-              <%= link_to user_path(booking.space.user) do%>
-                <div>
-                  <%= booking.space.user.name %>
-                </div>
-                <% if booking.space.user.photo.present? %>
-                  <% avatar_url = booking.space.user.photo.path %>
-                <% else %>
-                  <% avatar_url = booking.space.user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
-                <% end %>
-                <%= cl_image_tag avatar_url, class: "avatar" %>
-                <% end %>
-                <br>
-              <% if booking.status == "Confirm" %>
-                <% if booking.user_reviews.last.nil? || (booking.user_reviews.last.user_id == current_user.id) %>
-                  <%= link_to "Review owner", new_user_user_review_path(booking.space.user, booking_id: booking.id) %>
-                <% end %>
-              <% end %>
-            </td>
-            <!--  <td class="text-center">
-              <h5 class="bookings-table-data"><%#= "¥#{booking.total_price}" %></h5>
-            </td>
-            <td class="text-center">
-              <h5 class="bookings-table-data"><%#= "#{booking.start_date.month}/#{booking.start_date.day}/#{booking.start_date.year} ~ #{booking.end_date.month}/#{booking.end_date.day}/#{booking.end_date.year}" %></h5>
-            </td> -->
-            <td>
-              <ul class="list-inline product-controls">
-                <li>
-                  <% if booking.conversation %>
-                    <%= link_to conversation_path(@conversations.find(booking.conversation)) do  %>
-                    <i class="fa fa-envelope-o"></i>
-                    <% end %>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to booking, method: :delete, data: { confirm: "Are you sure you want to delete this booking?" } do  %>
-                    <i class="fa fa-lg fa-ban"></i>
-                  <% end %>
-                </li>
-              </ul>
-            </td>
-            <td>
-              <% if booking.status == "Confirm" %>
-                <p class="status confirmed">Confirmed</p>
-              <% elsif booking.status == "Cancel" %>
-                <p class="status cancelled">Cancelled</p>
-              <% else %>
-                <p class="status pending">Pending</p>
-              <% end %>
-            </td>
+            <th class="text-center">PHOTO</th>
+            <th class="text-center">LISTING NAME</th>
+            <!-- <th class="text-center">PRICE</th>
+            <th class="text-center">DATES</th> -->
+            <th class="text-center">OWNER</th>
+            <th class="text-center">ACTIONS</th>
+            <th class="text-center">STATUS</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          <% @user.bookings.reverse.each do |booking| %>
+            <tr>
+              <td>
+                <% if booking.space.photos.first != nil %> <!-- Should remove it -->
+                  <%= cl_image_tag booking.space.photos.first.path, height: 150, width: 300, crop: :fill %>
+                <% end %> <!-- Should remove it -->
+              </td>
+              </td>
+              <td>
+                <p><%= link_to booking.space.name, space_path(booking.space) %></p>
+              </td>
+              <td>
+                <%= link_to user_path(booking.space.user) do%>
+                  <div>
+                    <%= booking.space.user.name %>
+                  </div>
+                  <% if booking.space.user.photo.present? %>
+                    <% avatar_url = booking.space.user.photo.path %>
+                  <% else %>
+                    <% avatar_url = booking.space.user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
+                  <% end %>
+                  <%= cl_image_tag avatar_url, class: "avatar" %>
+                  <% end %>
+                  <br>
+                <% if booking.status == "Confirm" %>
+                  <% if booking.user_reviews.last.nil? || (booking.user_reviews.last.user_id == current_user.id) %>
+                    <%= link_to "Review owner", new_user_user_review_path(booking.space.user, booking_id: booking.id) %>
+                  <% end %>
+                <% end %>
+              </td>
+              <!--  <td class="text-center">
+                <h5 class="bookings-table-data"><%#= "¥#{booking.total_price}" %></h5>
+              </td>
+              <td class="text-center">
+                <h5 class="bookings-table-data"><%#= "#{booking.start_date.month}/#{booking.start_date.day}/#{booking.start_date.year} ~ #{booking.end_date.month}/#{booking.end_date.day}/#{booking.end_date.year}" %></h5>
+              </td> -->
+              <td>
+                <ul class="list-inline product-controls">
+                  <li>
+                    <% if booking.conversation %>
+                      <%= link_to conversation_path(@conversations.find(booking.conversation)) do  %>
+                      <i class="fa fa-envelope-o"></i>
+                      <% end %>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to booking, method: :delete, data: { confirm: "Are you sure you want to delete this booking?" } do  %>
+                      <i class="fa fa-lg fa-ban"></i>
+                    <% end %>
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <% if booking.status == "Confirm" %>
+                  <p class="status confirmed">Confirmed</p>
+                <% elsif booking.status == "Cancel" %>
+                  <p class="status cancelled">Cancelled</p>
+                <% else %>
+                  <p class="status pending">Pending</p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
 </div>

@@ -5,5 +5,8 @@ class PagesController < ApplicationController
 
   def home
     @spaces = Space.all
+    @available_cities = [['Work in', nil], 'Tokyo', 'Osaka', 'Fukuoka']
+    @available_skills = [['with this skill', nil], 'Programming', 'Web Design',
+    'Writing', 'Proofreading','Translation', 'Teaching', 'Consultation', 'Illustration', 'Photography']
   end
 end
