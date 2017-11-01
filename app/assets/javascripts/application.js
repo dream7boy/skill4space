@@ -59,6 +59,16 @@ $('.slider-nav-two').slick({
   focusOnSelect: true,
 });
 
+// code for sweet alert
+
+$('#booking-submit-button').click(function(event) {
+
+  // event.preventDefault(); // Prevent the page from redirecting
+
+  // Put the swal-code here
+  swal('Success!', 'You have booked this space!', 'success', {button: false, timer: 8000});
+  // $(this).unbind('click').click();
+});
 
 $('#book-start-date, #book-end-date').change(function(event) {
   const id = $(event.target).closest('form').attr('data-id');
