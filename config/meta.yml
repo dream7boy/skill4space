@@ -1,0 +1,5 @@
+meta_product_name: "skill4.space"
+meta_title: "skill4.space - Match your skills with a space that needs it"
+meta_description: "Match your skills with a space that needs it"
+meta_image: "og_image.png"   # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
