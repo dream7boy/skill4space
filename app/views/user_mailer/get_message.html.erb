@@ -6,8 +6,8 @@
 		<div class="content">
 			<p><p>Hi <%= @receiver.name %>.</p>
 		    <p class="last">You've got a new message from <%= @sender.name %>.</p>
-		    <%= link_to "Go to the website & check messages", root_url, class: "btn"%>
-		    <p class="contact">Contact to <a href="mailto:admin@skill4.space?Subject=Inquiry" target="_top">Help center</a></p>
+		    <%= link_to "Go to the website & check messages", conversation_url(@conversation), class: "btn", target: "_blank" %>
+        <p class="contact">Contact to <a href="mailto:admin@skill4.space?Subject=Inquiry" target="_top">Help center</a></p>
  		</div>
 	</div>
 	<div id="email-footer">

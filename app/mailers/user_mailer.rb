@@ -15,9 +15,10 @@ class UserMailer < ApplicationMailer
     # mail to: "to@example.org"
   end
 
-  def get_message(sender, receiver)
+  def get_message(sender, receiver, conversation)
     @sender = sender
     @receiver = receiver
+    @conversation = conversation
     mail(to: @receiver.email, subject: "You've got a message from #{@sender.name} | skill4.space")
   end
 
@@ -35,10 +36,11 @@ class UserMailer < ApplicationMailer
     mail(to: @booker.email, subject: "Thank you for your booking - #{@space.name} | skill4.space")
   end
 
-  def accept_booking(booker, space)
+  def accept_booking(booker, space, conversation)
     @booker = booker
     @space = space
     @owner = space.user
+    @conversation = conversation
     mail(to: @booker.email, subject: "Your booking is now accepted - #{@space.name} | skill4.space")
   end
 

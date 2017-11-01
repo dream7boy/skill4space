@@ -7,7 +7,7 @@
 			<p>Hi, <%= @booker.name %>.</p>
 		    <p>Your booking of <%= @space.name %> has been accepted!</p>
 		    <p>Now, let's send thanks message to the owner.</p>
-		    <%= link_to "Go to the website & send message to the owner", root_url, class: "btn"%>
+		    <%= link_to "Go to the website & send message to the owner", conversation_url(@conversation), class: "btn", target: "_blank" %>
 		    <p class="contact">Contact to <a href="mailto:admin@skill4.space?Subject=Inquiry" target="_top">Help center</a></p>
  		</div>
 	</div>

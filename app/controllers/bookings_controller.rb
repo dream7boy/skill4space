@@ -37,10 +37,12 @@ class BookingsController < ApplicationController
   end
 
   def update
+    # @conversations.find(booking.conversation)
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
     if @booking.status == "Confirm"
-      send_accept_booking_email(@booking.user, @booking.space)
+      @conversation = current_user.mailbox.conversations.find(@booking.conversation)
+      send_accept_booking_email(@booking.user, @booking.space, @conversation)
     elsif @booking.status == "Cancel"
       send_decline_booking_email(@booking.user, @booking.space)
     end
@@ -62,8 +64,8 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_date, :end_date, :status)
   end
 
-  def send_accept_booking_email(booker, space)
-    UserMailer.accept_booking(booker, space).deliver_now
+  def send_accept_booking_email(booker, space, conversation)
+    UserMailer.accept_booking(booker, space, conversation).deliver_now
   end
 
   def send_decline_booking_email(booker, space)
