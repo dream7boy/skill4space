@@ -25,7 +25,6 @@ puts 'Creating database...'
     3.times do
       # start_random_date = DateTime.new(2017, 11, rand(6..8))
       space = Space.new(
-        title: "Title TBD",
         name: Faker::Company.name,
         category: ["Garage", "Kitchen", "Office", "Design studio", "Coworking"].sample,
         start_date: DateTime.new(2017, 11, 6),
@@ -58,6 +57,14 @@ puts 'Creating database...'
         "Design studio" => ["app/assets/images/dstudio4.jpg"],
         "Kitchen" => ["app/assets/images/kitchen4.jpg"],
         "Garage" => ["app/assets/images/garage4.jpg"]
+      }
+
+      titles = {
+        "Office" => "Come check out our sleek, modern office",
+        "Coworking" => "Experience our vibrant coworking community",
+        "Design studio" => "Come to our historic design studio",
+        "Kitchen" => "Cosy kitchen in the heart of Tokyo",
+        "Garage" => "Check out our large, well-lit garage space"
       }
 
       # photo_urls = {
@@ -109,6 +116,7 @@ puts 'Creating database...'
       # }
 
       space.photo_urls = photo_urls[space.category]
+      space.title = titles[space.category]
       space.save!
 
       puts 'Photo seeding...'
