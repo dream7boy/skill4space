@@ -11,6 +11,22 @@
         <h1>Search Results</h1>
       </div>
       <!-- Filters will be here -->
+      <div>
+        <%= form_tag(spaces_path, method: :get) do %>
+        <%= select_tag "city",
+          options_for_select(@available_cities),
+           class: "input-lg form-top" %>
+        <%= select_tag "category",
+          options_for_select(@available_categories),
+           class: "input-lg form-top" %>
+        <%= select_tag "required_skill",
+          options_for_select(@available_skills),
+          class: "input-lg form-top" %>
+        <%= submit_tag 'Filter', name: nil, class: "btn btn-success btn-lg" %>
+      <% end %>
+      </div>
+
+
       <div class="row-cards">
         <% @spaces.reverse.each do |space| %>
           <% if space.bookings.empty? %>
