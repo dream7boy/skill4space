@@ -3,33 +3,27 @@ class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:city] == "Work in" || params[:category] == "Space type"
-      @spaces = Space.all
-      flash[:alert] = "No specific city or workspace chosen"
-    elsif params[:required_skill] == "with this skill"
-    # elsif params[:start_date] == "" || params[:end_date] == ""
-      @spaces = Space.where('city LIKE ? AND category LIKE ?',
-      "%#{params[:city]}%", "%#{params[:category]}%")
-      flash[:alert] = "No specific skill chosen"
-    else
-      @spaces = Space.where('city LIKE ? AND category LIKE ?
-        AND required_skill LIKE ?',
-        "%#{params[:city]}%", "%#{params[:category]}%", "%#{params[:required_skill]}%")
+    @available_cities = [['City', nil], 'Tokyo', 'Osaka', 'Fukuoka']
+    @available_categories = [['Space type', nil], 'Office', 'Coworking', 'Event space',
+    'Art gallery', 'Design studio', 'Music studio', 'Dance studio', 'Kitchen', 'Classroom', 'Garage']
+    @available_skills = [['Skill', nil], 'Programming', 'Web Design',
+    'Writing', 'Proofreading','Translation', 'Teaching', 'Consultation', 'Illustration', 'Photography']
 
-      # @spaces = Space.where('city LIKE ? AND category LIKE ?
-      #   AND start_date <= ? AND end_date >= ?',
-      # "%#{params[:city]}%", "%#{params[:category]}%", "%#{params[:start_date]}%", "%#{params[:end_date]}%")
-    end
+    @spaces = Space.all
 
-    # availability = (astart..aend).map{ |date| date.strftime("%d %b %y") }
-    # booking = (start_date..end_date).map{ |date| date.strftime("%d %b %y") }
+    @spaces = @spaces.where('city LIKE ?', params[:city]) if params[:city].present?
+    @spaces = @spaces.where('category LIKE ?', params[:category]) if params[:category].present?
+    @spaces = @spaces.where('required_skill LIKE ?', params[:required_skill]) if params[:required_skill].present?
+    @spaces = @spaces.where('city LIKE ? AND required_skill LIKE ?', params[:city], params[:required_skill]) if params[:city].present? && params[:required_skill].present?
+    @spaces = @spaces.where('city LIKE ? AND category LIKE ?', params[:city], params[:category]) if params[:city].present? && params[:category].present?
+    @spaces = @spaces.where('category LIKE ? AND required_skill LIKE ?', params[:category], params[:required_skill]) if params[:category].present? && params[:required_skill].present?
+    @spaces = @spaces.where('city LIKE ? AND category LIKE ? AND required_skill LIKE ?', params[:city], params[:category], params[:required_skill]) if params[:city].present? && params[:category].present? && params[:required_skill].present?
 
     @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
       marker.lat space.latitude
       marker.lng space.longitude
       marker.infowindow render_to_string(partial: "/spaces/map_box", locals: { space: space })
     end
-
   end
 
   def show

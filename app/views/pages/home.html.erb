@@ -12,39 +12,11 @@
     <div class="form-wrapper">
       <%= form_tag(spaces_path, method: :get) do %>
         <%= select_tag "city",
-          raw("<option>Work in</option>
-          <option>Tokyo</option>
-          <option>Osaka</option>
-          <option>Fukuoka</option>"),
-           class: "input-lg form-top" %>
-        <%= select_tag "category",
-          raw("<option>Space type</option>
-          <option>Office</option>
-          <option>Coworking</option>
-          <option>Event space</option>
-          <option>Art gallery</option>
-          <option>Design studio</option>
-          <option>Music studio</option>
-          <option>Dance studio</option>
-          <option>Kitchen</option>
-          <option>Classroom</option>
-          <option>Garage</option>"),
+          options_for_select(@available_cities),
            class: "input-lg form-top" %>
         <%= select_tag "required_skill",
-          raw("<option>with this skill</option>
-          <option>Programming</option>
-          <option>Web Design</option>
-          <option>Writing</option>
-          <option>Proofreading</option>
-          <option>Translation</option>
-          <option>Teaching</option>
-          <option>Consultation</option>
-          <option>Illustration</option>
-          <option>Photography</option>
-          "),
+           options_for_select(@available_skills),
            class: "input-lg form-top" %>
-        <%#= date_field_tag :start_date, params[:start_date], class: "input-lg form-top" %>
-        <%#= date_field_tag :end_date, params[:end_date], class: "input-lg form-top" %>
         <%= submit_tag 'Search', name: nil, class: "btn btn-success btn-lg" %>
       <% end %>
     </div>
