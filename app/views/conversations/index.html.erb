@@ -32,12 +32,36 @@
 	      	<% @conversations.each do |conversation| %>
 		  	  	<tr>
 		  	  		<td class="message-users">
-				        <% if conversation.messages.first.sender.photo.nil? %>
-			              <%= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
-			          <% else %>
-					          <%= cl_image_tag conversation.messages.first.sender.photo.path, class: "profile-avatar"  %>
-			          <% end %>
-			             <p class="text-center"><%= conversation.messages.first.sender.name %></p>
+
+                <% if current_user == conversation.messages.first.recipients.first %>
+
+                  <% if conversation.messages.first.recipients.last.photo.present? %>
+                    <% avatar_url = conversation.messages.first.recipients.last.photo.path %>
+                  <% else %>
+                    <% avatar_url = conversation.messages.first.recipients.last.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
+                  <% end %>
+                  <%= cl_image_tag avatar_url, class: "profile-avatar" %>
+                  <p class="text-center"><%= conversation.messages.first.recipients.last.name %></p>
+
+                <% else %>
+
+                  <% if conversation.messages.first.recipients.first.photo.present? %>
+                    <% avatar_url = conversation.messages.first.recipients.first.photo.path %>
+                  <% else %>
+                    <% avatar_url = conversation.messages.first.recipients.first.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
+                  <% end %>
+                  <%= cl_image_tag avatar_url, class: "profile-avatar" %>
+                  <p class="text-center"><%= conversation.messages.first.recipients.first.name %></p>
+
+                <% end %>
+
+                <%# if conversation.messages.first.sender.photo.nil? %>
+			              <%#= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
+			          <%# else %>
+					          <%#= cl_image_tag conversation.messages.first.sender.photo.path, class: "profile-avatar"  %>
+			          <%# end %>
+			             <!-- <p class="text-center"><%#= conversation.messages.first.sender.name %></p> -->
+
 		           </td>
 	             <td><p><%= conversation.subject %></p></td>
 		           <td>
