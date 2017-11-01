@@ -60,15 +60,93 @@ $('.slider-nav-two').slick({
 });
 
 // code for sweet alert
+// var popup = $('#booking-submit-button').click(function(event) {
+//   event.preventDefault();
+//   swal('Success!', 'You have booked this space!', 'success');
+// });
+
+// $('.swal-button').unbind('click', function(){
+//   ('#form-submit').click();
+// });
+// $('#booking-submit-button').click(function(event) {
+// swal('Success!', 'You have booked this space!', 'success');
+// $(this).unbind('click').click('.swal-button');
+// };
 
 $('#booking-submit-button').click(function(event) {
-
-  // event.preventDefault(); // Prevent the page from redirecting
-
-  // Put the swal-code here
-  swal('Success!', 'You have booked this space!', 'success', {button: false, timer: 8000});
-  // $(this).unbind('click').click();
+  event.preventDefault();
+  swal('Success', 'You have booked this space!', 'success');
+  $('.swal-button').click(
+    // $('#booking-submit-button').unbind('click').click();
+    var new_path = <%= conversations_path %>
+    window.location.href = new_path
+    );
 });
+// $(document).ready(function() {
+// swal({
+//   //Your code for swel
+//   position: 'top-right',
+//   type: 'success',
+//   title: 'Your work has been saved',
+//   showConfirmButton: false,
+//   timer: 1500
+//   },
+//   function(){
+//     var new_path = <%= conversations_path %>
+//     window.location.href = new_path
+// });
+
+// $('#booking-submit-button').click(function(event) {
+//   event.preventDefault(); // Prevent the page from redirecting
+  // if ($(document).click(function(e) {
+
+  // }))
+  // Put the swal-code here
+  // swal('Success!', 'You have booked this space!', 'success');
+  // function() {
+  //   var new_path = <%= conversations_path %>;
+  //   document.location.href = new_path;
+  // };
+  // // $('#booking-submit-button').off();
+  // $('.swal-button').on("click", '.swal-button', function() {
+  // $('.swal-button').unbind('click').click('#form-submit');
+     // var new_path = <%= conversations_path %>;
+     // document.location.href = new_path;);
+  // };)
+  // $('.swal-button').unbind('click').click();
+  // swal({
+  // position: 'top-right',
+  // type: 'success',
+  // title: 'Your work has been saved',
+  // showConfirmButton: false,
+  // timer: 1500
+  // });
+// });
+
+// $("button").click(function (e) {
+//     $("div").fadeToggle("fast");
+//     e.stopImmediatePropagation();
+// });
+
+// $(document).click(function (e) {
+//     if($("div").is(":visible") && !$("div").is(e.target)) {
+//         $("div").fadeOut("fast");
+//     }
+// });
+
+// $("#booking-submit-button").submit(function(e) {
+//   e.preventDefault();
+//   // var nm_unit = $("#namaunit").val();
+//   // var almtunit = $("#almtunit").val();
+//   var form = this;
+
+//   swal('Success!', function(isConfirm) {
+//     if (isConfirm) {
+//       form.submit();
+//     }
+//   });
+// });
+
 
 $('#book-start-date, #book-end-date').change(function(event) {
   const id = $(event.target).closest('form').attr('data-id');

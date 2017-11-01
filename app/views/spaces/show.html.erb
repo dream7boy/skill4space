@@ -131,7 +131,7 @@
             <% elsif @space.bookings.present? %>
               <button type="button" class="btn btn-lg btn-primary" disabled>Booked already</button>
             <% else %>
-              <%= form_tag(conversations_path, method: :post, id: "booking-submit-button" ) do %>
+              <%= form_tag(conversations_path, method: :post,  id: "booking-submit-button") do %>
               <%#= form_tag(conversations_path, method: :post, 'data-id': @space.id) do %>
               <%#= text_field_tag :species, params[:species] %>
               <!-- <label class="control-label optional" for="book_start_date">FROM:</label> -->
@@ -141,7 +141,7 @@
               <%#= date_field_tag :end_date, params[:end_date], class: "form-top", value: @space.end_date, id: "book-end-date" %>
               <%= hidden_field_tag "space_id", @space.id%>
               <p></p>
-              <%= submit_tag "Book ", class: "btn btn-success btn-lg"%>
+              <%= submit_tag "Book ", class: "btn btn-success btn-lg", id: "form-submit"%>
               <p class="book-lead">and send message<br> to a space owner</p>
               <!-- For payment features -->
               <%#= submit_tag 'PAY WITH SKILLS', name: nil, disabled: true, class: "btn btn-success btn-lg", id: "booking-button" %>
