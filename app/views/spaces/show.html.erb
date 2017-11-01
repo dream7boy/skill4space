@@ -6,66 +6,87 @@
 <% content_for :meta_image, cloudinary_url(@space.photos.first.path) %>
 
 <% if @space.photos.count === 1 %>
-<div class="slider-for">
-  <% @space.photos.each do |photo| %>
-    <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
-  <% end %>
-</div>
+  <div class="slider-for">
+    <% @space.photos.each do |photo| %>
+      <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
+    <% end %>
+  </div>
 <% elsif @space.photos.count === 2 %>
-<div class="slider-for-two">
-  <% @space.photos.each do |photo| %>
-    <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
-  <% end %>
-</div>
-<div class="container">
-  <div class="slider-nav-two">
+  <div class="slider-for-two">
     <% @space.photos.each do |photo| %>
-      <div>
-        <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path, width: 300, height: 200, crop: :fill %>');"></div>
-      </div>
+      <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
     <% end %>
   </div>
-</div>
-<% elsif @space.photos.count >= 3 %>
-<div class="slider-for">
-  <% @space.photos.each do |photo| %>
-    <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
-  <% end %>
-</div>
-<div class="container">
-  <div class="slider-nav">
+  <div class="container">
+    <div class="slider-nav-two">
+      <% @space.photos.each do |photo| %>
+        <div>
+          <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path, width: 300, height: 200, crop: :fill %>');"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% elsif @space.photos.count >= 3 %>
+  <div class="slider-for">
     <% @space.photos.each do |photo| %>
-      <div>
-        <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path, width: 300, height: 200, crop: :fill %>');"></div>
-      </div>
+      <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path %>');"></div>
     <% end %>
   </div>
-</div>
+  <div class="container">
+    <div class="slider-nav">
+      <% @space.photos.each do |photo| %>
+        <div>
+          <div class="space-show-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path photo.path, width: 300, height: 200, crop: :fill %>');"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 <div class="space-show-container">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-8">
           <h1><%= @space.title %></h1>
-          <div class="index-tags">
-            <div class="category-tag">
-              <div>
-                <i class="fa fa-home"></i> <%= @space.category %>
+          <!-- div? -->
+          <div class="show-space-info">
+            <div class="index-tags">
+              <div class="category-tag">
+                <div>
+                  <i class="fa fa-home"></i> <%= @space.category %>
+                </div>
               </div>
-            </div>
-            <%# if @space.is_barter == true %>
+              <%# if @space.is_barter == true %>
               <div class="category-tag barter">
                 <div>
                   <i class="fa fa-handshake-o"></i> Barter
                 </div>
               </div>
-            <%# else %>
-              <!-- <div class="category-tag paid">
-                <div>
-                  <i class="fa fa-money"></i> Paid
-                </div>
-              </div> -->
-            <%# end %>
+              <%# else %>
+                <!-- <div class="category-tag paid">
+                  <div>
+                    <i class="fa fa-money"></i> Paid
+                  </div>
+                </div> -->
+              <%# end %>
+
+            </div>
+            <div class="show-owner-info">
+              <div class="show-owner-info-profile">
+                <% if @space.user.photo.present? %>
+                  <% avatar_url = @space.user.photo.path %>
+                <% else %>
+                  <% avatar_url = @space.user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
+                <% end %>
+                <%= link_to user_path(@space.user) do %>
+                  <div class="show-owner-info-profile-photo text-center">
+                    <%= cl_image_tag avatar_url, class: "profile-avatar" %>  
+                  </div>
+                  <div class="show-owner-info-profile-name text-center">
+                    <p><span>Listed by</span> <%= @space.user.name %></p>
+                  </div>
+                <% end %>                
+              </div>
+            </div>
           </div>
           <p><i class="fa fa-map-marker"></i> <%= @space.address %></p>
           <p><%= @space.description %></p>
