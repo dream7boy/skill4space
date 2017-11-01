@@ -34,6 +34,8 @@
           </table>
         </div>
       </div>
+
+      <div id="message-container">
       <% @conversation.receipts_for(current_user).sort_by(&:created_at).each do |receipt| %>
         <div class="message-wrapper">
           <div class="sender-profile">
@@ -50,8 +52,10 @@
           </div>
         </div>
       <% end %>
+      </div>
+
       <p class="lead">Type your message here:</p>
-      <%= form_tag conversation_messages_path(@conversation), method: :post,  class: "message-box" do %>
+      <%= form_tag conversation_messages_path(@conversation), method: :post, remote: true,  class: "message-box" do %>
         <div>
           <%= text_area_tag :body %>
         </div>
