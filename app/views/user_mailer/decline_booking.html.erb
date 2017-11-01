@@ -7,7 +7,7 @@
 			<p>Hi, <%= @booker.name %>.</p>
 		    <p>I'm sorry but your bookings for <%= @space.name %> is declined by the owner.</p>
 		    <p>I hope to see you again.</p>
-		    <%= link_to "Go to the website & find another space", root_url, class: "btn"%>
+		    <%= link_to "Go to the website & find another space", spaces_url, class: "btn", target: "_blank" %>
 		    <p class="contact">Contact to <a href="mailto:admin@skill4.space?Subject=Inquiry" target="_top">Help center</a></p>
  		</div>
 	</div>

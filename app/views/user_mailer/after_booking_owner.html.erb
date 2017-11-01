@@ -7,7 +7,7 @@
 		    <h1><%= @space.name %> has been booked.</h1>
 			<p>Hi, <%= @owner.name %>.</p>
 		    <p class="last">Check your mailbox and send message to the booker.</p>
-		    <%= link_to "Go to the website & check the booker info", root_url, class: "btn"%>
+		    <%= link_to "Go to the website & check the booker info", listings_url, class: "btn", target: "_blank" %>
 		    <p class="contact">Contact to <a href="mailto:admin@skill4.space?Subject=Inquiry" target="_top">Help center</a></p>
  		</div>
 	</div>
