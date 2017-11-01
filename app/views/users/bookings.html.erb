@@ -6,8 +6,8 @@
       <h1>MY BOOKINGS</h1>
   </div>
   <% if @user.bookings.count <= 0 %>
-    <div class="no-listings text-center">
-      <p>You have no booking now.</p>
+    <div class="no-bookings text-center">
+      <p>You have no booking yet.</p>
       <p>Bartering with your skill, let's find a best place for you!</p>
       <%= link_to root_path, class: "btn btn-success" do %>
        <i class="fa fa-search"></i> SEACH SPACES
