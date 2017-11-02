@@ -88,17 +88,21 @@ $('#booking-submit-button').submit(function(event) {
       button: false,
     });
 
-    $.post({
-      url: $form.attr('action'),
-      type: $form.attr('method'),
-      data: $form.serialize(),
-      success: data => {
-        window.location.href = `/conversations/${data.conversation.id}`;
-      },
-      error: err => {
-        console.log('Error', err);
-      }
-    });
+    setTimeout(() => {
+
+      $.post({
+        url: $form.attr('action'),
+        type: $form.attr('method'),
+        data: $form.serialize(),
+        success: data => {
+          window.location.href = `/conversations/${data.conversation.id}`;
+        },
+        error: err => {
+          console.log('Error', err);
+        }
+      });
+    }, 1000);
+
   });
 });
 
