@@ -16,7 +16,7 @@
 		margin-left: 14px;
 		select {
 			background-color: transparent;
-			border-radius: 3px;	
+			border-radius: 3px;
 		}
 		input {
 			margin-bottom: 5px;
@@ -38,4 +38,11 @@
 		border-radius: 3px;
 		width: 80%;
 	}
+}
+
+.index-wrapper form input {
+  margin-bottom: -1px;
+  width: 80px;
+  border-radius: 3px;
+  padding: 4px 0;
 }

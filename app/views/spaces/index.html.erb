@@ -9,22 +9,22 @@
     <div class="row">
       <div class="index-header">
         <h1>Search Results</h1>
+          <div class="index-filter">
+            <%= form_tag(spaces_path, method: :get) do %>
+            <%= select_tag "city",
+              options_for_select(@available_cities),
+               class: "input form-top" %>
+            <%= select_tag "category",
+              options_for_select(@available_categories),
+               class: "input form-top" %>
+            <%= select_tag "required_skill",
+              options_for_select(@available_skills),
+              class: "input form-top" %>
+            <%= submit_tag 'Filter', name: nil, class: "btn btn-success btn-xs" %>
+            <% end %>
+          </div>
       </div>
       <!-- Filters will be here -->
-      <div class="index-filter">
-        <%= form_tag(spaces_path, method: :get) do %>
-        <%= select_tag "city",
-          options_for_select(@available_cities),
-           class: "input-lg form-top" %>
-        <%= select_tag "category",
-          options_for_select(@available_categories),
-           class: "input-lg form-top" %>
-        <%= select_tag "required_skill",
-          options_for_select(@available_skills),
-          class: "input-lg form-top" %>
-        <%= submit_tag 'Filter', name: nil, class: "btn btn-success btn-lg" %>
-      <% end %>
-      </div>
 
 
       <div class="row-cards">
