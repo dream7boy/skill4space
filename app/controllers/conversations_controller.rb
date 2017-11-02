@@ -30,13 +30,13 @@ class ConversationsController < ApplicationController
                             .messages
                             .where('id > ?', last_message_in_ui.id)
                             # .where('created_at > ?', last_message_in_ui.created_at)
-        puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+        # puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
         # p params[:receipt][:id]
         # p last_message_in_ui.id
         # p @new_messages
-        p @last_receipt_id
-        puts @receipt_id
-        puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+        # p @last_receipt_id
+        # puts @receipt_id
+        # puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
       end
 
 # c.receipts_for(u).order(created_at: :desc).first.message
