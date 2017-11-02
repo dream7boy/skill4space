@@ -149,16 +149,16 @@
 .show-space-info {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   .profile-avatar {
     width: 60px;
     height: 60px;
   }
 }
-.show-owner-info-profile{
+.show-owner-info{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   // align-items: flex-start;
   p {
     margin: 0;

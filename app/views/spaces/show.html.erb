@@ -78,11 +78,11 @@
                   <% avatar_url = @space.user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
                 <% end %>
                 <%= link_to user_path(@space.user) do %>
-                  <div class="show-owner-info-profile-photo text-center">
-                    <%= cl_image_tag avatar_url, class: "profile-avatar" %>  
-                  </div>
                   <div class="show-owner-info-profile-name text-center">
                     <p><span>Listed by</span> <%= @space.user.name %></p>
+                  </div>
+                  <div class="show-owner-info-profile-photo text-center">
+                    <%= cl_image_tag avatar_url, class: "profile-avatar" %>  
                   </div>
                 <% end %>                
               </div>
