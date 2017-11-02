@@ -7,6 +7,7 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
+//= require message
 //= require_tree .
 
 
@@ -94,3 +95,4 @@ $('#book-start-date, #book-end-date').change(function(event) {
     }
   });
 });
+

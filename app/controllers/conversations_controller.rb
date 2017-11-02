@@ -8,6 +8,13 @@ class ConversationsController < ApplicationController
   def show
     @conversation = current_user.mailbox.conversations.find(params[:id])
     @booking = Booking.find_by(conversation: params[:id])
+byebug
+    # puts params[:message][:id]
+    respond_to do |format|
+      format.html
+      # format.js { @new_message = @conversation.receipts_for(current_user).find(params[:message][:id]).message }
+      format.json { @new_message = @conversation.receipts_for(current_user).where('id > ?', params[:message][:id]) }
+    end
   end
 
   def new

@@ -37,7 +37,7 @@
 
       <div id="message-container">
       <% @conversation.receipts_for(current_user).sort_by(&:created_at).each do |receipt| %>
-        <div class="message-wrapper">
+        <div class="message-wrapper" data-id=<%= receipt.id %>>
           <div class="sender-profile">
             <!-- Need to modify condition -->
             <% if receipt.message.sender.photo.nil? %>
