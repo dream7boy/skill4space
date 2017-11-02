@@ -46,7 +46,7 @@
           <div class="profile-skills">
             <div class="profile-head">
               <div>
-                <h3><i class="fa fa-wrench"></i> Skills</h3>
+                <h3 class="not-first"><i class="fa fa-wrench"></i> Skills</h3>
               </div>
               <div>
                 <%= link_to new_user_skill_path(@user), class: "btn btn-primary text-right" do %>
@@ -85,7 +85,7 @@
           </div>
           <% if @user.user_reviews.count > 0 %>
             <div>
-              <h3><i class="fa fa-users"></i> Your reviews</h3>
+              <h3 class="not-first"><i class="fa fa-users"></i> Your reviews</h3>
               <% @user.user_reviews.each do |review| %>
                 <div class="profile-review">
                   <div class="review-left">
