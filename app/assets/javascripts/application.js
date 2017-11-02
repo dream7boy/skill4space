@@ -7,7 +7,6 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
-//= require message
 //= require_tree .
 
 
