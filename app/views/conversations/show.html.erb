@@ -40,11 +40,12 @@
         <div class="message-wrapper">
           <div class="sender-profile">
             <!-- Need to modify condition -->
-            <% if receipt.message.sender.photo.nil? %>
-              <%= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
+            <% if receipt.message.sender.photo.present? %>
+              <% avatar_url = receipt.message.sender.photo.path %>
             <% else %>
-              <%= cl_image_tag receipt.message.sender.photo.path, class: "profile-avatar" %>
+              <% avatar_url = receipt.message.sender.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
             <% end %>
+            <%= cl_image_tag avatar_url, class: "profile-avatar" %>
           </div>
           <div class="message-body">
             <p>FROM: <%= receipt.message.sender.name %> <span>on <%= receipt.message.created_at.getlocal.strftime("%Y/%m/%d %H:%M%p") %></span></p>
