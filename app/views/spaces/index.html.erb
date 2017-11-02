@@ -48,11 +48,11 @@
                       </div>
                     </div>
                     <%# if space.is_barter == true %>
-                      <div class="category-tag barter">
+                      <!-- <div class="category-tag barter">
                         <div>
                           <i class="fa fa-handshake-o"></i> Barter
                         </div>
-                      </div>
+                      </div> -->
                     <div class="stars">
                       <% if space.user.user_reviews.count > 0 %>
                         <% t = 0 %>
@@ -63,6 +63,7 @@
                         <% end %>
                         <% a = t / c %>
                         <div class="stars">
+                          <p>Average rating: </p>
                           <ul>
                             <% a.times do  %>
                               <li><i class="fa fa-star starred"></i></li>
