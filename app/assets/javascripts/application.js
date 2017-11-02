@@ -76,7 +76,7 @@ $('.slider-nav-two').slick({
 $('#booking-submit-button').submit(function(event) {
   $form = $(event.currentTarget);
   event.preventDefault();
-  swal('Success', 'You have booked this space!', 'success', {
+  swal('Confirm booking?', "", {
     buttons: true,
     success: true
   }).then(ok => {
