@@ -19,7 +19,13 @@ class SpacesController < ApplicationController
     @spaces = @spaces.where('category LIKE ? AND required_skill LIKE ?', params[:category], params[:required_skill]) if params[:category].present? && params[:required_skill].present?
     @spaces = @spaces.where('city LIKE ? AND category LIKE ? AND required_skill LIKE ?', params[:city], params[:category], params[:required_skill]) if params[:city].present? && params[:category].present? && params[:required_skill].present?
 
-    @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
+    @available_spaces = []
+
+    @spaces.each do |space|
+      @available_spaces << space if space.bookings.empty?
+    end
+
+    @hash = Gmaps4rails.build_markers(@available_spaces) do |space, marker|
         marker.lat space.latitude
         marker.lng space.longitude
         marker.infowindow render_to_string(partial: "/spaces/map_box", locals: { space: space })
