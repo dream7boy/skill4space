@@ -78,9 +78,10 @@
 
 .profile-avatar {
   width: 200px;
-  height: auto;
+  height: 200px;
   border: 1px solid #C4C4C4;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .profile-review {
@@ -140,4 +141,5 @@
 .reviewer-avatar {
   width: 60px;
   height: 60px;
+  object-fit: cover;
 }
