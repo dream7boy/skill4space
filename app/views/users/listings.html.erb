@@ -121,7 +121,7 @@
                   <% end %>
                   <% if space.bookings.last.user_reviews.last.nil? || (space.bookings.last.user_reviews.last.user_id == current_user.id) %>
                     <%= link_to  new_user_user_review_path(space.bookings.last.user, booking_id: space.bookings.last.id), id: "review-booker" do %>
-                      <i class="fa fa-star"></i> Review on booker
+                      <i class="fa fa-star"></i> Review booker
                     <% end %>
                   <% end %>
                 <% end %>

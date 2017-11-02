@@ -83,7 +83,7 @@
                   <p><%= review.content %></p>
                   <p>Space: <%= review.booking.space.name %></p>
                   <% if review.reviewer_name == current_user.name %>
-                  <%= link_to "delete review", user_review_path(review), class: "delete",
+                  <%= link_to "Delete review", user_review_path(review), class: "delete",
                       method: :delete,
                       data: { confirm: "Are you sure?" } %>
                   <% end %>
