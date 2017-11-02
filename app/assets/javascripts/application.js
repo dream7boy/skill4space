@@ -76,12 +76,15 @@ $('.slider-nav-two').slick({
 $('#booking-submit-button').click(function(event) {
   event.preventDefault();
   swal('Success', 'You have booked this space!', 'success');
-  $('.swal-button').click(
-    // $('#booking-submit-button').unbind('click').click();
-    var new_path = <%= conversations_path %>
-    window.location.href = new_path
-    );
+  return true;
 });
+
+  // $('.swal-button').click(
+  //   // $('#booking-submit-button').unbind('click').click();
+  //   var new_path = <%= conversations_path %>
+  //   window.location.href = new_path
+  //   );
+
 // $(document).ready(function() {
 // swal({
 //   //Your code for swel
