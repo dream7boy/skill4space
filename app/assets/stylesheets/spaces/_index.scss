@@ -3,27 +3,35 @@
 @import "new";
 
 .index-header {
+  padding: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.index-wrapper {
 	h1 {
-		margin-left: 14px;
+		margin: 0;
 	}
 	form {
 		margin-left: 14px;
 		select {
+			height: 39px;
 			background-color: transparent;
-			border-radius: 3px;	
+			border-radius: 1px;	
 		}
 		input {
-			margin-bottom: 5px;
 			width: 100px;
+		    width: 80px;
+   		    border-radius: 3px;
+   		    color: $green;
+   		    background-color: transparent;
+   		    &:hover {
+   		    	transition: 0.3s;
+   		    }
 		}
 	}
 }
+
+// .index-wrapper {
+// }
 
 .map_box {
 	padding: 10px 0 10px 20px;
