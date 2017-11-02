@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
       else
         @receiver = User.find(@conversation.receipts[-2].receiver_id)
       end
-      # send_get_message_email(current_user, @receiver, @conversation)
+      send_get_message_email(current_user, @receiver, @conversation)
       @receipt = current_user.reply_to_conversation(@conversation, params[:body])
       # redirect_to conversation_path(params[:conversation_id])
       respond_to do |format|

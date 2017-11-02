@@ -242,3 +242,4 @@ $('#book-start-date, #book-end-date').change(function(event) {
     }
   });
 });
+

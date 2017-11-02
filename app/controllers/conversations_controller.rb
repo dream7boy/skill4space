@@ -8,6 +8,39 @@ class ConversationsController < ApplicationController
   def show
     @conversation = current_user.mailbox.conversations.find(params[:id])
     @booking = Booking.find_by(conversation: params[:id])
+    # puts params[:message][:id]
+    respond_to do |format|
+      format.html
+      # format.js { @new_message = @conversation.receipts_for(current_user).find(params[:message][:id]).message }
+      # format.json { @new_message = @conversation.receipts_for(current_user).find(params[:message][:id]).message }
+      format.json do
+        @receipt_id = (params[:receipt][:id]).to_i
+        # byebug
+        # if @conversation.receipts_for(current_user).where('id > ?', @receipt_id).present?
+        #   @last_receipt_id = @conversation.receipts_for(current_user).where('id > ?', @receipt_id).last.id
+        # end
+        @last_receipt_id = @conversation.receipts_for(current_user).last.id
+
+        last_message_in_ui = @conversation
+                                .receipts_for(current_user)
+                                .find(@receipt_id).message
+
+        @new_messages = last_message_in_ui
+                            .conversation
+                            .messages
+                            .where('id > ?', last_message_in_ui.id)
+                            # .where('created_at > ?', last_message_in_ui.created_at)
+        puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+        # p params[:receipt][:id]
+        # p last_message_in_ui.id
+        # p @new_messages
+        p @last_receipt_id
+        puts @receipt_id
+        puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+      end
+
+# c.receipts_for(u).order(created_at: :desc).first.message
+    end
   end
 
   def new
@@ -27,3 +60,32 @@ class ConversationsController < ApplicationController
     render :json => { conversation: receipt.conversation }
   end
 end
+
+#   def show
+#     @conversation = current_user.mailbox.conversations.find(params[:id])
+#     @booking = Booking.find_by(conversation: params[:id])
+#     # puts params[:message][:id]
+#     respond_to do |format|
+#       format.html
+#       # format.js { @new_message = @conversation.receipts_for(current_user).find(params[:message][:id]).message }
+#       # format.json { @new_message = @conversation.receipts_for(current_user).find(params[:message][:id]).message }
+#       format.json do
+#         @receipt_id = params[:receipt][:id]
+#         last_message_in_ui = @conversation
+#                                 .receipts_for(current_user)
+#                                 .find(@receipt_id).message
+#         @new_messages = last_message_in_ui
+#                             .conversation
+#                             .messages
+#                             .where('id > ?', last_message_in_ui.id)
+#                             # .where('created_at > ?', last_message_in_ui.created_at)
+#         puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+#         p params[:receipt][:id]
+#         p last_message_in_ui.created_at
+#         p @new_messages
+#         puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+#       end
+
+# # c.receipts_for(u).order(created_at: :desc).first.message
+#     end
+#   end

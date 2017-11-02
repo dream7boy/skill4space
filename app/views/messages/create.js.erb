@@ -1,6 +1,6 @@
 console.log("Hello");
 const message = $(`
-  <div class="message-wrapper">
+  <div class="message-wrapper" data-receipt-id="<%= @receipt.id %>">
     <div class="sender-profile">
       <% if @receipt.message.sender.photo.nil? %>
         <%= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
@@ -17,5 +17,3 @@ const message = $(`
 $('#message-container').append(message);
 message.slideDown();
 $('#body').val('');
-
-
