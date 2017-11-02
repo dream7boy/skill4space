@@ -83,6 +83,10 @@ $('#booking-submit-button').submit(function(event) {
     $form.find('[type="submit"]').get(0).disabled = false;
     if (!ok) return;
 
+    swal('Success', "", {
+      icon: "success",
+    });
+
     $.post({
       url: $form.attr('action'),
       type: $form.attr('method'),
@@ -96,6 +100,40 @@ $('#booking-submit-button').submit(function(event) {
     });
   });
 });
+
+
+
+
+
+// $('#booking-submit-button').submit(function(event) {
+//   $form = $(event.currentTarget);
+//   event.preventDefault();
+//   swal('Confirm booking?', "", {
+//     buttons: true,
+//     success: true
+//   }).then(ok => {
+//     $form.find('[type="submit"]').get(0).disabled = false;
+//     if (!ok) return;
+
+//     $.post({
+//       url: $form.attr('action'),
+//       type: $form.attr('method'),
+//       data: $form.serialize(),
+//       success: data => {
+//         window.location.href = `/conversations/${data.conversation.id}`;
+//       },
+//       error: err => {
+//         console.log('Error', err);
+//       }
+//     });
+//   });
+// });
+
+
+
+
+
+
 
   // $('.swal-button').click(
   //   // $('#booking-submit-button').unbind('click').click();
