@@ -11,15 +11,16 @@ $(function(){
         </div>
       </div>`).hide()
 
-    const messages = $('#message-container').append(newmessage);
+    $('#message-container').append(newmessage);
+    // const messages = $('#message-container').append(newmessage);
     newmessage.slideDown();
     //'tbody'に'tr'以下のhtml全てをappendする
   }
 
-  $(function(){
-    setInterval(update, 5000);
-    //1000ミリ秒ごとにupdateという関数を実行する
-  });
+  // $(function(){
+  //   setInterval(update, 5000);
+  //   //1000ミリ秒ごとにupdateという関数を実行する
+  // });
   function update(){ //この関数では以下のことを行う
     if($('.message-wrapper')[0]){ //もし'messages'というクラスがあったら
       var receipt_id = $('.message-wrapper:last').data('receipt-id'); //一番最後にある'messages'というクラスの'id'というデータ属性を取得し、'message_id'という変数に代入
@@ -39,9 +40,10 @@ $(function(){
       $.each(data, function(i, data){ //'data'を'data'に代入してeachで回す
         buildMESSAGE(data); //buildMESSAGEを呼び出す
         // console.log(data.receipt_id); //buildMESSAGEを呼び出す
-        setInterval(update, 5000);
+
       });
     });
+    setTimeout(update, 10000);
   }
   update();
 });

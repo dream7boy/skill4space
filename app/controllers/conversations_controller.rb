@@ -15,14 +15,18 @@ class ConversationsController < ApplicationController
       # format.json { @new_message = @conversation.receipts_for(current_user).find(params[:message][:id]).message }
       format.json do
         @receipt_id = params[:receipt][:id]
+        @last_receipt_id = @receipt_id.to_i + 2
         last_message_in_ui = @conversation
                                 .receipts_for(current_user)
                                 .find(@receipt_id).message
         @new_messages = last_message_in_ui
                             .conversation
                             .messages
-                            .where('created_at > ?', last_message_in_ui.created_at)
+                            .where('id > ?', last_message_in_ui.id)
+                            # .where('created_at > ?', last_message_in_ui.created_at)
         puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+        p params[:receipt][:id]
+        p last_message_in_ui.id
         p @new_messages
         puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
       end
@@ -48,3 +52,32 @@ class ConversationsController < ApplicationController
     redirect_to conversation_path(receipt.conversation)
   end
 end
+
+#   def show
+#     @conversation = current_user.mailbox.conversations.find(params[:id])
+#     @booking = Booking.find_by(conversation: params[:id])
+#     # puts params[:message][:id]
+#     respond_to do |format|
+#       format.html
+#       # format.js { @new_message = @conversation.receipts_for(current_user).find(params[:message][:id]).message }
+#       # format.json { @new_message = @conversation.receipts_for(current_user).find(params[:message][:id]).message }
+#       format.json do
+#         @receipt_id = params[:receipt][:id]
+#         last_message_in_ui = @conversation
+#                                 .receipts_for(current_user)
+#                                 .find(@receipt_id).message
+#         @new_messages = last_message_in_ui
+#                             .conversation
+#                             .messages
+#                             .where('id > ?', last_message_in_ui.id)
+#                             # .where('created_at > ?', last_message_in_ui.created_at)
+#         puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+#         p params[:receipt][:id]
+#         p last_message_in_ui.created_at
+#         p @new_messages
+#         puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+#       end
+
+# # c.receipts_for(u).order(created_at: :desc).first.message
+#     end
+#   end
