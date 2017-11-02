@@ -35,7 +35,7 @@
           <div class="profile-skills">
             <div class="profile-skills">
               <div class="profile-head">
-                <h3><i class="fa fa-wrench"></i> Skills</h3>
+                <h3 class="not-first"><i class="fa fa-wrench"></i> Skills</h3>
               </div>
               <div>
                 <% if @user.skills.count > 0 %>
@@ -55,7 +55,7 @@
               </div>
             </div>
           </div>
-          <h3><i class="fa fa-users"></i> <%= @user.name %>'s reviews</h3>
+          <h3 class="not-first"><i class="fa fa-users"></i> <%= @user.name %>'s reviews</h3>
           <% if @user.user_reviews.count > 0 %>
             <% @user.user_reviews.each do |review| %>
               <div class="profile-review">

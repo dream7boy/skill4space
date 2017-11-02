@@ -58,7 +58,14 @@
 }
 
 .right-profile {
-  margin-left: 50px;
+  // margin-left: 50px;
+  margin-bottom: 30px;
+  h3 {
+    margin: 0 0 10px 0;
+  }
+  .not-first {
+    margin: 30px 0 10px 0;
+  }
 }
 
 .profile-head {
