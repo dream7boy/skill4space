@@ -23,6 +23,23 @@
 			width: 100px;
 		}
 	}
+	.stars {
+	  margin: 2px 0 0 18px;
+	  .starred {
+	  	color: $yellow;
+	  }
+      ul {
+      	display: inline-block;
+      	list-style: none;
+        padding: 0px;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+      }
+    }
+    .index-address {
+    	margin: 0;
+    }
 }
 
 .map_box {

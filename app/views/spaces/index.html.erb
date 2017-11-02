@@ -53,6 +53,29 @@
                           <i class="fa fa-handshake-o"></i> Barter
                         </div>
                       </div>
+                    <div class="stars">
+                      <% if space.user.user_reviews.count > 0 %>
+                        <% t = 0 %>
+                        <% c = 0 %>
+                        <% space.user.user_reviews.each do |r| %>
+                          <% t += r.rating.to_i %>
+                          <% c += 1 %>
+                        <% end %>
+                        <% a = t / c %>
+                        <div class="stars">
+                          <ul>
+                            <% a.times do  %>
+                              <li><i class="fa fa-star starred"></i></li>
+                            <% end %>
+                            <% (5 - a).times do  %>
+                              <li><i class="fa fa-star"></i></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                      <% end %>
+                      <%#= ave = (t.to_i / space.user.user_reviews.count) %>
+                    </div>
+
                     <%# else %>
                       <!-- <div class="category-tag paid">
                         <div>
@@ -63,7 +86,7 @@
                   </div>
                   <h3>@<%= space.name %></h3>
                   <div class="space-location">
-                    <p><i class="fa fa-map-marker"></i> <%= space.address %></p>
+                    <p class="index-address"><i class="fa fa-map-marker"></i> <%= space.address %></p>
                   </div>
                   <%# if space.is_barter == true %>
                     <div class="space-price text-right">
