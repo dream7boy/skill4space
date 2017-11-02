@@ -10,12 +10,12 @@
     opacity: 1.0;
     h2 {
       font-size: 24px;
-      margin: 12px 0 12px 4px;
+      margin: 12px 0 14px 4px;
       font-weight: bold;
     }
     h3 {
       font-size: 16px;
-      margin: 5px 0;
+      margin: 10px 0;
       font-weight: bold;
     }
     p {
@@ -26,6 +26,28 @@
       transform: translate(1px, 1px);
       box-shadow: 1px 1px 1px #C4C4C4;
     }
+      .stars {
+      margin: 2px 4px 0 0;
+      // display: flex;
+      // justify-content: flex-end;
+      p {
+        margin: 0;
+      }
+      .starred {
+        color: $yellow;
+      }
+        ul {
+          display: inline-block;
+          list-style: none;
+          padding: 0px;
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+        }
+      }
+      .index-address {
+        margin: 0;
+      }
   }
 
   .card {
@@ -48,7 +70,8 @@
 
   .index-tags {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .category-tag {
