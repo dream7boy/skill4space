@@ -83,8 +83,9 @@ $('#booking-submit-button').submit(function(event) {
     $form.find('[type="submit"]').get(0).disabled = false;
     if (!ok) return;
 
-    swal('Success', "", {
+    swal('Thanks for booking!', "Proceed to chat", {
       icon: "success",
+      button: false,
     });
 
     $.post({
