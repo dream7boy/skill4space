@@ -65,7 +65,15 @@
 		           </td>
 	             <td><p><%= conversation.subject %></p></td>
 		           <td>
-			          <p class="latest-message"><span>Latest message: <%= conversation.messages.last.created_at.strftime("%Y/%m/%d %H:%M%p") %></span>  </p>
+			          <p class="latest-message"><span>Latest message: <%= conversation.messages.last.created_at.getlocal.strftime("%Y/%m/%d %H:%M%p") %></span> from
+
+                  <% if current_user == conversation.messages.last.recipients.first %>
+                    <%= conversation.messages.first.recipients.last.name %>
+                  <% else %>
+                    <%= conversation.messages.first.recipients.first.name %>
+                  <% end %>
+
+                </p>
 			          <p><%= conversation.messages.last.body %></p>
 		           </td>
 		           <td>
