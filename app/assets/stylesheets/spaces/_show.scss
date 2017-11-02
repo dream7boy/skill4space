@@ -156,14 +156,14 @@
     height: 60px;
   }
 }
-.show-owner-info-profile {
-  // margin-right: 70px;
+.owner-div {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  // align-items: flex-start;
+  align-items: center;
+}
+.show-owner-info-profile {
   p {
-    margin: 0;
+    margin: 0 6px 0 0;
     font-size: 18px;
   }
   span {
