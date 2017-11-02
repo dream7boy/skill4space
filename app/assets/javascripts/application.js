@@ -73,10 +73,28 @@ $('.slider-nav-two').slick({
 // $(this).unbind('click').click('.swal-button');
 // };
 
-$('#booking-submit-button').click(function(event) {
+$('#booking-submit-button').submit(function(event) {
+  $form = $(event.currentTarget);
   event.preventDefault();
-  swal('Success', 'You have booked this space!', 'success');
-  return true;
+  swal('Success', 'You have booked this space!', 'success', {
+    buttons: true,
+    success: true
+  }).then(ok => {
+    $form.find('[type="submit"]').get(0).disabled = false;
+    if (!ok) return;
+
+    $.post({
+      url: $form.attr('action'),
+      type: $form.attr('method'),
+      data: $form.serialize(),
+      success: data => {
+        window.location.href = `/conversations/${data.conversation.id}`;
+      },
+      error: err => {
+        console.log('Error', err);
+      }
+    });
+  });
 });
 
   // $('.swal-button').click(
