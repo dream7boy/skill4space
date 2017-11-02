@@ -24,6 +24,6 @@ class ConversationsController < ApplicationController
        "#{@space.name}")
 
     BookingsController.callback(@space, current_user, receipt.conversation.id)
-    redirect_to conversation_path(receipt.conversation)
+    render :json => { conversation: receipt.conversation }
   end
 end
