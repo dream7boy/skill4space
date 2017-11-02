@@ -82,6 +82,15 @@
                             <% end %>
                           </ul>
                         </div>
+                      <% else %>
+                        <div class="stars">
+                          <p>Unrated: </p>
+                          <ul>
+                            <% 5.times do  %>
+                              <li><i class="fa fa-star-o"></i></li>
+                            <% end %>
+                          </ul>
+                        </div>
                       <% end %>
                       <%#= ave = (t.to_i / space.user.user_reviews.count) %>
                     </div>

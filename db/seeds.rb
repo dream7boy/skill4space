@@ -5,13 +5,117 @@ User.destroy_all
 
 puts 'Creating database...'
 
-6.times do
+
+# seeds for programming as required skill
+3.times do
   user = User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
     password: "123456",
     is_owner: true,
-    address: ["Meguro Station, Tokyo", "Tokyo Station, Tokyo", "Shinjuku Station, Tokyo", "Ginza, Tokyo", "Shiodome, Tokyo"].sample
+    address: ["Meguro, Tokyo", "Tokyo Station, Tokyo", "Shinjuku, Tokyo", "Ginza, Tokyo", "Shiodome, Tokyo", "Ebisu, Tokyo", "Ueno, Tokyo", "Roppongi, Tokyo"].sample
+    )
+
+  if user.is_owner
+    3.times do
+      # start_random_date = DateTime.new(2017, 11, rand(6..8))
+      space = Space.new(
+        name: Faker::Company.name,
+        category: ["Garage", "Kitchen", "Office", "Design studio", "Coworking", "Art gallery", "Music studio"].sample,
+        start_date: DateTime.new(2017, 11, 6),
+        end_date: DateTime.new(2017, 11, 10),
+        # start_date: start_random_date,
+        # end_date: start_random_date + rand(1..2),
+        daily_price: rand(5000..20000).round(-3),
+        # facility: ["Wi-Fi", "Meeting rooms", "Breakout area", "Printing", "Free coffee"].sample,
+        # people_capacity: ["1 person", "〜5 people", "〜10 people", "〜20 people",
+        #   "〜50 people", "〜100 people", "〜200 people", "More than 200 people" ].sample,
+        # floor_area: ["〜10", "11〜20", "21〜50", "50〜100", "100〜"].sample,
+        opening_hours: Time.new(2017, 10, 31, 18, 0, 0),
+        closing_hours: Time.new(2017, 11, 01, 02, 0, 0),
+        description: "Description TBD",
+        required_skill_description: "Description TBD",
+        is_barter: true,
+        user_id: user.id,
+        city: "Tokyo",
+        address: user.address,
+        required_skill: "Programming"
+        )
+
+
+      photo_urls = {
+        "Office" => ["app/assets/images/Office4.jpg"],
+        "Coworking" => ["app/assets/images/Coworking4.jpg"],
+        "Design studio" => ["app/assets/images/dstudio4.jpg"],
+        "Kitchen" => ["app/assets/images/kitchen4.jpg"],
+        "Garage" => ["app/assets/images/garage4.jpg"],
+        "Art gallery" => ["app/assets/images/artgallery05.jpg"],
+        "Music studio" => ["app/assets/images/musicstudio02.jpg"]
+      }
+
+      titles = {
+        "Office" => "Sleek, modern office",
+        "Coworking" => "Great coworking community",
+        "Design studio" => "Reputable design studio",
+        "Kitchen" => "Well equipped kitchen",
+        "Garage" => "Garage space in Tokyo",
+        "Art gallery" => "Spacious art gallery",
+        "Music studio" => "High tech music studio"
+      }
+
+      facilities = {
+        "Office" => "Meeting rooms",
+        "Coworking" => "Wi-Fi",
+        "Design studio" => "Breakout area",
+        "Kitchen" => "Free coffee",
+        "Garage" => "Wi-Fi",
+        "Art gallery" => "Printing",
+        "Music studio" => "Wi-Fi"
+      }
+
+      capacity = {
+        "Office" => "〜100 people",
+        "Coworking" => "〜50 people",
+        "Design studio" => "〜20 people",
+        "Kitchen" => "〜10 people",
+        "Garage" => "〜5 people",
+        "Art gallery" => "〜50 people",
+        "Music studio" => "〜5 people"
+      }
+
+      floor_area = {
+        "Office" => "100〜",
+        "Coworking" => "100〜",
+        "Design studio" => "50〜100",
+        "Kitchen" => "21〜50",
+        "Garage" => "11〜20",
+        "Art gallery" => "100〜",
+        "Music studio" => "11〜20"
+      }
+
+
+      space.title = titles[space.category]
+      space.facility = facilities[space.category]
+      space.people_capacity = capacity[space.category]
+      space.floor_area = floor_area[space.category]
+      space.photo_urls = photo_urls[space.category]
+      space.save!
+
+      puts 'Photo seeding...'
+
+    end
+  end
+end
+
+
+# seeds for other required skills
+3.times do
+  user = User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "123456",
+    is_owner: true,
+    address: ["Meguro, Tokyo", "Tokyo Station, Tokyo", "Shinjuku, Tokyo", "Ginza, Tokyo", "Shiodome, Tokyo", "Ebisu, Tokyo", "Ueno, Tokyo", "Roppongi, Tokyo"].sample
     )
 
   3.times do
@@ -26,16 +130,16 @@ puts 'Creating database...'
       # start_random_date = DateTime.new(2017, 11, rand(6..8))
       space = Space.new(
         name: Faker::Company.name,
-        category: ["Garage", "Kitchen", "Office", "Design studio", "Coworking"].sample,
+        category: ["Garage", "Kitchen", "Office", "Design studio", "Coworking", "Art gallery", "Music studio"].sample,
         start_date: DateTime.new(2017, 11, 6),
         end_date: DateTime.new(2017, 11, 10),
         # start_date: start_random_date,
         # end_date: start_random_date + rand(1..2),
         daily_price: rand(5000..20000).round(-3),
-        facility: ["Wi-Fi", "Meeting rooms", "Breakout area", "Printing", "Free coffee"].sample,
-        people_capacity: ["1 person", "〜5 people", "〜10 people", "〜20 people",
-          "〜50 people", "〜100 people", "〜200 people", "More than 200 people" ].sample,
-        floor_area: ["〜10", "11〜20", "21〜50", "50〜100", "100〜"].sample,
+        # facility: ["Wi-Fi", "Meeting rooms", "Breakout area", "Printing", "Free coffee"].sample,
+        # people_capacity: ["1 person", "〜5 people", "〜10 people", "〜20 people",
+        #   "〜50 people", "〜100 people", "〜200 people", "More than 200 people" ].sample,
+        # floor_area: ["〜10", "11〜20", "21〜50", "50〜100", "100〜"].sample,
         opening_hours: Time.new(2017, 10, 31, 18, 0, 0),
         closing_hours: Time.new(2017, 11, 01, 02, 0, 0),
         description: "Description TBD",
@@ -44,79 +148,66 @@ puts 'Creating database...'
         user_id: user.id,
         city: "Tokyo",
         address: user.address,
-        required_skill: ["Web Design", "Teaching", "Programming", "Translation", "Writing"].sample
+        required_skill: ["Web Design", "Teaching", "Translation", "Writing"].sample
         )
 
-      # skill_match = {
-      #   "Office" => "Coding"
-      # }
 
       photo_urls = {
         "Office" => ["app/assets/images/Office4.jpg"],
         "Coworking" => ["app/assets/images/Coworking4.jpg"],
         "Design studio" => ["app/assets/images/dstudio4.jpg"],
         "Kitchen" => ["app/assets/images/kitchen4.jpg"],
-        "Garage" => ["app/assets/images/garage4.jpg"]
+        "Garage" => ["app/assets/images/garage4.jpg"],
+        "Art gallery" => ["app/assets/images/artgallery05.jpg"],
+        "Music studio" => ["app/assets/images/musicstudio02.jpg"]
       }
 
       titles = {
-        "Office" => "Come check out our sleek, modern office",
-        "Coworking" => "Experience our vibrant coworking community",
-        "Design studio" => "Come to our historic design studio",
-        "Kitchen" => "Cosy kitchen in the heart of Tokyo",
-        "Garage" => "Check out our large, well-lit garage space"
+        "Office" => "Sleek, modern office",
+        "Coworking" => "Great coworking community",
+        "Design studio" => "Reputable design studio",
+        "Kitchen" => "Well equipped kitchen",
+        "Garage" => "Garage space in Tokyo",
+        "Art gallery" => "Spacious art gallery",
+        "Music studio" => "High tech music studio"
       }
 
-      # photo_urls = {
-      #   "Office" => ["app/assets/images/Office1.jpg",
-      #     "app/assets/images/Office2.jpg",
-      #     "app/assets/images/Office3.jpg",
-      #     "app/assets/images/Office4.jpg"],
-      #   "Coworking" => ["app/assets/images/Coworking1.jpg",
-      #     "app/assets/images/Coworking2.jpg",
-      #     "app/assets/images/Coworking3.jpg",
-      #     "app/assets/images/Coworking4.jpg"],
-      #   "Design studio" => ["app/assets/images/dstudio1.jpg",
-      #     "app/assets/images/dstudio2.jpg",
-      #     "app/assets/images/dstudio3.jpg",
-      #     "app/assets/images/dstudio4.jpg"],
-      #   "Kitchen" => ["app/assets/images/kitchen1.jpg",
-      #     "app/assets/images/kitchen2.jpg",
-      #     "app/assets/images/kitchen3.jpg",
-      #     "app/assets/images/kitchen4.jpg"],
-      #   "Garage" => ["app/assets/images/garage1.jpg",
-      #     "app/assets/images/garage2.jpg",
-      #     "app/assets/images/garage3.jpg",
-      #     "app/assets/images/garage4.jpg"]
-      # }
+      facilities = {
+        "Office" => "Meeting rooms",
+        "Coworking" => "Wi-Fi",
+        "Design studio" => "Breakout area",
+        "Kitchen" => "Free coffee",
+        "Garage" => "Wi-Fi",
+        "Art gallery" => "Printing",
+        "Music studio" => "Wi-Fi"
+      }
+
+      capacity = {
+        "Office" => "〜100 people",
+        "Coworking" => "〜50 people",
+        "Design studio" => "〜20 people",
+        "Kitchen" => "〜10 people",
+        "Garage" => "〜5 people",
+        "Art gallery" => "〜50 people",
+        "Music studio" => "〜5 people"
+      }
+
+      floor_area = {
+        "Office" => "100〜",
+        "Coworking" => "100〜",
+        "Design studio" => "50〜100",
+        "Kitchen" => "21〜50",
+        "Garage" => "11〜20",
+        "Art gallery" => "100〜",
+        "Music studio" => "11〜20"
+      }
 
 
-      # photo_urls = {
-      #   "Office" => ["https://www.designboom.com/wp-content/uploads/2016/08/airbnb-tokyo-office-interiors-japan-suppose-design-office-designboom-11.jpg",
-      #     "https://i.pinimg.com/736x/89/69/e5/8969e5a0046eeb3f2af4d2c45cd678a2--startup-office-office-office.jpg",
-      #     "http://www.dialogdesign.ca/assets/UFA4.jpg"],
-      #   "Coworking" => ["https://www.designboom.com/wp-content/uploads/2016/08/airbnb-tokyo-office-interiors-japan-suppose-design-office-designboom-02.jpg",
-      #     "https://www.industriousoffice.com/wp-content/uploads/sites/2/2016/11/4-l-12-1024x512.jpg",
-      #     "https://images.divisare.com/images/dpr_1.0,f_auto,q_auto,w_800/wxgzxj9ygn6o7hdxvqyf/pab-architects-habita-coworking-office.jpg"],
-      #   "Design studio" => ["https://www.designboom.com/wp-content/uploads/2016/08/airbnb-tokyo-office-interiors-japan-suppose-design-office-designboom-07.jpg",
-      #     "http://www.officedesigngallery.com/wp-content/uploads/2014/11/Uber-Headquarters-SF-Design-Office-7.jpg",
-      #     "https://www.australiandesignreview.com/wp-content/uploads/2016/01/LL_N13.jpg"],
-      #   "Kitchen" => ["https://www.designboom.com/wp-content/uploads/2016/08/airbnb-tokyo-office-interiors-japan-suppose-design-office-designboom-03.jpg",
-      #     "https://i.pinimg.com/736x/53/14/02/5314023d855e4ab3511ef2210f1be889--restaurant-kitchen-design-luxury-kitchen-design.jpg",
-      #     "https://i.pinimg.com/originals/04/81/25/0481252133f031d85f8f4deb3e101d3b.jpg"],
-      #   "Garage" => ["http://cdn.wonderfulengineering.com/wp-content/uploads/2013/11/garage-organized-pic.jpg",
-      #     "http://2.bp.blogspot.com/_xdtvkuj3Jaw/SxQnP8sArmI/AAAAAAAABQk/k8-qAigVow4/s640/1478EMountain_Garage.jpg",
-      #     "http://architectural-design.info/wp-content/uploads/2015/02/garage-design.jpg"],
-      #   "Classroom" => ["https://whatedsaid.files.wordpress.com/2010/10/classroom-1.jpg",
-      #     "https://s3.amazonaws.com/libapps/accounts/34780/images/classroom_image.png",
-      #     "http://lightingpatternsforhealthybuildings.org/assets/images/pattern_image/df6ad-sm_smallclassroom_redesign-2_full-output_view-1.jpg"],
-      #   "Laboratory" => ["https://www.tue.nl/fileadmin/content/onderzoek/Onderzoekslabs/BvOF_TUe-labs_Cellab_webpagina.jpg",
-      #     "https://medicine.dundee.ac.uk/sites/medicine.dundee.ac.uk/files/staff.JPG",
-      #     "https://www.iaea.org/sites/default/files/styles/width_555px_6_units_16_9/public/16/12/jlt7935lowjpg/jlt7935low.jpg?itok=Y7rE9od2"]
-      # }
-
-      space.photo_urls = photo_urls[space.category]
       space.title = titles[space.category]
+      space.facility = facilities[space.category]
+      space.people_capacity = capacity[space.category]
+      space.floor_area = floor_area[space.category]
+      space.photo_urls = photo_urls[space.category]
       space.save!
 
       puts 'Photo seeding...'
@@ -135,7 +226,7 @@ end
     status: "Available",
     start_date: booked_space.start_date,
     end_date: booked_space.end_date,
-    user_id: User.first.id,
+    user_id: User.last.id,
     space_id: booked_space.id
     )
 end
