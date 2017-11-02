@@ -8,24 +8,33 @@
   <div class="container">
     <div class="row">
       <div class="index-header">
+        <div class="container">
+          <div class="row">
+            
+        <div class="col-xs-12 col-md-6">
+          
         <h1>Search Results</h1>
-      </div>
-      <!-- Filters will be here -->
-      <div class="index-filter">
-        <%= form_tag(spaces_path, method: :get) do %>
-        <%= select_tag "city",
-          options_for_select(@available_cities),
-           class: "input-lg form-top" %>
-        <%= select_tag "category",
-          options_for_select(@available_categories),
-           class: "input-lg form-top" %>
-        <%= select_tag "required_skill",
-          options_for_select(@available_skills),
-          class: "input-lg form-top" %>
-        <%= submit_tag 'Filter', name: nil, class: "btn btn-success btn-lg" %>
-      <% end %>
-      </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+        <div class="index-filter">
+          <%= form_tag(spaces_path, method: :get, class: "text-right") do %>
+          <%= select_tag "city",
+            options_for_select(@available_cities),
+             class: "form-top" %>
+          <%= select_tag "category",
+            options_for_select(@available_categories),
+             class: "form-top" %>
+          <%= select_tag "required_skill",
+            options_for_select(@available_skills),
+            class: "form-top" %>
+          <%= submit_tag 'Filter', name: nil, class: "btn btn-success" %>
+        <% end %>
+        </div>
+        </div>
+          </div>
+        </div>
 
+      </div>
 
       <div class="row-cards">
         <% @spaces.reverse.each do |space| %>
