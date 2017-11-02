@@ -155,10 +155,11 @@
     height: 60px;
   }
 }
-.show-owner-info{
+.show-owner-info-profile {
+  // margin-right: 70px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   // align-items: flex-start;
   p {
     margin: 0;

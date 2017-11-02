@@ -49,6 +49,23 @@
           <h1><%= @space.title %></h1>
           <!-- div? -->
           <div class="show-space-info">
+            <div class="show-owner-info">
+              <div class="show-owner-info-profile">
+                <% if @space.user.photo.present? %>
+                  <% avatar_url = @space.user.photo.path %>
+                <% else %>
+                  <% avatar_url = @space.user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
+                <% end %>
+                <%= link_to user_path(@space.user) do %>
+                  <div class="show-owner-info-profile-name text-center">
+                    <p><span>Listed by</span> <%= @space.user.name %></p>
+                  </div>
+                  <div class="show-owner-info-profile-photo text-center">
+                    <%= cl_image_tag avatar_url, class: "profile-avatar" %>  
+                  </div>
+                <% end %>                
+              </div>
+            </div>
             <div class="index-tags">
               <div class="category-tag">
                 <div>
@@ -69,23 +86,6 @@
                 </div> -->
               <%# end %>
 
-            </div>
-            <div class="show-owner-info">
-              <div class="show-owner-info-profile">
-                <% if @space.user.photo.present? %>
-                  <% avatar_url = @space.user.photo.path %>
-                <% else %>
-                  <% avatar_url = @space.user.facebook_picture_url || "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg" %>
-                <% end %>
-                <%= link_to user_path(@space.user) do %>
-                  <div class="show-owner-info-profile-name text-center">
-                    <p><span>Listed by</span> <%= @space.user.name %></p>
-                  </div>
-                  <div class="show-owner-info-profile-photo text-center">
-                    <%= cl_image_tag avatar_url, class: "profile-avatar" %>  
-                  </div>
-                <% end %>                
-              </div>
             </div>
           </div>
           <p><i class="fa fa-map-marker"></i> <%= @space.address %></p>
