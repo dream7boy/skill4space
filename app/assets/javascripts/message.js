@@ -1,15 +1,15 @@
 $(function(){
   function buildMESSAGE(message) {
-    const newmessage = $(`
-      <div class="message-wrapper" data-id=${message.id}>
-        <div class="sender-profile">
-          <img class="profile-avatar" src="http://res.cloudinary.com/dlzzsx5ex/image/upload/${message.sender_photo.path}" >
-        </div>
-        <div class="message-body">
-         <p>FROM: ${message.sender_name} <span>on ${message.created}</span></p>
-          <p>${message.body}</p>
-        </div>
-      </div>`).hide()
+    // const newmessage = $(`
+    //   <div class="message-wrapper" data-receipt-id=${message.receipt_id}>
+    //     <div class="sender-profile">
+    //       <img class="profile-avatar" src="http://res.cloudinary.com/dlzzsx5ex/image/upload/${message.sender_photo.path}" >
+    //     </div>
+    //     <div class="message-body">
+    //      <p>FROM: ${message.sender_name} <span>on ${message.created}</span></p>
+    //       <p>${message.body}</p>
+    //     </div>
+    //   </div>`).hide()
 
     const messages = $('#message-container').append(newmessage);
     newmessage.slideDown();
@@ -37,10 +37,10 @@ $(function(){
     })
     .always(function(data){ //通信したら、成功しようがしまいが受け取ったデータ（@new_message)を引数にとって以下のことを行う
       $.each(data, function(i, data){ //'data'を'data'に代入してeachで回す
-        // buildMESSAGE(data); //buildMESSAGEを呼び出す
+        // buildMESSAGE(data.new_messages); //buildMESSAGEを呼び出す
         console.log(data); //buildMESSAGEを呼び出す
       });
-      setTimeout(update, 10000);
+      setTimeout(update, 5000);
     });
   }
   update();
