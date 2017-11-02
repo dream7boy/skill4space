@@ -6,13 +6,13 @@
   <h1><i class="fa fa-envelope-o"></i> Your Mailbox</h1>
   <% if @conversations.count <= 0 %>
   	  <div class="no-messages text-center">
-        <p class="lead">You have no message yet.</p>
-        <p>Find a best place for you</p>
+        <p class="lead">You have no messages yet.</p>
+        <p>Find a place best for you</p>
         <%= link_to root_path, class: "btn btn-success" do %>
-          <i class="fa fa-search"></i> SEACH SPACES
+          <i class="fa fa-search"></i> SEARCH SPACES
         <% end %>
     	<p class="or">or</p>
-    	<p>Add new lisitng as an space owner</p>
+    	<p>Add new listing as a space owner</p>
     	<%= link_to new_space_path, class: "btn btn-success" do %>
 	       <i class="fa fa-list-alt"></i> CREATE A NEW LISTING
 	      <% end %>

@@ -14,8 +14,8 @@
   </div>
   <% if @user.spaces.count <= 0 %>
     <div class="no-listings text-center">
-      <p>You have no listing yet.</p>
-      <p>Add new lisitng to get help from skilled people!</p>
+      <p>You have no listings yet.</p>
+      <p>Add new listing to get help from skilled people!</p>
       <%= link_to new_space_path, class: "btn btn-success" do %>
        <i class="fa fa-list-alt"></i> CREATE A NEW LISTING
       <% end %>
