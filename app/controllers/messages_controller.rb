@@ -3,11 +3,22 @@ class MessagesController < ApplicationController
 
   def create
     if params[:body].present?
-      if @conversation.receipts[-2].receiver_id == current_user.id
-        @receiver = User.find(@conversation.receipts[-1].receiver_id)
-      else
-        @receiver = User.find(@conversation.receipts[-2].receiver_id)
-      end
+      @receiver = @conversation
+                    .receipts
+                    .last(2)
+                    .map(&:receiver)
+                    .find { |receiver| receiver != current_user }
+
+      # second_to_last_receipt_receiver_id, last_receipt_receiver_id = @conversation
+      #                                                                     .receipts
+      #                                                                     .last(2)
+      #                                                                     .map(&:receiver_id)
+      # @receiver = if second_to_last_receipt_receiver_id == current_user.id
+      #   User.find(last_receipt_receiver_id)
+      # else
+      #   User.find(second_to_last_receipt_receiver_id)
+      # end
+
       send_get_message_email(current_user, @receiver, @conversation)
       @receipt = current_user.reply_to_conversation(@conversation, params[:body])
     end
