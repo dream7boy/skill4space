@@ -112,10 +112,37 @@
                             <i class="fa fa-home"></i> <%= space.category %>
                           </div>
                         </div>
-                        <div class="category-tag barter">
-                          <div>
-                            <i class="fa fa-handshake-o"></i> Barter
-                          </div>
+                        <div class="stars">
+                          <% if space.user.user_reviews.count > 0 %>
+                            <% t = 0 %>
+                            <% c = 0 %>
+                            <% space.user.user_reviews.each do |r| %>
+                              <% t += r.rating.to_i %>
+                              <% c += 1 %>
+                            <% end %>
+                            <% a = t / c %>
+                            <div class="stars">
+                              <p>Average rating: </p>
+                              <ul>
+                                <% a.times do  %>
+                                  <li><i class="fa fa-star starred"></i></li>
+                                <% end %>
+                                <% (5 - a).times do  %>
+                                  <li><i class="fa fa-star"></i></li>
+                                <% end %>
+                              </ul>
+                            </div>
+                          <% else %>
+                            <div class="stars">
+                              <p>Unrated: </p>
+                              <ul>
+                                <% 5.times do  %>
+                                  <li><i class="fa fa-star"></i></li>
+                                <% end %>
+                              </ul>
+                            </div>
+                          <% end %>
+                          <%#= ave = (t.to_i / space.user.user_reviews.count) %>
                         </div>
                       </div>
                       <h3>@<%= space.name %></h3>
