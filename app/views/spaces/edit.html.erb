@@ -9,7 +9,7 @@
       <%= simple_form_for(@space) do |f| %>
         <%= f.input :title, placeholder: "eg.) Renew or website, and come to use our office", label: "Listing title" %>
         <%= f.input :name, placeholder: "eg.) IMPACT HUB Tokyo", label: "Space name" %>
-        <%= f.input :category, collection: ["Office", "Coworking", "Design Studio", "Music Studio", "Dance Studio", "Classroom", "Laboratory", "Kitchen", "Garage", ], prompt: "Choose the category of your space", label: "Space category" %>
+        <%= f.input :category, collection: ["Office", "Coworking", "Event space", "Art gallery", "Design Studio", "Music Studio", "Dance Studio", "Kitchen", "Garage"], prompt: "Choose the category of your space", label: "Space category" %>
         <%= f.input :description, placeholder: "eg.) We have a nice co-working office especially for startups in Tokyo... "%>
         <%= f.input :city, collection: ["Tokyo", "Osaka", "Fukuoka"], prompt: "Choose the location of the space", label: "Location of the space" %>
         <%= f.input :address, placeholder: "eg.) Tokyo, Japan", label: "Address of the space" %>
@@ -24,7 +24,7 @@
         <br>
         <!-- <label class="control-label boolean optional" for="space_is_barter">▶Do you ask user's to provide skills instead of money?</label> -->
         <%#= f.input :is_barter, label: "Yes" %>
-        <%= f.input :required_skill, collection: ["Programming", "Design", "Teaching", "Translation", "Writing"], label: "What kind of skill do you require?", prompt: "Choose your desired skill", class: "prompt" %>
+        <%= f.input :required_skill, collection: ["Programming", "Web Design", "Writing", "Proofreading", "Translation", "Teaching", "Consultation", "Illustration", "Photography"], label: "What kind of skill do you require?", prompt: "Choose your desired skill", class: "prompt" %>
         <%= f.input :required_skill_description, label: "Details about the required skills", placeholder: "eg,) Renew our cooperate website..." %>
         <!-- <p>▶Or do you allow users to pay for the office use?</p> -->
         <%#= f.input :daily_price, placeholder: "eg.) 100 USD" %>
