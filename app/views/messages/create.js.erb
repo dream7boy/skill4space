@@ -1,19 +1,1 @@
-// console.log("Hello");
-// const message = $(`
-//   <div class="message-wrapper" data-receipt-id="<%= @receipt.id %>">
-//     <div class="sender-profile">
-//       <% if @receipt.message.sender.photo.nil? %>
-//         <%= image_tag "http://www.queens.edu/_resources/img/placeholders/person-placeholder.jpg", class: "profile-avatar" %>
-//       <% else %>
-//         <%= cl_image_tag @receipt.message.sender.photo.path, class: "profile-avatar" %>
-//       <% end %>
-//     </div>
-//     <div class="message-body">
-//       <p>FROM: <%= j @receipt.message.sender.name %> <span>on <%= j @receipt.message.created_at.getlocal.strftime("%Y/%m/%d %H:%M%p") %></span></p>
-//       <p><%= j @receipt.message.body %></p>
-//     </div>
-//   </div>`).hide();
-
-// $('#message-container').append(message);
-// message.slideDown();
 $('#body').val('');
