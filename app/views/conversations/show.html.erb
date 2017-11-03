@@ -36,7 +36,8 @@
       </div>
 
       <div id="message-container">
-      <% @conversation.receipts_for(current_user).sort_by(&:created_at).each do |receipt| %>
+      <%# @conversation.receipts_for(current_user).sort_by(&:created_at).each do |receipt| %>
+      <% @conversation.receipts_for(current_user).order(created_at: :asc).each do |receipt| %>
         <div class="message-wrapper" data-receipt-id=<%= receipt.id %>>
           <div class="sender-profile">
             <!-- Need to modify condition -->
