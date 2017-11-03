@@ -10,28 +10,10 @@ class MessagesController < ApplicationController
       end
       send_get_message_email(current_user, @receiver, @conversation)
       @receipt = current_user.reply_to_conversation(@conversation, params[:body])
-      # redirect_to conversation_path(params[:conversation_id])
-      respond_to do |format|
-        format.html { conversation_path(params[:conversation_id]) }
-        format.js  # <-- will render `app/views/reviews/create.js.erb`
-      end
-
-      # if @conversation.receipts[-2].receiver_id == current_user.id
-      #   @receiver = User.find(@conversation.receipts[-1].receiver_id)
-      # else
-      #   @receiver = User.find(@conversation.receipts[-2].receiver_id)
-      # end
-      # send_get_message_email(current_user, @receiver, @conversation)
-      # receipt = current_user.reply_to_conversation(@conversation, params[:body])
-      # redirect_to conversation_path(params[:conversation_id])
-    else
-      respond_to do |format|
-        format.html { render partial: "conversations/show" }
-        format.js  # <-- idem
-      end
-
-      # flash[:alert] = "Your message is blank."
-      # redirect_back(fallback_location: root_path)
+    end
+    respond_to do |format|
+      format.html { render "conversations/show" }
+      format.js
     end
   end
 
