@@ -107,7 +107,7 @@
           <% end %>
           <p><i class="fa fa-clock-o"></i><span class="light"> Opening & Closing Hours:</span> <%= @space.opening_hours.strftime("%H:%M") %> 〜 <%= @space.closing_hours.strftime("%H:%M") %></p>
           <br>
-          <h2>Reviews on the owner</h2>
+          <h2>Reviews</h2>
           <% if @space.user.user_reviews.count > 0 %>
             <div class="row">
               <% @space.user.user_reviews.each do |review| %>
