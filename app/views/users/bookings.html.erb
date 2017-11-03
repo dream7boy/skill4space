@@ -7,10 +7,10 @@
   </div>
   <% if @user.bookings.count <= 0 %>
     <div class="no-bookings text-center">
-      <p>You have no booking yet.</p>
-      <p>Bartering with your skill, let's find a best place for you!</p>
+      <p>You have no bookings yet.</p>
+      <p>Barter with your skills, and find a best place for you!</p>
       <%= link_to root_path, class: "btn btn-success" do %>
-       <i class="fa fa-search"></i> SEACH SPACES
+       <i class="fa fa-search"></i> SEARCH SPACES
       <% end %>
     </div>
   <% else %>
