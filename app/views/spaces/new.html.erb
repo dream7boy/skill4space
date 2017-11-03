@@ -7,9 +7,9 @@
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
         <h1>Create a new listing</h1>
         <%= simple_form_for(@space) do |f| %>
-          <%= f.input :title, placeholder: "eg.) Renew or website, and come to use our office", label: "Listing title" %>
+          <%= f.input :title, placeholder: "eg.) Renew our website, and come to use our office", label: "Listing title" %>
           <%= f.input :name, placeholder: "eg.) IMPACT HUB Tokyo", label: "Space name" %>
-          <%= f.input :category, collection: ["Office", "Coworking", "Event space", "Art gallery", "Design Studio", "Music Studio", "Dance Studio", "Kitchen", "Garage", ], prompt: "Choose the category of your space", label: "Space category" %>
+          <%= f.input :category, collection: ["Office", "Coworking", "Event space", "Art gallery", "Design Studio", "Music Studio", "Dance Studio", "Kitchen", "Garage"], prompt: "Choose the category of your space", label: "Space category" %>
           <%= f.input :description, placeholder: "eg.) We have a nice co-working office especially for startups in Tokyo... "%>
           <%= f.input :city, collection: ["Tokyo", "Osaka", "Fukuoka"], prompt: "Choose the location of the space", label: "Location of the space" %>
           <%= f.input :address, placeholder: "eg.) Tokyo, Japan", label: "Address of the space" %>
