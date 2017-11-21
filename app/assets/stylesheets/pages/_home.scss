@@ -43,7 +43,7 @@
     white-space: nowrap; /* Keeps the content on a single line */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: .15em; /* Adjust as needed */
-    animation: 
+    animation:
       typing 3.5s steps(40, end),
       blink-caret .75s step-end infinite;
   }
@@ -83,7 +83,7 @@
   }
   .says {
     display: inline-block;
-    position: relative; 
+    position: relative;
     margin: 6px auto;
     padding: 17px 13px;
     border-radius: 12px;
@@ -93,7 +93,7 @@
     content: "";
     display: inline-block;
     position: absolute;
-    top: 18px; 
+    top: 18px;
     left: -24px;
     border: 12px solid transparent;
     border-right: 12px solid #d7ebfe;
@@ -102,7 +102,7 @@
     content: "";
     display: inline-block;
     position: absolute;
-    top: 18px; 
+    top: 18px;
     right: -24px;
     border: 12px solid transparent;
     border-left: 12px solid #d7ebfe;
