@@ -57,9 +57,12 @@ class SpacesController < ApplicationController
   end
 
   def update
-    @space.update(space_params)
-    redirect_to listings_path
-    flash[:notice] = "Your space has been edited"
+    if @space.update(space_params)
+      redirect_to listings_path
+      flash[:notice] = "Your space has been edited"
+    else
+      render :edit
+    end
   end
 
   def destroy
